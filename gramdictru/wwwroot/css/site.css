@@ -1,0 +1,50 @@
+body {
+    font-family: Times;
+    text-align: center;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 40em;
+    text-align: justify;
+    display: inline-block;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+table tr td {
+    text-align: center;
+}
+
+table tr th {
+    text-align: center;
+    padding: 0.5em;
+}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+em {
+    letter-spacing: 0.15em;
+    font-style: normal;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-indent: 2em;
+}
+
+code {
+    font-family: Times;
+    font-style: italic;
+}

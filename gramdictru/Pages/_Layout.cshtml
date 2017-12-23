@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Грамматический словарь русского языка</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="body-content">
+        @if (Context.Request.Path.Value != "/" && Context.Request.Path.Value != "/Index")
+    {
+        <a href="Index">Содержание</a>
+}
+        <h1>Грамматический словарь русского языка</h1>
+        @RenderBody()
+    </div>
+</body>
+</html>
