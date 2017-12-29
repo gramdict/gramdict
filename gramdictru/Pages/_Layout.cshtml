@@ -10,10 +10,11 @@
 <body>
     <div class="body-content">
         @if (Context.Request.Path.Value != "/" && Context.Request.Path.Value != "/Index")
-    {
-        <a href="Index">Содержание</a>
-}
-        <h1>Грамматический словарь русского языка</h1>
+        {
+            <div id="contents-link"><a href="~/Index">Содержание</a></div>
+        }
+        <div id="author">А. А. Зализняк</div>
+        <h1>Грамматический словарь русского языка<br/> Словоизменение</h1>
         @RenderBody()
     </div>
 </body>

@@ -1,7 +1,265 @@
 ﻿@page
 @model IndexModel
 
+<img src="cover.jpg" style="float: left; margin-right: 1.5em; margin-bottom: 2em;"/>
+
+<p>
+    Словарь отражает 
+    (<span style="white-space: nowrap">с помощью</span> специальной системы условных обозначений)
+    современное словоизменение, <span style="white-space: nowrap">т. е.</span> склонение существительных,
+    прилагательных, местоимений, числительных и спряжение глаголов.
+    Словарь содержит около <span style="white-space: nowrap">100 000</span> слов,
+    расположенных в обратном (инверсионном) алфавитном порядке,
+    <span style="white-space: nowrap">т. е.</span> по алфавиту конечных, а не начальных букв слова.
+    Каждое слово имеет при себе грамматическую помету и индекс,
+    отсылающие к «Грамматическим сведениям»,
+    где даны образцы склонения и спряжения,
+    по которым читатель может установить словоизменение интересующего его слова.
+    <span style="white-space: nowrap">В настоящем</span> издании учтены изменения, произошедшие в русском языке
+    <span style="white-space: nowrap">с момента</span> выхода в свет первого издания словаря,
+    <span style="white-space: nowrap">а также</span> помещено приложение,
+    содержащее информацию о словоизменении более 8000 имен собственных.
+</p>
+
+<h2 style="clear: both; text-align: left">Содержание</h2>
+
 <ul>
     <li><a href="preface">Предисловие</a></li>
-    <li><a href="preface1">Предисловие к первому изданию</a></li>
+    <li>
+        <a href="preface1">Предисловие к первому изданию</a>
+        <ul>
+            <li><a href="preface1#inverse-order">Инверсионный порядок слов</a></li>
+            <li><a href="preface1#classes">Грамматические разряды</a></li>
+            <li>
+                <a href="preface1#nouns">Существительные</a>
+                <ul>
+                    <li><a href="preface1#immutable">Неизменяемые существительные</a></li>
+                    <li><a href="preface1#singularia-tantum">Singularia tantum</a></li>
+                    <li><a href="preface1#pluralia-tantum">Pluralia tantum</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="preface1#adjectives">Прилагательные</a>
+                <ul>
+                    <li><a href="preface1#short-forms">Краткие формы</a></li>
+                    <li><a href="preface1#comparative">Сравнительная степень</a></li>
+                </ul>
+            </li>
+            <li><a href="preface1#pronouns">Местоимения</a></li>
+            <li><a href="preface1#numerals">Числительные</a></li>
+            <li><a href="preface1#verbs">Глаголы</a></li>
+            <li><a href="preface1#potential">Потенциальные формы</a></li>
+            <li><a href="preface1#diffuculty">Затрудненность</a></li>
+            <li><a href="preface1#unstable-animacy">Неустойчивая одушевленность</a></li>
+            <li><a href="preface1#unstable-aspect">Неустойчивый глагольный вид</a></li>
+            <li><a href="preface1#sources">Источники и словник словаря</a></li>
+            <li><a href="preface1#norm">Нормативность словаря и отражение вариантов</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="howtouse">Как пользоваться словарем</a>
+        <ul>
+            <li><a href="howtouse#order">Способ записи слов и порядок их расположения</a></li>
+            <li>
+                <a href="howtouse#format">Строение словарной статьи</a>
+                <ul>
+                    <li><a href="howtouse#main-letter">Основной буквенный символ</a></li>
+                    <li><a href="howtouse#index">Индекс</a></li>
+                    <li>Дополнительные пометы и указания</li>
+                </ul>
+            </li>
+            <li>
+                Особые случаи оформления словарной статьи
+                <ul>
+                    <li>Сокращенная запись форм</li>
+                    <li>Омонимы</li>
+                    <li>Слова с ограниченной сочетаемостью</li>
+                    <li>Оформление вариантов</li>
+                    <li>Квадратные скобки</li>
+                </ul>
+            </li>
+            <li>
+                Как построить нужные формы слова
+                <ul>
+                    <li>Построение с помощью образцов</li>
+                    <li>Построение непосредственно по индексу</li>
+                </ul>
+            </li>
+            <li>Условные знаки и сокращения</li>
+        </ul>
+    </li>
+    <li>
+        Грамматические сведения
+        <ul>
+            <li>
+                Склонение
+                <ul>
+                    <li>
+                        Значение буквенных символов и элементов индекса у имен
+                        <ul>
+                            <li>
+                                Буквенные символы
+                                <ul>
+                                    <li>Основная синтаксическая характеристика имени</li>
+                                    <li>
+                                        Основная морфологическая характеристика имени
+                                        <ul>
+                                            <li>Стандартные окончания субстантивного склонения</li>
+                                            <li>Стандартные окончания адъективного склонения</li>
+                                            <li>Стандартные окончания местоименного склонения</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Цифра индекса</li>
+                            <li>Звездочка при цифре</li>
+                            <li>Кружочек при цифре</li>
+                            <li>
+                                Латинская буква
+                                <ul>
+                                    <li>Схемы ударения в субстантивном склонении</li>
+                                    <li>Схемы ударения в адъективном склонении</li>
+                                    <li>Схемы ударения в местоименном склонении</li>
+                                    <li>Дополнительные правила об ударении</li>
+                                </ul>
+                            </li>
+                            <li>Цифра в кружке</li>
+                            <li>Помета «ё»</li>
+                            <li>Построение форм склонения по индексу</li>
+                            <li>Построение сравнительной степени прилагательных</li>
+                        </ul>
+                    </li>
+                    <li>Образцы склонения</li>
+                    <li>
+                        <a href="declension/symbols">Значение дополнительных помет и указаний при именах</a>
+                        <br />
+                        <a href="declension/symbols#minus">—</a>
+                        <a href="declension/symbols#adj-cross"><span class="cross" /></a>
+                        <a href="declension/symbols#adj-boxed-cross"><span class="boxed-cross" /></a>
+                        <a href="declension/symbols#adj-tilde">~</a>
+                        <a href="declension/symbols#noun-p2">П<sub>2</sub></a>
+                        <a href="declension/symbols#noun-r2">Р<sub>2</sub></a>
+                    </li>
+                    <li><a href="declension/stressed_preposition">Сведения о переносе ударения на предлог</a></li>
+                    <li>
+                        <a href="declension/paragraphs">Дополнительные особенности в склонении</a><br />
+                        <a href="declension/paragraphs#para1">§1</a>
+                        <a href="declension/paragraphs#para2">§2</a>
+                        <a href="declension/paragraphs#para3">§3</a>
+                        <a href="declension/paragraphs#para4">§4</a>
+                        <a href="declension/paragraphs#para5">§5</a>
+                        <a href="declension/paragraphs#para6">§6</a>
+                        <a href="declension/paragraphs#para7">§7</a>
+                        <a href="declension/paragraphs#para8">§8</a>
+                        <a href="declension/paragraphs#para9">§9</a>
+                        <a href="declension/paragraphs#para10">§10</a>
+                        <a href="declension/paragraphs#para11">§11</a>
+                        <a href="declension/paragraphs#para12">§12</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="conjugation">Спряжение</a>
+                <ul>
+                    <li>
+                        Значение буквенных символов и элементов индекса у глаголов
+                        <ul>
+                            <li>Буквенные символы</li>
+                            <li>Цифра индекса</li>
+                            <li>Звездочка при цифре</li>
+                            <li>Кружочек при цифре</li>
+                            <li>
+                                Латинская буква
+                                <ul>
+                                    <li>Схемы ударения настоящего времени</li>
+                                    <li><a href="conjugation#stress-past">Схемы ударения прошедшего времени</a></li>
+                                    <li><a href="conjugation#stress-rules">Дополнительные правила об ударении</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="conjugation#alternation">Русская буква или буквенная последовательность в скобках</a></li>
+                            <li>
+                                Цифра в кружке<br />
+                                <a href="conjugation#verb-circle-1"><span class="circle">1</span></a>
+                                <a href="conjugation#verb-circle-2"><span class="circle">2</span></a>
+                                <a href="conjugation#verb-circle-3"><span class="circle">3</span></a>
+                                <a href="conjugation#verb-circle-4"><span class="circle">4</span></a>
+                                <a href="conjugation#verb-circle-5"><span class="circle">5</span></a>
+                                <a href="conjugation#verb-circle-6"><span class="circle">6</span></a>
+                                <a href="conjugation#verb-circle-7"><span class="circle">7</span></a>
+                                <a href="conjugation#verb-circle-8"><span class="circle">8</span></a>
+                                <a href="conjugation#verb-circle-9"><span class="circle">9</span></a>
+                            </li>
+                            <li>
+                                <a href="conjugation#verb-yo">Помета «ё» (или «о»)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="conjugation/build">Построение глагольных форм по индексу</a>
+                        <ul>
+                            <li>
+                                Личные формы
+                                <ul>
+                                    <li>Настоящее-будущее время</li>
+                                    <li>Прошедшее время</li>
+                                    <li>Будущее время несовершенного вида</li>
+                                    <li>Повелительное наклонение</li>
+                                    <li>Сослагательное наклонение</li>
+                                    <li>Личные формы на <word-end>-ся</word-end> (<word-end>-сь</word-end>) со страдательным значением</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Неличные формы
+                                <ul>
+                                    <li>Действительное причастие настоящего времени</li>
+                                    <li>Деепричастие настоящего времени</li>
+                                    <li>Действительное причастие прошедшего времени</li>
+                                    <li>Деепричастие прошедшего времени</li>
+                                    <li>Страдательное причастие настоящего времени</li>
+                                    <li>Страдательное причастие прошедшего времени</li>
+                                    <li>Неличные формы на <word-end>-ся</word-end> (<word-end>-сь</word-end>) со страдательным значением</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Образцы спряжения</li>
+                    <li>
+                        <a href="conjugation/symbols">Значение дополнительных помет и указаний при глаголе</a>
+                        <ul>
+                            <li><a href="conjugation/symbols#verb-cross">Знак <span class="cross" /></a></li>
+                            <li><a href="conjugation/symbols#verb-boxed-cross">Знак <span class="boxed-cross" /></a></li>
+                            <li><a href="conjugation/symbols#zhd">Запись «прич. страд. -жд-»</a></li>
+                            <li><a href="conjugation/symbols#forms">Формы, приведенные полностью, но не за знаком Δ</a></li>
+                            <li><a href="conjugation/symbols#stressed_particle">Сведения о переносе ударения на частицу</a></li>
+                            <li>
+                                <a href="conjugation/symbols#aspect">Указания за знаком ◑ – сведения о глаголе противоположного вида</a>
+                                <ul>
+                                    <li>
+                                        <a href="conjugation/symbols#aspect-imperfect">Построение глагола несовершенного вида</a>
+                                        <a href="conjugation/symbols#aspect-I">◑I</a>
+                                        <a href="conjugation/symbols#aspect-II">◑II</a>
+                                        <a href="conjugation/symbols#aspect-III">◑III</a>
+                                    </li>
+                                    <li>
+                                        <a href="conjugation/symbols#aspect-perfect">Построение глагола совершенного вида</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Дополнительные особенности в спряжении
+                                <br />
+                                <a href="conjugation/symbols#para13">§13</a>
+                                <a href="conjugation/symbols#para14">§14</a>
+                                <a href="conjugation/symbols#para15">§15</a>
+                                <a href="conjugation/symbols#para16">§16</a>
+                                <a href="conjugation/symbols#para17">§17</a>
+                                <a href="conjugation/symbols#para18">§18</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Приложение. Имена собственные</li>
 </ul>

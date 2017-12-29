@@ -1,24 +1,46 @@
 body {
-    font-family: Times;
+    font-family: serif;
+    line-height: 140%;
     text-align: center;
+    color: #3e0027;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    max-width: 40em;
+    max-width: 50em;
     text-align: justify;
     display: inline-block;
+    overflow-x: visible;
 }
 
-h1, h2 {
+a {
+    color: #303e00;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #858e4e;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    line-height: 130%;
+}
+h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
 table tr td {
     text-align: center;
+    text-indent: 0;
 }
 
 table tr th {
@@ -29,10 +51,11 @@ table tr th {
 table {
     margin-left:auto; 
     margin-right:auto;
+    margin-bottom: 1em;
 }
 
 em {
-    letter-spacing: 0.15em;
+    letter-spacing: 0.3em;
     font-style: normal;
 }
 
@@ -44,7 +67,93 @@ p {
     text-indent: 2em;
 }
 
-code {
+code, word-end {
     font-family: Times;
+    font-style: italic;
+}
+
+word-end {
+    white-space: nowrap;
+}
+
+code em {
+    font-style: italic;
+}
+
+#contents-link {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+#author {
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+    margin-top: 0.4em;
+}
+
+hr {
+    width: 10%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+h1 {
+    -webkit-margin-before: 0.3em;
+}
+
+.boxed-cross:before
+{
+    content: "⌧"
+}
+.cross:before
+{
+    content: "✕"
+}
+.circle:before
+{
+    content: '"'
+}
+.circle:after
+{
+    content: '"'
+}
+
+table tr td {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+table.left-aligned tr td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table.left-aligned {
+    margin-left: 2em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+table.left-aligned tr td:nth-child(1) {
+    padding-left: 0;
+    font-weight: bold;
+    min-width: 6em;
+}
+
+table.left-aligned tr td:nth-last-child(1) {
+    padding-right: 0;
+}
+
+.letter {
+    font-weight: bold;
+}
+
+.signature {
+    text-align: right;
+    margin-right: 20%;
+    margin-top: 2em;
+    margin-bottom: 2em;
     font-style: italic;
 }
