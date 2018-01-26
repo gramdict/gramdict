@@ -36,10 +36,20 @@ a:hover {
     text-decoration: underline;
 }
 
-img#cover {
-    float: left; 
-    margin-right: 1.5em; 
-    margin-bottom: 2em;
+@media (max-width: 500px) {
+    img#cover {
+        display: block;
+        margin: 0 auto;
+        padding-bottom: 1em;
+    }
+}
+
+@media (min-width: 501px) {
+    img#cover {
+        float: left;
+        margin-right: 1.5em;
+        margin-bottom: 2em;
+    }
 }
 
 .abstract {
@@ -53,6 +63,7 @@ img#cover {
 h1 {
     line-height: 130%;
 }
+
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
@@ -68,8 +79,8 @@ table tr th {
 }
 
 table {
-    margin-left:auto; 
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 1em;
 }
 
