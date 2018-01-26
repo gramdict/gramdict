@@ -36,8 +36,18 @@ a:hover {
     text-decoration: underline;
 }
 
-p {
-    text-align: justify;
+img#cover {
+    float: left; 
+    margin-right: 1.5em; 
+    margin-bottom: 2em;
+}
+
+.abstract {
+    line-height: 120%;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 h1 {
@@ -69,6 +79,7 @@ em {
 }
 
 p {
+    text-align: justify;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
