@@ -189,3 +189,17 @@ table.left-aligned tr td:nth-last-child(1) {
     margin-bottom: 2em;
     font-style: italic;
 }
+
+ul#contents {
+    text-align: left;
+}
+
+@media (max-width: 500px) {
+    ul#contents {
+        padding-left: 1.2em;
+    }
+
+    ul#contents ul {
+        padding-left: 1.2em;
+    }
+}
