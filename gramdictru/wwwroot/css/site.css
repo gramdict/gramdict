@@ -143,14 +143,6 @@ h1 {
 {
     content: "✕"
 }
-.circle:before
-{
-    content: '"'
-}
-.circle:after
-{
-    content: '"'
-}
 
 table tr td {
     padding-left: 0.25em;
