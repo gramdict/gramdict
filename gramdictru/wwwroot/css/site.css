@@ -195,3 +195,7 @@ ul#contents {
         padding-left: 1.2em;
     }
 }
+
+.footnote {
+    font-size: smaller;
+}
