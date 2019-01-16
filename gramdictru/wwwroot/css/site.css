@@ -199,3 +199,8 @@ ul#contents {
 .footnote {
     font-size: smaller;
 }
+
+.entry {
+    margin-left: 4em;
+    text-indent: 0;
+}
