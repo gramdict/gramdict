@@ -204,3 +204,48 @@ ul#contents {
     margin-left: 4em;
     text-indent: 0;
 }
+
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    height: auto;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tr1 {
+    border-right: solid 1px #000000;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.column1 {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+td {
+    text-align: left !important;
+    padding: 0px !important;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
