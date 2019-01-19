@@ -213,7 +213,7 @@ ul#contents {
 .column {
     float: left;
     width: 50%;
-    height: auto;
+    height: auto; 
 }
 
 .row:after {
@@ -231,6 +231,9 @@ ul#contents {
     .column {
         width: 100%;
     }
+    .tr1 {
+        border-right: solid 0px #000000 !important;
+    }
 }
 
 .column1 {
@@ -241,7 +244,7 @@ ul#contents {
 
 td {
     text-align: left !important;
-    padding: 0px !important;
+    padding: 3px !important; 
 }
 
 table {
