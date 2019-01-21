@@ -1,10 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'Scripts/App.tsx'),
+    entry: {
+        bundle: path.join(__dirname, 'Scripts/App.tsx'),
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'wwwroot', 'js')
+        path: path.join(__dirname, 'wwwroot', 'js'),
+        publicPath: "/js/"
     },
     module: {
         rules: [
@@ -18,4 +20,5 @@ module.exports = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
     },
+    plugins: [],
 };

@@ -10,15 +10,19 @@
   "dependencies": {
     "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
+    "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "react": "^16.7.0",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^16.7.0"
   },
   "devDependencies": {
+    "aspnet-webpack": "^3.0.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.4",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-hot-middleware": "^2.24.3"
   }
 }
