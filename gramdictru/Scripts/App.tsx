@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { SearchBox } from "./SearchBox";
+import { ApplicationState } from "./ApplicationState";
+
+const applicationState = new ApplicationState();
 
 class MyComponent extends React.Component {
     render() {
-        return <div>Hello World</div>;
+        return <SearchBox applicationState={applicationState} />;
     }
 }
 
