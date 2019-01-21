@@ -1,4 +1,5 @@
 ﻿import { ApplicationState } from "../ApplicationState/index";
+import * as InfinityScroll from "react-infinite-scroll-component";
 import { observer } from "mobx-react";
 import * as React from "react";
 import styled from "styled-components";
@@ -28,15 +29,20 @@ const Grammar = styled.td`
 @observer
 export class ResultsBox extends React.Component<IResultBoxProps> {
     render() {
-        console.log(this.props.applicationState.results);
-        return <ResultsTable>
-            <tbody>
-                {this.props.applicationState.results.map(r => <tr>
-                    <Lemma>{r.lemma}</Lemma>
-                    <Symbol>{r.symbol}</Symbol>
-                    <Grammar>{r.grammar}</Grammar>
-                </tr>)}
-            </tbody>
-        </ResultsTable>;
+        return this.props.applicationState.hasSearched && <InfinityScroll
+            dataLength={this.props.applicationState.results.length}
+            next={() => this.props.applicationState.continue()}
+            hasMore={!this.props.applicationState.reachedLimit}
+            loader={<h4>Loading...</h4>}>
+            <ResultsTable>
+                <tbody>
+                    {this.props.applicationState.results.map(r => <tr>
+                        <Lemma>{r.lemma}</Lemma>
+                        <Symbol>{r.symbol}</Symbol>
+                        <Grammar>{r.grammar}</Grammar>
+                    </tr>)}
+                </tbody>
+            </ResultsTable>
+        </InfinityScroll>;
     }
 }

@@ -2,6 +2,9 @@
 
 export class ApplicationState {
     @observable
+    hasSearched = false;
+
+    @observable
     searchTerm = "";
 
     @observable
@@ -11,7 +14,7 @@ export class ApplicationState {
     isLoading = false;
 
     @observable
-    pageSize = 50;
+    pageSize = 20;
 
     @observable
     pageNumber = 1;
@@ -26,21 +29,32 @@ export class ApplicationState {
         this.search();
     }
 
-    search = flow(function* () {
-        //if (this.reachedLimit) {
-        //    return;
-        //}
+    @action
+    triggerInitialSearch() {
+        if (this.hasSearched === false) {
+            this.search();
+        }
+    }
 
+    search = flow(function* () {
+        console.log("Beginning new search");
         this.results.clear();
-        this.pageNumber = 1;
+        this.pageNumber = 0;
+
+        yield this.continue();
+    });
+
+    continue = flow(function* () {
+        this.hasSearched = true;
+        this.pageNumber++;
         this.isLoading = true;
         const term = this.searchTerm == "" ? "*" : this.searchTerm;
 
         try {
-            console.log("making request");
-            //const response = yield fetch(`http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`);
+            const uri = `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+            console.log("making request", uri);
+            //const response = yield fetch(uri);
             //const data = yield response.text;
-            console.log("got response");
             const raw = `lemma,symbol,grammar
 сода,ж,1а
 содалит,м,1а
@@ -92,7 +106,6 @@ export class ApplicationState {
             }
 
             this.isLoading = false;
-            console.log("updating results", data);
             this.results = this.results.concat(data);
         } catch (error) {
             this.isLoading = false;

@@ -13,8 +13,8 @@ export class SearchBox extends React.Component<ISearchBoxProps> {
     render() {
         return <DebounceInput
             type="text"
-            minLength={2}
             debounceTimeout={300}
+            onFocus={e => this.onFocus(e)}
             onChange={e => this.onChange(e)}
             value={this.props.applicationState.searchTerm}
             placeholder="Поиск" />;
@@ -22,5 +22,9 @@ export class SearchBox extends React.Component<ISearchBoxProps> {
 
     onChange(e: React.ChangeEvent<HTMLInputElement>) {
         this.props.applicationState.updateSearchTerm(e.target.value);
+    }
+
+    onFocus(e: React.FocusEvent<HTMLInputElement>) {
+        this.props.applicationState.triggerInitialSearch();
     }
 }
