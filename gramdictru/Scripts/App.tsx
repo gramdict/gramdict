@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
@@ -9,7 +9,11 @@ const applicationState = new ApplicationState();
 class MyComponent extends React.Component {
     render() {
         return <div>
-            <SearchBox applicationState={applicationState} />
+            <div>
+                <SearchBox applicationState={applicationState} />
+                &nbsp;
+                <a href="/contents">Содержание</a>
+            </div>
             <ResultsBox applicationState={applicationState} />
         </div>;
     }
