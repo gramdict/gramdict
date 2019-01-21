@@ -19,4 +19,7 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
+  <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+  </Target>
 </Project>
