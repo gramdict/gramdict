@@ -14,16 +14,17 @@ const ResultsTable = styled.table`
 
 const Lemma = styled.td`
     text-align: left;
-    width: 25%;
+    min-width: 350px;
 `;
 
 const Symbol = styled.td`
     text-align: left;
-    width: 10%;
+    min-width: 350px;
 `;
 
 const Grammar = styled.td`
     text-align: left;
+    min-width: 350px;
 `;
 
 @observer
