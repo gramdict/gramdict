@@ -40,13 +40,13 @@ export class ApplicationState {
         console.log("Beginning new search");
         this.results.clear();
         this.pageNumber = 0;
+        this.reachedLimit = false;
 
         yield this.continue();
     });
 
     continue = flow(function* () {
         this.hasSearched = true;
-        this.pageNumber++;
         this.isLoading = true;
         const term = this.searchTerm == "" ? "*" : this.searchTerm;
 
@@ -69,13 +69,17 @@ export class ApplicationState {
             if (data.length < this.pageSize) {
                 console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
                 this.reachedLimit = true;
+            } else {
+                console.log(`Got ${data.length} lines`);
             }
 
-            this.isLoading = false;
             this.results = this.results.concat(data);
         } catch (error) {
-            this.isLoading = false;
             this.reachedLimit = true;
+            console.log("Got an error calling the API");
+        } finally {
+            this.isLoading = false;
+            this.pageNumber++;
         }
     });
 }
