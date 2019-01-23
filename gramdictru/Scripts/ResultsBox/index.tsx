@@ -8,42 +8,60 @@ export interface IResultBoxProps {
     applicationState: ApplicationState
 }
 
-const ResultsTable = styled.table`
+const ResultsTable = styled.div`
     width: 100%;
+    column-count: 3;
 `;
 
-const Lemma = styled.td`
-    text-align: left;
-    min-width: 350px;
+const ResultEntry = styled.div`
+    display: flex;
 `;
 
-const Symbol = styled.td`
-    text-align: left;
-    min-width: 350px;
+const Lemma = styled.div`
+    width: 45%;
+    word-break: break-all;
+    text-align: right;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
 `;
 
-const Grammar = styled.td`
+const Symbol = styled.div`
+    width: 25%;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+`;
+
+const Grammar = styled.div`
+    width: 30%;
     text-align: left;
-    min-width: 350px;
+    word-break: break-all;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
 `;
 
 @observer
 export class ResultsBox extends React.Component<IResultBoxProps> {
     render() {
+        console.log(this.props.applicationState.results);
         return this.props.applicationState.hasSearched && <InfinityScroll
-            dataLength={this.props.applicationState.results.length}
+            dataLength={this.props.applicationState.total}
             next={() => this.props.applicationState.continue()}
             hasMore={!this.props.applicationState.reachedLimit}
             loader={<h4>Loading...</h4>}>
-            <ResultsTable>
-                <tbody>
-                    {this.props.applicationState.results.map(r => <tr>
+            {this.props.applicationState.results.map(resultSet => [
+                <ResultsTable>
+                    {resultSet.map(r => <ResultEntry>
                         <Lemma>{r.lemma}</Lemma>
                         <Symbol>{r.symbol}</Symbol>
                         <Grammar>{r.grammar}</Grammar>
-                    </tr>)}
-                </tbody>
-            </ResultsTable>
+                    </ResultEntry>)}
+                </ResultsTable>,
+                <hr />
+            ])}
         </InfinityScroll>;
     }
 }

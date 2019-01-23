@@ -8,7 +8,7 @@ export class ApplicationState {
     searchTerm = "";
 
     @observable
-    results: Array<Result> = observable([]);
+    results: Array<Array<Result>> = observable([]);
 
     @observable
     isLoading = false;
@@ -21,6 +21,9 @@ export class ApplicationState {
 
     @observable
     reachedLimit = false;
+
+    @observable
+    total = 0;
 
     @action
     updateSearchTerm(searchTerm: string) {
@@ -40,6 +43,7 @@ export class ApplicationState {
         console.log("Beginning new search");
         this.results.clear();
         this.pageNumber = 0;
+        this.total = 0;
         this.reachedLimit = false;
 
         yield this.continue();
@@ -73,7 +77,8 @@ export class ApplicationState {
                 console.log(`Got ${data.length} lines`);
             }
 
-            this.results = this.results.concat(data);
+            this.results.push(data);
+            this.total += data.length;
         } catch (error) {
             this.reachedLimit = true;
             console.log("Got an error calling the API");
