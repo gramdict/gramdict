@@ -10,7 +10,8 @@ export interface IResultBoxProps {
 
 const ResultsTable = styled.div`
     width: 100%;
-    column-count: 3;
+    column-count: 6;
+    column-width: 350px;
 `;
 
 const ResultEntry = styled.div`
