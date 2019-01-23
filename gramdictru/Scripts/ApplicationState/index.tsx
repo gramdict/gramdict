@@ -41,15 +41,16 @@ export class ApplicationState {
 
     search = flow(function* () {
         console.log("Beginning new search");
-        this.results.clear();
-        this.pageNumber = 0;
-        this.total = 0;
-        this.reachedLimit = false;
 
-        yield this.continue();
+        yield this.continue(() => {
+            this.results.clear();
+            this.pageNumber = 0;
+            this.total = 0;
+            this.reachedLimit = false;
+        });
     });
 
-    continue = flow(function* () {
+    continue = flow(function* (callback?: () => void) {
         this.hasSearched = true;
         this.isLoading = true;
         const term = this.searchTerm == "" ? "*" : this.searchTerm;
@@ -75,6 +76,10 @@ export class ApplicationState {
                 this.reachedLimit = true;
             } else {
                 console.log(`Got ${data.length} lines`);
+            }
+
+            if (callback !== undefined) {
+                callback();
             }
 
             this.results.push(data);
