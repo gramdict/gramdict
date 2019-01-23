@@ -1,4 +1,4 @@
-﻿import { flow, observable, action } from "mobx";
+﻿import { flow, observable, action, computed } from "mobx";
 
 export class ApplicationState {
     @observable
@@ -24,6 +24,11 @@ export class ApplicationState {
 
     @observable
     total = 0;
+
+    @computed
+    get canLoadMore() {
+        return !this.reachedLimit && !this.isLoading;
+    }
 
     @action
     updateSearchTerm(searchTerm: string) {
@@ -71,15 +76,15 @@ export class ApplicationState {
                 };
             });
 
+            if (callback !== undefined) {
+                callback();
+            }
+
             if (data.length < this.pageSize) {
                 console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
                 this.reachedLimit = true;
             } else {
                 console.log(`Got ${data.length} lines`);
-            }
-
-            if (callback !== undefined) {
-                callback();
             }
 
             this.results.push(data);

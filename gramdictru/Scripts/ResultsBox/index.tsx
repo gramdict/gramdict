@@ -46,13 +46,15 @@ const Grammar = styled.div`
 
 @observer
 export class ResultsBox extends React.Component<IResultBoxProps> {
+    loader: InfinityScroll;
+
     render() {
-        console.log(this.props.applicationState.results);
         return this.props.applicationState.hasSearched && <InfinityScroll
             dataLength={this.props.applicationState.total}
             next={() => this.props.applicationState.continue()}
             hasMore={!this.props.applicationState.reachedLimit}
-            loader={<h4>Loading...</h4>}>
+            loader={<h4>Loading...</h4>}
+            ref={c => this.loader = c}>
             {this.props.applicationState.results.map(resultSet => [
                 <ResultsTable>
                     {resultSet.map(r => <ResultEntry>
@@ -63,6 +65,12 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                 </ResultsTable>,
                 <hr />
             ])}
+            {this.props.applicationState.canLoadMore && <a href="#" onClick={() => {
+                this.props.applicationState.continue();
+                this.loader.setState({
+                    showLoader: true,
+                });
+            }}>Load more...</a>}
         </InfinityScroll>;
     }
 }
