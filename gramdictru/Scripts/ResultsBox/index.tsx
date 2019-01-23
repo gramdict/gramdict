@@ -1,4 +1,4 @@
-﻿import { ApplicationState } from "../ApplicationState/index";
+import { ApplicationState } from "../ApplicationState/index";
 import * as InfinityScroll from "react-infinite-scroll-component";
 import { observer } from "mobx-react";
 import * as React from "react";
@@ -65,7 +65,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                 </ResultsTable>,
                 <hr />
             ])}
-            {this.props.applicationState.canLoadMore && <a href="#" onClick={() => {
+            {this.props.applicationState.canLoadMore && <a href="javascript:void(0)" onClick={() => {
                 this.props.applicationState.continue();
                 this.loader.setState({
                     showLoader: true,
