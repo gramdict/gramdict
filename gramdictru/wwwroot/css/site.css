@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     font-family: serif;
     line-height: 140%;
     text-align: center;
@@ -7,9 +8,14 @@ body {
 
 .page {
     text-align: center;
-    max-width: 75em;
-    display: inline-block;
+    max-width: 49rem;
     background-image: url(../page.jpg);
+    margin: 0 auto;
+    padding-left: 0.5rem;
+}
+
+.page-wrapper {
+    margin: 0 8px;
 }
 
 .body-content {
