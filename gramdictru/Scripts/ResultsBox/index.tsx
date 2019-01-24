@@ -49,28 +49,36 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     loader: InfinityScroll;
 
     render() {
-        return this.props.applicationState.hasSearched && <InfinityScroll
-            dataLength={this.props.applicationState.total}
-            next={() => this.props.applicationState.continue()}
-            hasMore={!this.props.applicationState.reachedLimit}
-            loader={<h4>Loading...</h4>}
-            ref={c => this.loader = c}>
-            {this.props.applicationState.results.map(resultSet => [
-                <ResultsTable>
-                    {resultSet.map(r => <ResultEntry>
+        return this.props.applicationState.hasSearched &&
+            <div className="page-wrapper">
+                <div className="page">
+                    <div className="body-content">
+                        <InfinityScroll
+                            dataLength={this.props.applicationState.total}
+                            next={() => this.props.applicationState.continue()}
+                            hasMore={!this.props.applicationState.reachedLimit}
+                            loader={<h4>Loading...</h4>}
+                            ref={c => this.loader = c}>
+                            {this.props.applicationState.results.map(resultSet => [
+                                <ResultsTable>
+                                    {resultSet.map(r => <ResultEntry>
                         <Lemma>{r.lemma}</Lemma>
                         <Symbol>{r.symbol}</Symbol>
                         <Grammar>{r.grammar}</Grammar>
                     </ResultEntry>)}
-                </ResultsTable>,
-                <hr />
-            ])}
-            {this.props.applicationState.canLoadMore && <a href="javascript:void(0)" onClick={() => {
-                this.props.applicationState.continue();
-                this.loader.setState({
-                    showLoader: true,
-                });
-            }}>Load more...</a>}
-        </InfinityScroll>;
+                                </ResultsTable>,
+                                <hr/>
+                            ])}
+                            {this.props.applicationState.canLoadMore &&
+                                <a href="javascript:void(0)" onClick={() => {
+                                    this.props.applicationState.continue();
+                                    this.loader.setState({
+                                        showLoader: true,
+                                    });
+                                }}>Load more...</a>}
+                        </InfinityScroll>
+                    </div>
+                </div>
+            </div>;
     }
 }

@@ -1,11 +1,24 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
 import { ApplicationState } from "./ApplicationState";
 import styled from "styled-components";
 
 const applicationState = new ApplicationState();
+
+const reaction3 = reaction(
+    () => applicationState.hasSearched,
+    (count, reaction) => {
+        console.log("Searching has happened, removing original page");
+        const elements = document.getElementsByClassName("page-wrapper");
+        for (var index = 0; index < elements.length; index++) {
+            elements[index].remove();
+        }
+        reaction.dispose();
+    }
+);
 
 const SearchBar = styled.div`
     background-color: blue;

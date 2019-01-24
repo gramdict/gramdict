@@ -56,7 +56,6 @@ export class ApplicationState {
     });
 
     continue = flow(function* (callback?: () => void) {
-        this.hasSearched = true;
         this.isLoading = true;
         const term = this.searchTerm == "" ? "*" : this.searchTerm;
 
@@ -79,6 +78,8 @@ export class ApplicationState {
             if (callback !== undefined) {
                 callback();
             }
+
+            this.hasSearched = true;
 
             if (data.length < this.pageSize) {
                 console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
