@@ -8,12 +8,12 @@ import styled from "styled-components";
 
 const applicationState = new ApplicationState();
 
-const reaction3 = reaction(
+reaction(
     () => applicationState.hasSearched,
-    (count, reaction) => {
+    (_, reaction) => {
         console.log("Searching has happened, removing original page");
         const elements = document.getElementsByClassName("page-wrapper");
-        for (var index = 0; index < elements.length; index++) {
+        for (let index = 0; index < elements.length; index++) {
             elements[index].remove();
         }
         reaction.dispose();
@@ -22,7 +22,7 @@ const reaction3 = reaction(
 
 const SearchBar = styled.div`
     background-color: blue;
-    padding: 5px 0;
+    padding: 0.5rem 0;
     font-size: larger;
     font-weight: bold;
 `;
@@ -35,6 +35,10 @@ const Centerer = styled.div`
     padding-left: 0.5rem;
 `;
 
+const ContentsLink = styled.a`
+    color: white;
+`;
+
 class MyComponent extends React.Component {
     render() {
         return <div>
@@ -42,7 +46,7 @@ class MyComponent extends React.Component {
                 <Centerer>
                     <SearchBox applicationState={applicationState} />
                     &nbsp;
-                    <a href="/contents">Содержание</a>
+                    <ContentsLink href="/contents">Содержание</ContentsLink>
                 </Centerer>
             </SearchBar>
             <ResultsBox applicationState={applicationState} />

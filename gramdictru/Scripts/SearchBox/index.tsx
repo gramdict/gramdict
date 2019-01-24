@@ -18,7 +18,7 @@ export class SearchBox extends React.Component<ISearchBoxProps> {
             onChange={e => this.onChange(e)}
             value={this.props.applicationState.searchTerm}
             style={{
-                padding: "2px"
+                padding: "0.3rem"
             }}
             placeholder="Поиск" />;
     }

@@ -15,7 +15,8 @@ body {
 }
 
 .page-wrapper {
-    margin: 0 8px;
+    margin: 0 0.5rem;
+    margin-top: 0.3rem;
 }
 
 .body-content {
