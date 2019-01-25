@@ -14,10 +14,10 @@ export class ApplicationState {
     isLoading = false;
 
     @observable
-    pageSize = 20;
+    pageSize = 210;
 
     @observable
-    pageNumber = 1;
+    pageNumber = 0;
 
     @observable
     reachedLimit = false;
