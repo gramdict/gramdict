@@ -276,3 +276,11 @@ table {
     display: table-cell;
     font-size: 200%
 }
+
+.column table td {
+    border: none;
+}
+
+table .left-aligned td {
+    border: none;
+}
