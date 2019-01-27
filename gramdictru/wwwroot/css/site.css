@@ -264,3 +264,8 @@ table {
     text-align: center;
 }
 
+.big-slash {
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 200%
+}
