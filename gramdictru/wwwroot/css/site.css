@@ -205,9 +205,48 @@ ul#contents {
     text-indent: 0;
 }
 
-.h1 { font-size: 24px;}
-.h2 { font-size: 22px;}
-.h3 { font-size: 18px;}
-.h4 { font-size: 16px;}
-.h5 { font-size: 12px;}
-.h6 { font-size: 10px;}
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    height: auto; 
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tr1 {
+    border-right: solid 1px #000000;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+    .tr1 {
+        border-right: solid 0px #000000 !important;
+    }
+}
+
+.column1 {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+td {
+    text-align: left !important;
+    padding-right: 15px !important; 
+}
+
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
