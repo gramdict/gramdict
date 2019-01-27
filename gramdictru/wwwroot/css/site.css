@@ -250,3 +250,17 @@ table {
     border-collapse: collapse;
     text-align: left;
 }
+
+.drob {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.drob div:first-child {
+    border-bottom: solid 1px; 
+}
+
+.drob div {
+    text-align: center;
+}
+
