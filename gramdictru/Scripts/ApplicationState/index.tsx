@@ -46,10 +46,10 @@ export class ApplicationState {
 
     search = flow(function* () {
         console.log("Beginning new search");
+        this.pageNumber = 0;
 
         yield this.continue(() => {
             this.results.clear();
-            this.pageNumber = 0;
             this.total = 0;
             this.reachedLimit = false;
         });
