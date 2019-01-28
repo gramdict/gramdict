@@ -75,13 +75,27 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+table.left-aligned tr td, 
+table.noborder tr td,
+table.noborder tr th {
+    border-style: none;
+}
+
+table tr th,
 table tr td {
     text-align: center;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: black;
+}
+
+table tr td {
     text-indent: 0;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
 }
 
 table tr th {
-    text-align: center;
     padding: 0.5em;
 }
 
@@ -89,6 +103,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1em;
+    border-collapse: collapse;
 }
 
 em {
@@ -151,11 +166,6 @@ h1 {
     content: "✕"
 }
 
-table tr td {
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-}
-
 table.left-aligned tr td {
     text-align: left;
     vertical-align: top;
@@ -210,4 +220,73 @@ ul#contents {
 .entry {
     margin-left: 4em;
     text-indent: 0;
+}
+
+.row .column {
+    float: left;
+    width: 50%;
+    height: auto; 
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tr1 {
+    border-right: solid 1px #000000;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+    .tr1 {
+        border-right: solid 0px #000000 !important;
+    }
+}
+
+.column1 {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+.row .column table tr td {
+    text-align: left !important;
+    padding-right: 15px !important; 
+}
+
+.row .column table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.drob {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.drob div:first-child {
+    border-bottom: solid 1px; 
+}
+
+.drob div {
+    text-align: center;
+}
+
+.big-slash {
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 200%
+}
+
+.column table td {
+    border: none;
+}
+
+table .left-aligned td {
+    border: none;
 }
