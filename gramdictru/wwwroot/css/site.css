@@ -319,6 +319,7 @@ table .left-aligned td {
 
 .result-entry {
     display: flex;
+    break-inside: avoid;
 }
 
 .lemma {
