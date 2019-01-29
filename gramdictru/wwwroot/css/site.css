@@ -347,3 +347,7 @@ table .left-aligned td {
     align-self: center;
     flex-direction: column;
 }
+
+.infinite-scroll-component {
+    overflow-x: hidden !important;
+}
