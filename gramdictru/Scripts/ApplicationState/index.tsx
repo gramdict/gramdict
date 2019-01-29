@@ -57,7 +57,9 @@ export class ApplicationState {
 
     continue = flow(function* (callback?: () => void) {
         this.isLoading = true;
-        const term = this.searchTerm == "" ? "*" : this.searchTerm;
+
+        let term = encodeURIComponent(this.searchTerm.trim());
+        term = term == "" ? "*" : term;
 
         try {
             const uri = `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
