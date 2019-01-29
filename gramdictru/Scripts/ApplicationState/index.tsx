@@ -1,7 +1,10 @@
 ﻿import { flow, observable, action, computed } from "mobx";
 import { resize } from "../App";
+import { CancellablePromise } from "mobx/lib/api/flow";
 
 export class ApplicationState {
+    currentSearch: CancellablePromise<{}>;
+
     @observable
     hasSearched = false;
 
@@ -57,50 +60,63 @@ export class ApplicationState {
     });
 
     continue = flow(function* (callback?: () => void) {
-        this.isLoading = true;
-
-        let term = encodeURIComponent(this.searchTerm.trim());
-        term = term == "" ? "*" : term;
-
-        try {
-            const uri = `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
-            console.log("making request", uri);
-            const response = yield fetch(uri);
-            const raw = yield response.text();
-            console.log("got a response from the server");
-            const [_, ...lines] = raw.split("\n");
-            const data = lines.map(l => {
-                const [lemma, symbol, grammar] = l.split(",");
-                return {
-                    lemma,
-                    symbol,
-                    grammar
-                };
-            });
-
-            if (callback !== undefined) {
-                callback();
+        if (!!this.currentSearch) {
+            try {
+                this.currentSearch.cancel();
+            } catch (e) {
+                console.log("Could not cancel search", e);
             }
-
-            this.hasSearched = true;
-
-            if (data.length < this.pageSize) {
-                console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
-                this.reachedLimit = true;
-            } else {
-                console.log(`Got ${data.length} lines`);
-            }
-
-            this.results.push(data);
-            this.total += data.length;
-        } catch (error) {
-            this.reachedLimit = true;
-            console.log("Got an error calling the API");
-        } finally {
-            this.isLoading = false;
-            this.pageNumber++;
-            setTimeout(resize, 0);
         }
+
+        this.currentSearch = flow(function*(callback?: () => void) {
+            this.isLoading = true;
+
+            let term = encodeURIComponent(this.searchTerm.trim());
+            term = term == "" ? "*" : term;
+
+            try {
+                const uri =
+                    `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+                console.log("making request", uri);
+                const response = yield fetch(uri);
+                const raw = yield response.text();
+                console.log("got a response from the server");
+                const [_, ...lines] = raw.split("\n");
+                const data = lines.map(l => {
+                    const [lemma, symbol, grammar] = l.split(",");
+                    return {
+                        lemma,
+                        symbol,
+                        grammar
+                    };
+                });
+
+                if (callback !== undefined) {
+                    callback();
+                }
+
+                this.hasSearched = true;
+
+                if (data.length < this.pageSize) {
+                    console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
+                    this.reachedLimit = true;
+                } else {
+                    console.log(`Got ${data.length} lines`);
+                }
+
+                this.results.push(data);
+                this.total += data.length;
+                this.pageNumber++;
+            } catch (error) {
+                this.reachedLimit = true;
+                console.log("Got an error calling the API");
+            } finally {
+                this.isLoading = false;
+                setTimeout(resize, 0);
+            }
+        }).bind(this)(callback);
+        
+        return this.currentSearch;
     });
 }
 
