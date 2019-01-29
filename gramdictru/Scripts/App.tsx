@@ -4,7 +4,6 @@ import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
 import { ApplicationState } from "./ApplicationState";
-import styled from "styled-components";
 
 const applicationState = new ApplicationState();
 
@@ -12,7 +11,7 @@ reaction(
     () => applicationState.hasSearched,
     (_, reaction) => {
         console.log("Searching has happened, removing original page");
-        const elements = document.getElementsByClassName("page-wrapper");
+        const elements = document.getElementsByClassName("page");
         for (let index = 0; index < elements.length; index++) {
             elements[index].remove();
         }
@@ -20,38 +19,49 @@ reaction(
     }
 );
 
-const SearchBar = styled.div`
-    background-color: blue;
-    padding: 0.5rem 0;
-    font-size: larger;
-    font-weight: bold;
-`;
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
 
-const Centerer = styled.div`
-    max-width: 50rem;
-    display: inline-block;
-    width: calc(100% - 0.5rem);
-    text-align: left;
-    padding-left: 0.5rem;
-`;
+export function resize() {
+    const elements = document.getElementsByClassName("page");
+    const first: any = elements[0];
+    if (!!first) {
+        const toCenter = document.getElementsByClassName("centerer");
+        for (let index = 0; index < toCenter.length; index++) {
+            (toCenter[index] as any).style.width = `${first.offsetWidth}px`;
+        }
+    }
+}
 
-const ContentsLink = styled.a`
-    color: white;
-`;
+window.addEventListener('resize', debounce(resize, 20, false));
 
 class MyComponent extends React.Component {
     render() {
-        return <div>
-            <SearchBar>
-                <Centerer>
-                    <SearchBox applicationState={applicationState} />
+        return [
+            <div className="search-bar">
+                <div className="centerer">
+                    <SearchBox applicationState={applicationState}/>
                     &nbsp;
-                    <ContentsLink href="/contents">Содержание</ContentsLink>
-                </Centerer>
-            </SearchBar>
-            <ResultsBox applicationState={applicationState} />
-        </div>;
+                    <a className="contents-link" href="/contents">Содержание</a>
+                </div>
+            </div>,
+            <ResultsBox applicationState={applicationState}/>
+        ];
     }
 }
 
 ReactDOM.render(<MyComponent />, document.getElementById("search-react-root"));
+
+setTimeout(resize, 0);

@@ -1,4 +1,5 @@
 ﻿import { flow, observable, action, computed } from "mobx";
+import { resize } from "../App";
 
 export class ApplicationState {
     @observable
@@ -98,6 +99,7 @@ export class ApplicationState {
         } finally {
             this.isLoading = false;
             this.pageNumber++;
+            setTimeout(resize, 0);
         }
     });
 }
