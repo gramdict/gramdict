@@ -20,7 +20,8 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         next={() => this.props.applicationState.continue()}
                         hasMore={!this.props.applicationState.reachedLimit}
                         loader={<h4>Loading...</h4>}
-                        ref={c => this.loader = c}>
+                        ref={c => this.loader = c}
+                        scrollThreshold="0px">
                         {this.props.applicationState.results.map(resultSet => [
                             <div className="results-table">
                                 {resultSet.map(r => <div className="result-entry">
