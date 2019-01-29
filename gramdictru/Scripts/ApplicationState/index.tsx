@@ -56,6 +56,7 @@ export class ApplicationState {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
+            scrollTo(0, 0);
         });
     });
 
