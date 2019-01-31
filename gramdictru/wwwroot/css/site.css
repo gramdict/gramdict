@@ -10,7 +10,7 @@ body {
     max-width: 75em;
     display: inline-block;
     background-image: url(../page.jpg);
-    margin-top: 50px;
+    margin-top: 54px;
 }
 
 .body-content {
@@ -309,7 +309,7 @@ table .left-aligned td {
 
 .search-bar {
     background-color: blue;
-    padding: 0.5rem 0;
+    padding-top: 0.5rem;
     font-size: larger;
     font-weight: bold;
     margin-bottom: 8px;
@@ -363,4 +363,60 @@ table .left-aligned td {
 
 .infinite-scroll-component {
     overflow-x: hidden !important;
+}
+
+.loading-bar {
+    position: fixed;
+    width: 100%;
+    background-color: blue;
+    padding-top: 0.3rem;
+}
+
+.loading-bar > * {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+}
+
+.loading-bar > *:nth-child(1) {
+    background-color: blue;
+    left: 0;
+    width: 100%;
+}
+
+.loading-bar > *:nth-child(2) {
+    background-color: #da4733;
+    animation: loading 3s linear infinite;
+}
+
+.loading-bar > *:nth-child(3) {
+    background-color: #3b78e7;
+    animation: loading 3s linear 1s infinite;
+}
+
+.loading-bar > *:nth-child(4) {
+    background-color: #fdba2c;
+    animation: loading 3s linear 2s infinite;
+}
+
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+}
+
+.error-bar {
+    background-color: red;
+    color: white;
+    font-size: medium;
+    font-weight: normal;
+    margin-top: 0.5rem;
+}
+
+.search-bar-padding {
+    padding-bottom: 0.6rem;
 }

@@ -9,6 +9,9 @@ export class ApplicationState {
     hasSearched = false;
 
     @observable
+    hasError = false;
+
+    @observable
     searchTerm = "";
 
     @observable
@@ -71,6 +74,7 @@ export class ApplicationState {
 
         this.currentSearch = flow(function*(callback?: () => void) {
             this.isLoading = true;
+            this.hasError = false;
 
             let term = encodeURIComponent(this.searchTerm.trim());
             term = term == "" ? "*" : term;
@@ -110,6 +114,7 @@ export class ApplicationState {
                 this.pageNumber++;
             } catch (error) {
                 this.reachedLimit = true;
+                this.hasError = true;
                 console.log("Got an error calling the API");
             } finally {
                 this.isLoading = false;
