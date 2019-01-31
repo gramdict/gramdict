@@ -10,6 +10,7 @@ body {
     max-width: 75em;
     display: inline-block;
     background-image: url(../page.jpg);
+    margin-top: 50px;
 }
 
 .body-content {
@@ -282,4 +283,71 @@ ul#contents {
 
 table .left-aligned td {
     border: none;
+}
+
+#search-react-root {
+    margin: -8px -8px 0 -8px;
+}
+
+#search-react-root > .page {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.search-bar {
+    background-color: blue;
+    padding: 0.5rem 0;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 8px;
+    position: fixed;
+    width: 100%;
+}
+
+.centerer {
+    display: inline-block;
+    text-align: left;
+}
+
+.contents-link { color: white; }
+
+.results-table {
+    width: 100%;
+    column-count: 6;
+    column-width: 350px;
+}
+
+.result-entry {
+    display: flex;
+    break-inside: avoid;
+}
+
+.lemma {
+    width: 45%;
+    word-break: break-all;
+    text-align: right;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.symbol {
+    width: 25%;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.grammar {
+    width: 30%;
+    text-align: left;
+    word-break: break-all;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.infinite-scroll-component {
+    overflow-x: hidden !important;
 }
