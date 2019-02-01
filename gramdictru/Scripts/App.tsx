@@ -53,7 +53,6 @@ class MyComponent extends React.Component {
             <div className="search-bar">
                 <div className="centerer">
                     <SearchBox applicationState={applicationState}/>
-                    &nbsp;
                     <a className="contents-link" href="/contents">Содержание</a>
                 </div>
             </div>,
