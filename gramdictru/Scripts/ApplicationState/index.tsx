@@ -37,6 +37,8 @@ export class ApplicationState {
         return !this.reachedLimit && !this.isLoading;
     }
 
+    callback?: () => void;
+
     @action
     updateSearchTerm(searchTerm: string) {
         console.log("updating search term", searchTerm);
@@ -55,15 +57,17 @@ export class ApplicationState {
         console.log("Beginning new search");
         this.pageNumber = 0;
 
-        yield this.continue(() => {
+        this.callback = () => {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
             scrollTo(0, 0);
-        });
+        }
+
+        yield this.continue();
     });
 
-    continue = flow(function* (callback?: () => void) {
+    continue = flow(function* () {
         if (!!this.currentSearch) {
             try {
                 this.currentSearch.cancel();
@@ -112,6 +116,7 @@ export class ApplicationState {
                 this.results.push(data);
                 this.total += data.length;
                 this.pageNumber++;
+                this.callback = undefined;
             } catch (error) {
                 this.reachedLimit = true;
                 this.hasError = true;
@@ -120,7 +125,7 @@ export class ApplicationState {
                 this.isLoading = false;
                 setTimeout(resize, 0);
             }
-        }).bind(this)(callback);
+        }).bind(this)(this.callback);
         
         return this.currentSearch;
     });
