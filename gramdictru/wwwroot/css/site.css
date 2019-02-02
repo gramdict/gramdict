@@ -14,7 +14,7 @@ body {
 }
 
 .body-content {
-    color: #2d0016;
+    color: #444444;
     padding-top: 25px;
     padding-left: 5px;
     padding-right: 5px;
@@ -22,18 +22,19 @@ body {
     text-align: justify;
     display: inline-block;
     overflow-x: visible;
+    margin-bottom: 50px;
 }
 
-a {
+.page a {
     color: #303e00;
     text-decoration: none;
 }
 
-a:visited {
+.page a:visited {
     color: #858e4e;
 }
 
-a:hover {
+.page a:hover {
     text-decoration: underline;
 }
 
@@ -127,17 +128,11 @@ code em {
     font-style: italic;
 }
 
-#contents-link {
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 2em;
-}
-
 #author {
     text-align: center;
     font-weight: bold;
     font-size: 140%;
-    padding-top: 3em;
+    padding-top: 2em;
     font-style: italic;
 }
 
@@ -308,8 +303,8 @@ table .left-aligned td {
 }
 
 .search-bar {
-    background-color: blue;
-    padding-top: 0.5rem;
+    background-color: black;
+    padding: 0.5rem 0;
     font-size: larger;
     font-weight: bold;
     margin-bottom: 8px;
@@ -322,7 +317,18 @@ table .left-aligned td {
     text-align: left;
 }
 
-.contents-link { color: white; }
+a.contents-link {
+    color: white;
+    text-decoration: none;
+}
+
+.contents-link {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    color: white;
+}
 
 .results-table {
     width: 100%;
@@ -338,26 +344,23 @@ table .left-aligned td {
 .lemma {
     width: 45%;
     word-break: break-all;
-    text-align: right;
+    text-align: left;
     display: flex;
-    align-self: center;
     flex-direction: column;
 }
 
 .symbol {
-    width: 25%;
-    text-align: center;
+    width: 15%;
+    text-align: left;
     display: flex;
-    align-self: center;
     flex-direction: column;
 }
 
 .grammar {
-    width: 30%;
+    width: 40%;
     text-align: left;
     word-break: break-all;
     display: flex;
-    align-self: center;
     flex-direction: column;
 }
 
