@@ -12,6 +12,17 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     loader: InfinityScroll;
 
     render() {
+        if (this.loader && this.loader.state.actionTriggered && !this.props.applicationState.isLoading) {
+            setTimeout(() => {
+                    console.log("had to manually reset infinite scroll component");
+                    this.loader.setState({
+                        actionTriggered: false,
+                        showLoader: false,
+                    });
+                },
+                0);
+        }
+
         return this.props.applicationState.hasSearched &&
             <div className="page">
                 <div className="body-content">
