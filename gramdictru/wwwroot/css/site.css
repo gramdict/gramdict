@@ -420,3 +420,7 @@ table .left-aligned td {
 .search-bar-padding {
     padding-bottom: 0.6rem;
 }
+
+.load-more {
+    text-align: center;
+}

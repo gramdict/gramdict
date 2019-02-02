@@ -43,13 +43,15 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                             </div>,
                             <hr/>
                         ])}
-                        {this.props.applicationState.canLoadMore &&
+                    {this.props.applicationState.canLoadMore &&
+                        <div className="load-more">
                             <a href="javascript:void(0)" onClick={() => {
                                 this.props.applicationState.continue();
                                 this.loader.setState({
                                     showLoader: true,
                                 });
-                            }}>Load more...</a>}
+                        }}>Load more...</a>
+                        </div>}
                     </InfinityScroll>
                 </div>
             </div>;
