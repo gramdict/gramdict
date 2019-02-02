@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.0.11",
     "@types/react-infinite-scroll-component": "^4.2.3",
     "@types/styled-components": "^4.1.6",
+    "axios": "^0.18.0",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "react": "^16.7.0",
