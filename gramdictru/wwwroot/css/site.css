@@ -342,9 +342,10 @@ a.contents-link {
 }
 
 .lemma {
+    font-weight: bold;
+    padding-right: 1rem;
     width: 45%;
     word-break: break-all;
-    text-align: left;
     display: flex;
     flex-direction: column;
 }
