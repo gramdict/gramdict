@@ -12,6 +12,17 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     loader: InfinityScroll;
 
     render() {
+        if (this.loader && this.loader.state.actionTriggered && !this.props.applicationState.isLoading) {
+            setTimeout(() => {
+                    console.log("had to manually reset infinite scroll component");
+                    this.loader.setState({
+                        actionTriggered: false,
+                        showLoader: false,
+                    });
+                },
+                0);
+        }
+
         return this.props.applicationState.hasSearched &&
             <div className="page">
                 <div className="body-content">
@@ -32,13 +43,15 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                             </div>,
                             <hr/>
                         ])}
-                        {this.props.applicationState.canLoadMore &&
+                    {this.props.applicationState.canLoadMore &&
+                        <div className="load-more">
                             <a href="javascript:void(0)" onClick={() => {
                                 this.props.applicationState.continue();
                                 this.loader.setState({
                                     showLoader: true,
                                 });
-                            }}>Load more...</a>}
+                        }}>Load more...</a>
+                        </div>}
                     </InfinityScroll>
                 </div>
             </div>;

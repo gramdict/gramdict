@@ -4,6 +4,7 @@ import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
 import { ApplicationState } from "./ApplicationState";
+import { Loader } from "./Loader/index";
 
 const applicationState = new ApplicationState();
 
@@ -55,6 +56,7 @@ class MyComponent extends React.Component {
                     <SearchBox applicationState={applicationState}/>
                     <a className="contents-link" href="/contents">Содержание</a>
                 </div>
+                <Loader applicationState={applicationState} />
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];
