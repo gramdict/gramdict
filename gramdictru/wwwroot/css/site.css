@@ -326,7 +326,7 @@ a.contents-link {
     text-align: center;
     margin-top: 1em;
     margin-bottom: 2em;
-    margin-left: 1em;
+    margin-left: 0.5rem;
     color: white;
 }
 
@@ -344,10 +344,12 @@ a.contents-link {
 .lemma {
     font-weight: bold;
     padding-right: 1rem;
-    width: 45%;
+    width: 40%;
     word-break: break-all;
     display: flex;
     flex-direction: column;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
 }
 
 .symbol {
@@ -358,7 +360,7 @@ a.contents-link {
 }
 
 .grammar {
-    width: 40%;
+    width: 45%;
     text-align: left;
     word-break: break-all;
     display: flex;
