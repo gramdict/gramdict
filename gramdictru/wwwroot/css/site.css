@@ -331,7 +331,6 @@ a.contents-link {
 }
 
 .results-table {
-    width: 100%;
     column-count: 6;
     column-width: 350px;
 }
@@ -372,7 +371,7 @@ a.contents-link {
 .loading-bar {
     position: fixed;
     width: 100%;
-    background-color: blue;
+    background-color: black;
     padding-top: 0.3rem;
 }
 
@@ -427,4 +426,12 @@ a.contents-link {
 
 .load-more {
     text-align: center;
+}
+
+.page.is-searching {
+    max-width: unset;
+}
+
+.page.is-searching .body-content {
+    max-width: unset;
 }

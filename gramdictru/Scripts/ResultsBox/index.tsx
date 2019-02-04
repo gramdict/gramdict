@@ -24,7 +24,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
         }
 
         return this.props.applicationState.hasSearched &&
-            <div className="page">
+            <div className="page is-searching">
                 <div className="body-content">
                     <InfinityScroll
                         dataLength={this.props.applicationState.total}
