@@ -332,7 +332,7 @@ a.contents-link {
 }
 
 .results-table {
-    column-count: 6;
+    column-count: 9999;
     column-width: 350px;
 }
 
