@@ -441,3 +441,11 @@ a.contents-link {
 .page.is-searching .body-content {
     max-width: unset;
 }
+
+:target {
+    border-top: 53px solid transparent;
+    margin-top: -53px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
