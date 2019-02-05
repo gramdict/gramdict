@@ -1,3 +1,10 @@
+:root {
+    --search-bar-height: 30px;
+    --search-bar-margin: 8px;
+    --page-margin: 16px;
+    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--page-margin));
+}
+
 body {
     font-family: serif;
     line-height: 140%;
@@ -11,7 +18,7 @@ body {
     width: 100%;
     display: inline-block;
     background-image: url(../page.jpg);
-    margin-top: 54px;
+    margin-top: var(--search-bar-total-height);
 }
 
 .body-content {
@@ -308,9 +315,10 @@ table .left-aligned td {
     padding: 0.5rem 0;
     font-size: larger;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: var(--search-bar-margin);
     position: fixed;
     width: 100%;
+    height: var(--search-bar-height);
 }
 
 .centerer {
@@ -443,8 +451,8 @@ a.contents-link {
 }
 
 :target {
-    border-top: 53px solid transparent;
-    margin-top: -53px;
+    border-top: var(--search-bar-total-height) solid transparent;
+    margin-top: -var(--search-bar-total-height);
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
     background-clip: padding-box;
