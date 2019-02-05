@@ -16,6 +16,9 @@ export class ApplicationState {
     searchTerm = "";
 
     @observable
+    searchedTerm = "";
+
+    @observable
     results: Array<Array<Result>> = observable([]);
 
     @observable
@@ -122,6 +125,7 @@ export class ApplicationState {
 
                 this.results.push(data);
                 this.total += data.length;
+                this.searchedTerm = term;
                 this.pageNumber++;
                 this.callback = undefined;
             } catch (error) {

@@ -12,17 +12,6 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     loader: InfinityScroll;
 
     render() {
-        if (this.loader && this.loader.state.actionTriggered && !this.props.applicationState.isLoading) {
-            setTimeout(() => {
-                    console.log("had to manually reset infinite scroll component");
-                    this.loader.setState({
-                        actionTriggered: false,
-                        showLoader: false,
-                    });
-                },
-                0);
-        }
-
         return this.props.applicationState.hasSearched &&
             <div className="page is-searching">
                 <div className="body-content">
@@ -32,7 +21,8 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         hasMore={!this.props.applicationState.reachedLimit}
                         loader={<h4>Loading...</h4>}
                         ref={c => this.loader = c}
-                        scrollThreshold="0px">
+                        scrollThreshold="0px"
+                        key={this.props.applicationState.searchedTerm}>
                         {this.props.applicationState.results.map(resultSet => [
                             <div className="results-table">
                                 {resultSet.map(r => <div className="result-entry">
