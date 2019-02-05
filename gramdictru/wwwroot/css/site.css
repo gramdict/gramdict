@@ -7,7 +7,8 @@ body {
 
 .page {
     text-align: center;
-    max-width: 75em;
+    max-width: 962px;
+    width: 100%;
     display: inline-block;
     background-image: url(../page.jpg);
     margin-top: 54px;
@@ -16,8 +17,8 @@ body {
 .body-content {
     color: #444444;
     padding-top: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
     max-width: 50em;
     text-align: justify;
     display: inline-block;
@@ -331,14 +332,15 @@ a.contents-link {
 }
 
 .results-table {
-    width: 100%;
-    column-count: 6;
+    column-count: 9999;
     column-width: 350px;
 }
 
 .result-entry {
     display: flex;
     break-inside: avoid;
+    width: 350px;
+    margin: 0 auto;
 }
 
 .lemma {
@@ -374,7 +376,7 @@ a.contents-link {
 .loading-bar {
     position: fixed;
     width: 100%;
-    background-color: blue;
+    background-color: black;
     padding-top: 0.3rem;
 }
 
@@ -429,4 +431,13 @@ a.contents-link {
 
 .load-more {
     text-align: center;
+}
+
+.page.is-searching {
+    max-width: unset;
+    width: calc(100% - 16px);
+}
+
+.page.is-searching .body-content {
+    max-width: unset;
 }
