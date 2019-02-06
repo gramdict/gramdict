@@ -1,5 +1,9 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +35,15 @@ namespace gramdictru
                 app.UseExceptionHandler("/Error");
             }
 
+            app.Use(async delegate (HttpContext c, Func<Task> next)
+            {
+                // Give the API a kick to make subsequent searches faster.
+#pragma warning disable 4014
+                ApiClient.GetAsync("v1/search/wakie-wakie"); // do not await
+#pragma warning restore 4014
+                await next.Invoke();
+            });
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -40,5 +53,10 @@ namespace gramdictru
                     template: "{controller}/{action=Index}/{id?}");
             });
         }
+
+        static readonly HttpClient ApiClient = new HttpClient()
+        {
+            BaseAddress = new Uri("http://api.gramdict.ru")
+        };
     }
 }
