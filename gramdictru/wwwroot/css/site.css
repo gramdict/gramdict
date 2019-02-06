@@ -3,6 +3,8 @@
     --search-bar-margin: 8px;
     --page-margin: 16px;
     --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--page-margin));
+    
+    --body-padding: 8px;
 }
 
 body {
@@ -24,13 +26,19 @@ body {
 .body-content {
     color: #444444;
     padding-top: 25px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: var(--body-padding);
+    padding-right: var(--body-padding);
     max-width: 50em;
     text-align: justify;
     display: inline-block;
     overflow-x: visible;
     margin-bottom: 50px;
+}
+
+@media (max-width: 50em) {
+    .body-content {
+        max-width: calc(100% - var(--body-padding) * 2);
+    }
 }
 
 .page a {
@@ -107,6 +115,17 @@ table {
     margin-right: auto;
     margin-bottom: 1em;
     border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+table > tbody {
+    display: table;
+    margin: 0 auto;
+}
+
+table.left-aligned > tbody {
+    margin: unset;
 }
 
 em {
