@@ -2,7 +2,7 @@ import { flow, observable, action, computed } from "mobx";
 import { resize } from "../App";
 import { CancellablePromise } from "mobx/lib/api/flow";
 import axios from "axios";
-import * as CSV from "csv-string";
+import * as Papa from "papaparse";
 
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
@@ -98,7 +98,10 @@ export class ApplicationState {
                         responseType: "text",
                     })
                     .then((response) => {
-                        const [_, ...lines] = CSV.parse(response.data);
+                        const [_, ...lines] = Papa.parse(response.data,
+                            {
+                                skipEmptyLines: true,
+                            }).data;
                         return lines.map(l => {
                             const [lemma, symbol, grammar] = l;
                             return {

@@ -29,6 +29,7 @@ module.exports = {
         "mobx-react": 'mobxReact',
         "react-infinite-scroll-component": "InfiniteScroll",
         "react-debounce-input": 'DebounceInput',
-        "axios": "axios"
+        "axios": "axios",
+        "papaparse": "Papa",
     }
 };
