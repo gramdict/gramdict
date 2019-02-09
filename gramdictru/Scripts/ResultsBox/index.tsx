@@ -24,7 +24,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         scrollThreshold="0px"
                         key={this.props.applicationState.searchedTerm}>
                         {this.props.applicationState.results.map(resultSet => [
-                            <div className="results-table">
+                            <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>
                                 {resultSet.map(r => <div className="result-entry">
                         <div className="lemma" style={{textAlign: this.props.applicationState.searchTerm === "" || this.props.applicationState.searchTerm.startsWith('*') ? 'right' : 'left'}}>{r.lemma}</div>
                         <div className="symbol">{r.symbol}</div>

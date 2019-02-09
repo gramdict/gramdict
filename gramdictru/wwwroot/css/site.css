@@ -350,6 +350,10 @@ a.contents-link {
     column-width: 350px;
 }
 
+.results-table.short-results {
+    column-count: 1;
+}
+
 .result-entry {
     display: flex;
     break-inside: avoid;
