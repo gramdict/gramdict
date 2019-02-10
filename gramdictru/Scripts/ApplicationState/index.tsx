@@ -37,9 +37,17 @@ export class ApplicationState {
     @observable
     total = 0;
 
+    @observable
+    shortResultLimit = 20;
+
     @computed
     get canLoadMore() {
         return !this.reachedLimit && !this.isLoading;
+    }
+
+    @computed
+    get isShortResult() {
+        return this.shortResultLimit >= this.total;
     }
 
     callback?: () => void;

@@ -33,6 +33,7 @@ body {
     display: inline-block;
     overflow-x: visible;
     margin-bottom: 50px;
+    width: 100%;
 }
 
 @media (max-width: 50em) {
@@ -350,10 +351,16 @@ a.contents-link {
     column-width: 350px;
 }
 
+.results-table.short-results {
+    column-count: 1;
+    column-width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .result-entry {
     display: flex;
     break-inside: avoid;
-    width: 350px;
     margin: 0 auto;
 }
 
