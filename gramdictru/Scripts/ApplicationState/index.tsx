@@ -40,6 +40,12 @@ export class ApplicationState {
     @observable
     shortResultLimit = 20;
 
+    @observable
+    filtersAreOpen = false;
+
+    @observable
+    filters = new Map<string, boolean>();
+
     @computed
     get canLoadMore() {
         return !this.reachedLimit && !this.isLoading;
@@ -50,7 +56,24 @@ export class ApplicationState {
         return this.shortResultLimit >= this.total;
     }
 
+    @action
+    toggleFilterControl() {
+        this.filtersAreOpen = !this.filtersAreOpen;
+    }
+
     callback?: () => void;
+
+    @action
+    toggleFilter(filter: string) {
+        this.filters.set(filter, !this.filters.get(filter));
+        this.search();
+    }
+
+    @action
+    resetFilters() {
+        this.filters.clear();
+        this.search();
+    }
 
     @action
     updateSearchTerm(searchTerm: string) {
@@ -95,10 +118,18 @@ export class ApplicationState {
 
             let term = encodeURIComponent(this.searchTerm.trim());
             term = term == "" ? "*" : term;
+            const filters = Array.from(this.filters.entries())
+                .filter(arr => arr[1])
+                .map(arr => encodeURIComponent(arr[0]))
+                .join(",");
 
             try {
-                const uri =
+                let uri =
                     `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+                if (filters.length > 0) {
+                    uri = uri + `&symbol=${filters}`;
+                }
+
                 console.log("making request", uri);
                 const data = yield axios.get(uri,
                     {
