@@ -506,8 +506,8 @@ a.contents-link {
 
 .reset-filter-button {
     color: white;
-    position: absolute;
+    position: relative;
     left: 250px;
-    bottom: 10px;
+    bottom: 20px;
     cursor: pointer
 }
