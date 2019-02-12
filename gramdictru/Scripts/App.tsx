@@ -68,9 +68,11 @@ class MyComponent extends React.Component {
         return [
             <div className="search-bar">
                 <div className="centerer">
-                    <SearchBox applicationState={applicationState} />
-                    {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}
-                    <a className="contents-link" href="/contents">Содержание</a>
+                    <div className="search-controls">
+                        <SearchBox applicationState={applicationState} />
+                        {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}
+                        <a className="contents-link" href="/contents">Содержание</a>
+                    </div>
                     {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
                 </div>
                 <Loader applicationState={applicationState} />

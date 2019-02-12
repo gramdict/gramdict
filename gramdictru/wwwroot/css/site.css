@@ -338,6 +338,16 @@ a.contents-link {
     text-decoration: none;
 }
 
+.search-input {
+    padding: 0.3rem;
+    min-width:3rem;
+    max-width: 7rem
+}
+
+.search-controls {
+    max-width: 18rem;
+}
+
 .contents-link {
     text-align: center;
     margin-top: 1em;
@@ -508,7 +518,7 @@ a.contents-link {
 .reset-filter-button {
     color: white;
     position: relative;
-    left: 250px;
+    left: 215px;
     bottom: 20px;
     cursor: pointer
 }
