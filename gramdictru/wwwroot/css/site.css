@@ -329,8 +329,10 @@ table .left-aligned td {
 }
 
 .centerer {
-    display: inline-block;
     text-align: left;
+    margin: 0 auto;
+    padding-left: var(--body-padding);
+    padding-right: var(--body-padding);
 }
 
 a.contents-link {
@@ -346,6 +348,7 @@ a.contents-link {
 
 .search-controls {
     width: 24rem;
+    text-align: left;
 }
 
 .contents-link {
@@ -492,6 +495,7 @@ a.contents-link {
     display: table;
     margin: unset;
     font-size: large;
+    margin: 0.2em;
 }
 
 .filter-table td {
@@ -519,6 +523,7 @@ a.contents-link {
     color: white;
     position: relative;
     left: 215px;
-    bottom: 20px;
-    cursor: pointer
+    bottom: 26px;
+    cursor: pointer;
+    height: 0;
 }
