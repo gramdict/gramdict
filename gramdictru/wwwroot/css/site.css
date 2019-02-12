@@ -486,6 +486,7 @@ a.contents-link {
 
 .filter-table td {
     text-align: left;
+    border: unset;
 }
 
 .filter-table td:first-child {
