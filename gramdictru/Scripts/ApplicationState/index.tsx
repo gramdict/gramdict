@@ -3,6 +3,9 @@ import { resize } from "../App";
 import { CancellablePromise } from "mobx/lib/api/flow";
 import axios from "axios";
 import * as Papa from "papaparse";
+import * as isMobile from "ismobilejs";
+
+console.log(isMobile.any);
 
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
@@ -26,7 +29,7 @@ export class ApplicationState {
     isLoading = false;
 
     @observable
-    pageSize = 210;
+    pageSize = isMobile.any ? 20 : 210;
 
     @observable
     pageNumber = 0;
