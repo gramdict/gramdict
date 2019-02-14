@@ -93,7 +93,7 @@ export class ApplicationState {
     @action
     applyState(term: string, filters: string) {
         const decodedSearchTerm = decodeURIComponent(term as string);
-        const decodedFilters = (filters as string).split(",").map(f => decodeURIComponent(f));
+        const decodedFilters = (filters as string).split(",").filter(x => x.length > 0).map(f => decodeURIComponent(f));
         
         this.searchTerm = decodedSearchTerm === "*" ? "" : decodedSearchTerm;
         this.filters.clear();
