@@ -5,8 +5,6 @@ import axios from "axios";
 import * as Papa from "papaparse";
 import * as isMobile from "ismobilejs";
 
-console.log(isMobile.any);
-
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
 
@@ -92,15 +90,52 @@ export class ApplicationState {
         }
     }
 
-    search = flow(function* () {
+    @action
+    applyState(term: string, filters: string) {
+        const decodedSearchTerm = decodeURIComponent(term as string);
+        const decodedFilters = (filters as string).split(",").filter(x => x.length > 0).map(f => decodeURIComponent(f));
+        
+        this.searchTerm = decodedSearchTerm === "*" ? "" : decodedSearchTerm;
+        this.filters.clear();
+        for (let filter of decodedFilters) {
+            console.log("applying filter", filter);
+            this.filters.set(filter, true);
+        }
+
+        this.search(true);
+    }
+
+    @action
+    resetSearch() {
+        this.hasSearched = false;
+        this.hasError = false;
+        this.searchTerm = "";
+        this.searchedTerm = "";
+        this.results = [];
+        this.isLoading = false;
+        this.filtersAreOpen = false;
+    }
+
+    search = flow(function* (suppressHistory = false) {
         console.log("Beginning new search");
         this.pageNumber = 0;
 
-        this.callback = () => {
+        this.callback = (term: string, filters: string) => {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
+
             scrollTo(0, 0);
+
+            if (!suppressHistory) {
+                const uri = `/search/${term}` + ((filters.length > 0) ? `?symbol=${filters}` : "");
+                history.pushState({
+                        term,
+                        filters,
+                    },
+                    document.title,
+                    uri);
+            }
         }
 
         yield this.continue();
@@ -115,7 +150,7 @@ export class ApplicationState {
             }
         }
 
-        this.currentSearch = flow(function*(callback?: () => void) {
+        this.currentSearch = flow(function*(callback?: (term: string, filters: string) => void) {
             this.isLoading = true;
             this.hasError = false;
 
@@ -156,7 +191,7 @@ export class ApplicationState {
                 
 
                 if (callback !== undefined) {
-                    callback();
+                    callback(term, filters);
                 }
 
                 this.hasSearched = true;

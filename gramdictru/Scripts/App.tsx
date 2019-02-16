@@ -12,15 +12,37 @@ import { observer } from "mobx-react";
 const applicationState = new ApplicationState();
 const root = document.documentElement;
 
+const initialTerm = window["term"];
+const initialSymbol = window["symbol"];
+
+if (typeof initialTerm !== "undefined" && typeof initialSymbol !== "undefined") {
+    console.log("Loading with initial state", initialTerm, initialSymbol);
+    applicationState.applyState(initialTerm, initialSymbol);
+}
+
+window.onpopstate = function (event) {
+    if (event.state === null) {
+        applicationState.resetSearch();
+        resize();
+        return;
+    }
+
+    const { term, filters } = event.state;
+    if (typeof term === "string" && typeof filters === "string") {
+        applicationState.applyState(term, filters);
+    }
+};
+
 reaction(
     () => applicationState.hasSearched,
     (_, reaction) => {
         console.log("Searching has happened, removing original page");
         const elements = document.getElementsByClassName("page");
         for (let index = 0; index < elements.length; index++) {
-            elements[index].remove();
+            const currentStyle = (elements[index] as any).style;
+            const currentDisplay = currentStyle.display;
+            currentStyle.display = (currentDisplay === "") ? "none" : "";
         }
-        reaction.dispose();
     }
 );
 
