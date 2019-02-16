@@ -70,7 +70,7 @@ body {
     }
 }
 
-.abstract {
+.front-page {
     line-height: 120%;
 }
 
@@ -462,4 +462,8 @@ a.contents-link {
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
     background-clip: padding-box;
+}
+
+#goals {
+    clear: both;
 }
