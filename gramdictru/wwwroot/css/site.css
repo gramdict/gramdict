@@ -379,7 +379,7 @@ a.contents-link {
 
 .lemma {
     font-weight: bold;
-    padding-right: 1rem;
+    padding-right: 0.5rem;
     width: 40%;
     word-break: break-all;
     display: flex;
@@ -389,10 +389,11 @@ a.contents-link {
 }
 
 .symbol {
-    width: 15%;
     text-align: left;
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    padding-right: 0.5rem;
 }
 
 .grammar {
