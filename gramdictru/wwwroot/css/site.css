@@ -394,6 +394,7 @@ a.contents-link {
     flex-direction: column;
     white-space: nowrap;
     padding-right: 0.5rem;
+    min-width: 2.5rem;
 }
 
 .grammar {
