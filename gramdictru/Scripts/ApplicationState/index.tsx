@@ -171,7 +171,7 @@ export class ApplicationState {
                 console.log("making request", uri);
                 const data = yield axios.get(uri,
                     {
-                        timeout: 15000,
+                        timeout: 30000,
                         responseType: "text",
                     })
                     .then((response) => {
