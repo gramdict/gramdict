@@ -529,3 +529,7 @@ a.contents-link {
     cursor: pointer;
     height: 0;
 }
+
+.smallbr {
+    line-height: 50%;
+}
