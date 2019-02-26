@@ -103,6 +103,9 @@ export class ApplicationState {
         }
 
         this.search(true);
+        if (decodedFilters.length > 0) {
+            setTimeout(() => this.filtersAreOpen = true);
+        }
     }
 
     @action
