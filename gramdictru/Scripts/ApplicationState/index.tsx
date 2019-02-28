@@ -1,9 +1,15 @@
+import * as React from "react";
 import { flow, observable, action, computed } from "mobx";
 import { resize } from "../App";
 import { CancellablePromise } from "mobx/lib/api/flow";
 import axios from "axios";
 import * as Papa from "papaparse";
 import * as isMobile from "ismobilejs";
+
+function ItalicsToHtml(markdown: string) {
+    const splits = markdown.split("_").map((s, i) => i % 2 == 0 ? s : <i>{s}</i>);
+    return <span>{splits}</span>;
+}
 
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
@@ -103,6 +109,9 @@ export class ApplicationState {
         }
 
         this.search(true);
+        if (decodedFilters.length > 0) {
+            setTimeout(() => this.filtersAreOpen = true);
+        }
     }
 
     @action
@@ -183,8 +192,8 @@ export class ApplicationState {
                             const [lemma, symbol, grammar] = l;
                             return {
                                 lemma,
-                                symbol,
-                                grammar
+                                symbol: ItalicsToHtml(symbol),
+                                grammar: ItalicsToHtml(grammar)
                             };
                         });
                     });
