@@ -533,3 +533,10 @@ a.contents-link {
 .smallbr {
     line-height: 50%;
 }
+
+.page ol {
+    list-style-position: inside;
+    padding-left: 0;
+    text-indent: 2em;
+    margin: 0;
+}
