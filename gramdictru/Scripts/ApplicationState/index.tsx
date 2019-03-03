@@ -187,6 +187,7 @@ export class ApplicationState {
                         const [_, ...lines] = Papa.parse(response.data,
                             {
                                 skipEmptyLines: true,
+                                delimiter: ",",
                             }).data;
                         return lines.map(l => {
                             const [lemma, symbol, grammar] = l;
@@ -197,7 +198,6 @@ export class ApplicationState {
                             };
                         });
                     });
-                
 
                 if (callback !== undefined) {
                     callback(term, filters);
