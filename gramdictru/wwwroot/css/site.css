@@ -400,7 +400,6 @@ a.contents-link {
 .grammar {
     width: 55%;
     text-align: left;
-    word-break: break-all;
     display: flex;
     flex-direction: column;
 }
