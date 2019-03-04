@@ -56,7 +56,7 @@ namespace gramdictru
 
         static readonly HttpClient ApiClient = new HttpClient()
         {
-            BaseAddress = new Uri("http://dev3.morpher.ru")
+            BaseAddress = new Uri("http://api.gramdict.ru")
         };
     }
 }
