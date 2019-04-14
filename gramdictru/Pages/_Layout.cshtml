@@ -6,7 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5700898-10"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-5700898-10');
     </script>
@@ -14,21 +14,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Грамматический словарь русского языка</title>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
-<div id="search-react-root"></div>
-<script type="text/javascript" src="js/bundle.js"></script>
-<div class="page">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    <div class="body-content">
-        <div id="author">А. А. Зализняк</div>
-        <h1>
-            Грамматический словарь русского языка<br/> Словоизменение
-        </h1>
+    <div id="search-react-root"></div>
+    <div class="page">
+        <div class="body-content">
+            <div id="author">А. А. Зализняк</div>
+            <h1>
+                Грамматический словарь русского языка<br/> Словоизменение
+            </h1>
 
-        @RenderBody()
+            @RenderBody()
+        </div>
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-</div>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.1/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/mobx@5.9.0/lib/mobx.umd.min.js"></script>
+    <script src="https://unpkg.com/mobx-react@5.4.3/index.min.js"></script>
+    <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/react-debounce-input/build/react-debounce-input.js"></script>
+    <script src="https://unpkg.com/react-infinite-scroll-component@4.5.0/lib/index.js"></script>
+    <script src="https://unpkg.com/papaparse@4.6.3/papaparse.min.js"></script>
+    <script type="text/javascript" src="~/js/bundle.js"></script>
 </body>
 </html>

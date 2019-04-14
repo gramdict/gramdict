@@ -1,3 +1,12 @@
+:root {
+    --search-bar-height: 30px;
+    --search-bar-margin: 8px;
+    --page-margin: 16px;
+    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--page-margin));
+    
+    --body-padding: 8px;
+}
+
 body {
     font-family: serif;
     line-height: 140%;
@@ -7,22 +16,30 @@ body {
 
 .page {
     text-align: center;
-    max-width: 75em;
+    max-width: 962px;
+    width: 100%;
     display: inline-block;
     background-image: url(../page.jpg);
-    margin-top: 54px;
+    margin-top: var(--search-bar-total-height);
 }
 
 .body-content {
     color: #444444;
     padding-top: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: var(--body-padding);
+    padding-right: var(--body-padding);
     max-width: 50em;
     text-align: justify;
     display: inline-block;
     overflow-x: visible;
     margin-bottom: 50px;
+    width: 100%;
+}
+
+@media (max-width: 50em) {
+    .body-content {
+        max-width: calc(100% - var(--body-padding) * 2);
+    }
 }
 
 .page a {
@@ -99,6 +116,17 @@ table {
     margin-right: auto;
     margin-bottom: 1em;
     border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+table > tbody {
+    display: table;
+    margin: 0 auto;
+}
+
+table.left-aligned > tbody {
+    margin: unset;
 }
 
 em {
@@ -124,7 +152,7 @@ word-end {
     white-space: nowrap;
 }
 
-code em {
+code em, .emphasis {
     font-style: italic;
 }
 
@@ -280,19 +308,6 @@ table .left-aligned td {
     border: none;
 }
 
-.h1 {
-}
-.h2 {
-}
-.h3 {
-}
-.h4 {
-}
-.h5 {
-}
-.h6 {
-}
-
 #search-react-root {
     margin: -8px -8px 0 -8px;
 }
@@ -307,14 +322,17 @@ table .left-aligned td {
     padding: 0.5rem 0;
     font-size: larger;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: var(--search-bar-margin);
     position: fixed;
     width: 100%;
+    height: var(--search-bar-height);
 }
 
 .centerer {
-    display: inline-block;
     text-align: left;
+    margin: 0 auto;
+    padding-left: var(--body-padding);
+    padding-right: var(--body-padding);
 }
 
 a.contents-link {
@@ -322,45 +340,66 @@ a.contents-link {
     text-decoration: none;
 }
 
+.search-input {
+    padding: 0.3rem;
+    min-width:3rem;
+    max-width: 7rem
+}
+
+.search-controls {
+    width: 24rem;
+    text-align: left;
+}
+
 .contents-link {
     text-align: center;
     margin-top: 1em;
     margin-bottom: 2em;
-    margin-left: 1em;
+    margin-left: 0.5rem;
     color: white;
 }
 
 .results-table {
-    width: 100%;
-    column-count: 6;
+    column-count: 9999;
     column-width: 350px;
+}
+
+.results-table.short-results {
+    column-count: 1;
+    column-width: auto;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .result-entry {
     display: flex;
     break-inside: avoid;
+    margin: 0 auto;
 }
 
 .lemma {
     font-weight: bold;
-    padding-right: 1rem;
-    width: 45%;
+    padding-right: 0.5rem;
+    min-width: 30%;
     word-break: break-all;
     display: flex;
     flex-direction: column;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
 }
 
 .symbol {
-    width: 15%;
     text-align: left;
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    padding-right: 0.5rem;
+    min-width: 1rem;
 }
 
 .grammar {
-    width: 40%;
+    width: 55%;
     text-align: left;
-    word-break: break-all;
     display: flex;
     flex-direction: column;
 }
@@ -372,7 +411,7 @@ a.contents-link {
 .loading-bar {
     position: fixed;
     width: 100%;
-    background-color: blue;
+    background-color: black;
     padding-top: 0.3rem;
 }
 
@@ -427,4 +466,76 @@ a.contents-link {
 
 .load-more {
     text-align: center;
+}
+
+.page.is-searching {
+    max-width: unset;
+    width: calc(100% - var(--body-padding) * 2);
+}
+
+.page.is-searching .body-content {
+    max-width: calc(100% - var(--body-padding) * 2);
+}
+
+:target {
+    border-top: var(--search-bar-total-height) solid transparent;
+    margin-top: -var(--search-bar-total-height);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+.filter-control {
+    color: white;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+.filter-table {
+    color: white;
+    display: table;
+    margin: unset;
+    font-size: large;
+    margin: 0.2em;
+}
+
+.filter-table td {
+    text-align: left;
+    border: unset;
+}
+
+.filter-table td:first-child {
+    text-align: center;
+}
+
+.filter-table td:nth-child(2) {
+    text-align: center;
+}
+
+.filter {
+    cursor: pointer;
+}
+
+.filter-inactive {
+    opacity: 0.7;
+}
+
+.reset-filter-button {
+    color: white;
+    position: relative;
+    left: 215px;
+    bottom: 26px;
+    cursor: pointer;
+    height: 0;
+}
+
+.smallbr {
+    line-height: 50%;
+}
+
+.page ol {
+    list-style-position: inside;
+    padding-left: 0;
+    text-indent: 2em;
+    margin: 0;
 }

@@ -1,7 +1,15 @@
+import * as React from "react";
 import { flow, observable, action, computed } from "mobx";
 import { resize } from "../App";
 import { CancellablePromise } from "mobx/lib/api/flow";
 import axios from "axios";
+import * as Papa from "papaparse";
+import * as isMobile from "ismobilejs";
+
+function ItalicsToHtml(markdown: string) {
+    const splits = markdown.split("_").map((s, i) => i % 2 == 0 ? s : <i>{s}</i>);
+    return <span>{splits}</span>;
+}
 
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
@@ -16,13 +24,16 @@ export class ApplicationState {
     searchTerm = "";
 
     @observable
+    searchedTerm = "";
+
+    @observable
     results: Array<Array<Result>> = observable([]);
 
     @observable
     isLoading = false;
 
     @observable
-    pageSize = 210;
+    pageSize = isMobile.any ? 20 : 210;
 
     @observable
     pageNumber = 0;
@@ -33,12 +44,43 @@ export class ApplicationState {
     @observable
     total = 0;
 
+    @observable
+    shortResultLimit = 20;
+
+    @observable
+    filtersAreOpen = false;
+
+    @observable
+    filters = new Map<string, boolean>();
+
     @computed
     get canLoadMore() {
         return !this.reachedLimit && !this.isLoading;
     }
 
+    @computed
+    get isShortResult() {
+        return this.shortResultLimit >= this.total;
+    }
+
+    @action
+    toggleFilterControl() {
+        this.filtersAreOpen = !this.filtersAreOpen;
+    }
+
     callback?: () => void;
+
+    @action
+    toggleFilter(filter: string) {
+        this.filters.set(filter, !this.filters.get(filter));
+        this.search();
+    }
+
+    @action
+    resetFilters() {
+        this.filters.clear();
+        this.search();
+    }
 
     @action
     updateSearchTerm(searchTerm: string) {
@@ -54,15 +96,55 @@ export class ApplicationState {
         }
     }
 
-    search = flow(function* () {
+    @action
+    applyState(term: string, filters: string) {
+        const decodedSearchTerm = decodeURIComponent(term as string);
+        const decodedFilters = (filters as string).split(",").filter(x => x.length > 0).map(f => decodeURIComponent(f));
+        
+        this.searchTerm = decodedSearchTerm === "*" ? "" : decodedSearchTerm;
+        this.filters.clear();
+        for (let filter of decodedFilters) {
+            console.log("applying filter", filter);
+            this.filters.set(filter, true);
+        }
+
+        this.search(true);
+        if (decodedFilters.length > 0) {
+            setTimeout(() => this.filtersAreOpen = true);
+        }
+    }
+
+    @action
+    resetSearch() {
+        this.hasSearched = false;
+        this.hasError = false;
+        this.searchTerm = "";
+        this.searchedTerm = "";
+        this.results = [];
+        this.isLoading = false;
+        this.filtersAreOpen = false;
+    }
+
+    search = flow(function* (suppressHistory = false) {
         console.log("Beginning new search");
         this.pageNumber = 0;
 
-        this.callback = () => {
+        this.callback = (term: string, filters: string) => {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
+
             scrollTo(0, 0);
+
+            if (!suppressHistory) {
+                const uri = `/search/${term}` + ((filters.length > 0) ? `?symbol=${filters}` : "");
+                history.pushState({
+                        term,
+                        filters,
+                    },
+                    document.title,
+                    uri);
+            }
         }
 
         yield this.continue();
@@ -77,37 +159,48 @@ export class ApplicationState {
             }
         }
 
-        this.currentSearch = flow(function*(callback?: () => void) {
+        this.currentSearch = flow(function*(callback?: (term: string, filters: string) => void) {
             this.isLoading = true;
             this.hasError = false;
 
             let term = encodeURIComponent(this.searchTerm.trim());
             term = term == "" ? "*" : term;
+            const filters = Array.from(this.filters.entries())
+                .filter(arr => arr[1])
+                .map(arr => encodeURIComponent(arr[0]))
+                .join(",");
 
             try {
-                const uri =
+                let uri =
                     `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+                if (filters.length > 0) {
+                    uri = uri + `&symbol=${filters}`;
+                }
+
                 console.log("making request", uri);
                 const data = yield axios.get(uri,
                     {
-                        timeout: 15000,
+                        timeout: 30000,
                         responseType: "text",
                     })
                     .then((response) => {
-                        const [_, ...lines] = response.data.split("\n");
+                        const [_, ...lines] = Papa.parse(response.data,
+                            {
+                                skipEmptyLines: true,
+                                delimiter: ",",
+                            }).data;
                         return lines.map(l => {
-                            const [lemma, symbol, grammar] = l.split(",");
+                            const [lemma, symbol, grammar] = l;
                             return {
                                 lemma,
-                                symbol,
-                                grammar
+                                symbol: ItalicsToHtml(symbol),
+                                grammar: ItalicsToHtml(grammar)
                             };
                         });
                     });
-                
 
                 if (callback !== undefined) {
-                    callback();
+                    callback(term, filters);
                 }
 
                 this.hasSearched = true;
@@ -122,6 +215,7 @@ export class ApplicationState {
 
                 this.results.push(data);
                 this.total += data.length;
+                this.searchedTerm = term;
                 this.pageNumber++;
                 this.callback = undefined;
             } catch (error) {

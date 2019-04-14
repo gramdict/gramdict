@@ -1,0 +1,10 @@
+﻿@page "{term?}"
+@model searchModel
+
+<h2>Searching</h2>
+
+<script>
+    window["term"] = "@Html.Raw(Model.Term)";
+    const urlParams = new URLSearchParams(window.location.search);
+    window["symbol"] = urlParams.get('symbol') || "";
+</script>

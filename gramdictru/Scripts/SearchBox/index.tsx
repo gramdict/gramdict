@@ -17,9 +17,7 @@ export class SearchBox extends React.Component<ISearchBoxProps> {
             onFocus={e => this.onFocus(e)}
             onChange={e => this.onChange(e)}
             value={this.props.applicationState.searchTerm}
-            style={{
-                padding: "0.3rem"
-            }}
+            className="search-input"
             placeholder="Поиск" />;
     }
 
