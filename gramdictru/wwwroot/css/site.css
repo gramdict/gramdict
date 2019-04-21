@@ -93,12 +93,16 @@ table.noborder tr th {
     border-style: none;
 }
 
+table tr th {
+    text-align: center;
+}
+
 table tr th,
 table tr td {
-    text-align: center;
     border-style: solid;
     border-width: 1.5px;
     border-color: black;
+    text-indent: 0;
 }
 
 table tr td {
@@ -533,9 +537,13 @@ a.contents-link {
     line-height: 50%;
 }
 
-.page ol {
+.body-content > ol {
     list-style-position: inside;
     padding-left: 0;
     text-indent: 2em;
     margin: 0;
+}
+
+.body-content> ol > li {
+    margin-top: 1em;
 }
