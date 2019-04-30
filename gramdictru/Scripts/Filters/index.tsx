@@ -1,6 +1,4 @@
 ﻿import * as React from "react";
-import { findDOMNode } from "react-dom";
-import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { ApplicationState } from "../ApplicationState";
 import { observer } from "mobx-react";
@@ -63,14 +61,19 @@ const linksToAgenda = [
     '/conjugation#verb-symbol'
 ];
 
-const formatLabel = (filter) => {
+const formatLabelPart = (filter) => {
     if (filter.name === "мн. _от_") {
-        return <span>мн. <span className="emphasis">от</span></span>;
+        return <span>мн. <span className="emphasis" data-tip={filter.tooltip}>от</span></span>;
     }
 
-    return [<span data-tip={filter.tooltip}>{filter.name}</span>,
+    return <span data-tip={filter.tooltip}>{filter.name}</span>;
+};
+
+const formatLabel = (filter) => {
+    return [formatLabelPart(filter),
         <ReactTooltip place="bottom" className="tooltipClass" type="light" effect="float" delayHide={800} clickable={true} getContent={(dataTip) => <a className="filter-tooltip-a" href={linksToAgenda[filter.link]}>{dataTip}</a>} />];
  }
+
 
 @observer
 export class Filters extends React.Component<IFilterControlProps> {
