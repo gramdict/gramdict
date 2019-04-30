@@ -1,4 +1,7 @@
 ﻿import * as React from "react";
+import { findDOMNode } from "react-dom";
+import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 import { ApplicationState } from "../ApplicationState";
 import { observer } from "mobx-react";
 
@@ -22,22 +25,52 @@ class Filter extends React.Component<IFilterControlProps & IFilterProps> {
     }
 }
 
-const possibleFilters = [
-    ["м", "мо", "мо-жо", "союз"],
-    ["ж", "жо", "мн.", "межд."],
-    ["с", "со", "мн. _от_", "предл."],
-    ["н", "мс", "числ.", "предик."],
-    ["п", "мс-п", "числ.-п", "част."],
-    ["св", "нсв", "св-нсв"],
+const possibleFilters: { name: string, tooltip: string, link: number }[][] = [
+    [
+        { name: "м", tooltip: "существительное мужского рода, неодушевленное", link: 0},
+        { name: "мо", tooltip: "существительное мужского рода, одушевленное", link: 0},
+        { name: "мо-жо", tooltip: "существительное мужского или женского рода, одушевленное", link: 0},
+        { name: "союз", tooltip: "союз", link: 0}
+    ],[
+        { name: "ж", tooltip: "существительное женского рода, неодушевленное", link: 0},
+        { name: "жо", tooltip: "существительное женского рода, одушевленное", link: 0},
+        { name: "мн.", tooltip: "существительное, имеющее только множественное число", link: 0},
+        { name: "межд.", tooltip: "междометие", link: 0}
+    ],[
+        { name: "с", tooltip: "существительное среднего рода, неодушевленное", link: 0},
+        { name: "со", tooltip: "существительное среднего рода, одушевленное", link: 0},
+        { name: "мн. _от_", tooltip: "существительное, имеющее только множественное число, образованное от обычного существительного", link: 0},
+        { name: "предл.", tooltip: "предлог", link: 0}
+    ],[
+        { name: "н", tooltip: "наречие", link: 0},
+        { name: "мс", tooltip: "местоимение", link: 0},
+        { name: "числ.", tooltip: "числительное", link: 0},
+        { name: "предик.", tooltip: "предикатив", link: 0}
+    ],[
+        { name: "п", tooltip: "прилагательное", link: 0},
+        { name: "мс-п", tooltip: "местоимение-прилагательное", link: 0},
+        { name: "числ.-п", tooltip: "порядковое числительное", link: 0},
+        { name: "част.", tooltip: "частица", link: 0}
+    ],[
+        { name: "св", tooltip: "глагол совершенного вида", link: 1},
+        { name: "нсв", tooltip: "глагол несовершенного вида", link: 1},
+        { name: "св-нсв", tooltip: "двувидовой глагол", link: 1}
+    ]
 ];
 
-const formatLabel = (filter: string) => {
-    if (filter === "мн. _от_") {
+const linksToAgenda = [
+    '/declension/symbols#main-symbol',
+    '/conjugation#verb-symbol'
+];
+
+const formatLabel = (filter) => {
+    if (filter.name === "мн. _от_") {
         return <span>мн. <span className="emphasis">от</span></span>;
     }
 
-    return <span>{filter}</span>;
-}
+    return [<span data-tip={filter.tooltip}>{filter.name}</span>,
+        <ReactTooltip place="bottom" className="tooltipClass" type="light" effect="float" delayHide={800} clickable={true} getContent={(dataTip) => <a className="filter-tooltip-a" href={linksToAgenda[filter.link]}>{dataTip}</a>} />];
+ }
 
 @observer
 export class Filters extends React.Component<IFilterControlProps> {
@@ -45,11 +78,14 @@ export class Filters extends React.Component<IFilterControlProps> {
         return [
             <table className="filter-table">
                 <tbody>
-                {possibleFilters.map(row => <tr>{row.map(f => <Filter filter={f} applicationState={this.props.applicationState}>
-                    {formatLabel(f)}
+                    {possibleFilters.map(row => <tr>{row.map(item => <Filter filter={item.name} applicationState={this.props.applicationState}>
+                    {formatLabel(item)}
                 </Filter>)}</tr>)}
                </tbody>
             </table>,
             <div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>];
     }
 }
+
+
+
