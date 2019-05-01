@@ -71,10 +71,13 @@ const formatLabelPart = (filter) => {
 
 const formatLabel = (filter) => {
     return [formatLabelPart(filter),
-        <ReactTooltip type="light" className="tooltipClass" effect="float" id={filter.name} border={true} clickable={true} getContent={(dataTip) =>
-        [
-                <span>{dataTip}&nbsp;</span>,
-                <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+        <ReactTooltip type="light" effect="float" id={filter.name} border={true} clickable={true} getContent={(dataTip) =>
+            [
+                <div className="tooltipClass">
+                    <span className="tooltipClass">{dataTip}&nbsp;</span>
+                    <br/>
+                    <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+                </div>
         ]} />
     ];
 }

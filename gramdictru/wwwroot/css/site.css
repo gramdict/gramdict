@@ -525,8 +525,7 @@ a.contents-link {
 }
 
 .tooltipClass {
-   font-size: 14px;
-   pointer-events: auto;
+   max-width: 40ex;
 }
 
 .filter-tooltip-a {
