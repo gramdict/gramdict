@@ -45,7 +45,7 @@ const possibleFilters: { name: string, tooltip: string, link: number }[][] = [
         { name: "числ.", tooltip: "числительное", link: 0},
         { name: "предик.", tooltip: "предикатив", link: 0}
     ],[
-        { name: "п", tooltip: "прилагательное", link: 0},
+        { name: "п", tooltip: "прилагательное", link:0},
         { name: "мс-п", tooltip: "местоимение-прилагательное", link: 0},
         { name: "числ.-п", tooltip: "порядковое числительное", link: 0},
         { name: "част.", tooltip: "частица", link: 0}
@@ -57,22 +57,27 @@ const possibleFilters: { name: string, tooltip: string, link: number }[][] = [
 ];
 
 const linksToAgenda = [
-    '/declension/symbols#main-symbol',
-    '/conjugation#verb-symbol'
+    ['(буквенные символы)','/declension/symbols#main-symbol'],
+    ['(буквенные символы глаголов)','/conjugation#verb-symbol']
 ];
 
 const formatLabelPart = (filter) => {
     if (filter.name === "мн. _от_") {
-        return <span>мн. <span className="emphasis" data-tip={filter.tooltip}>от</span></span>;
+        return <span data-for={filter.name} data-tip={filter.tooltip}>мн. <span className="emphasis">от</span></span>;
     }
 
-    return <span data-tip={filter.tooltip}>{filter.name}</span>;
+    return <span data-tip={filter.tooltip} data-for={filter.name}>{filter.name}</span>;
 };
 
 const formatLabel = (filter) => {
     return [formatLabelPart(filter),
-        <ReactTooltip place="bottom" className="tooltipClass" type="light" effect="float" delayHide={800} clickable={true} getContent={(dataTip) => <a className="filter-tooltip-a" href={linksToAgenda[filter.link]}>{dataTip}</a>} />];
- }
+        <ReactTooltip type="light" className="tooltipClass" effect="float" id={filter.name} border={true} clickable={true} getContent={(dataTip) =>
+        [
+                <span>{dataTip}&nbsp;</span>,
+                <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+        ]} />
+    ];
+}
 
 
 @observer

@@ -520,8 +520,8 @@ a.contents-link {
     cursor: pointer;
 }
 
-.filter-inactive {
-    opacity: 0.7;
+.filter-inactive span{
+   opacity: 0.7;
 }
 
 .tooltipClass {
@@ -529,9 +529,9 @@ a.contents-link {
    pointer-events: auto;
 }
 
-.filter-tooltip-a{
-    color: darkslategrey;
-    text-decoration: none;
+.filter-tooltip-a {
+	color: darkslategrey;
+	text-decoration: none;
 }
 
 .filter-tooltip-a:visited {
