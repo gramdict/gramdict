@@ -398,11 +398,13 @@ a.contents-link {
     flex-direction: column;
     white-space: nowrap;
     padding-right: 0.5rem;
+	margin-right: 0.5rem;
     min-width: 1rem;
 }
 
 .grammar {
-    width: 55%;
+    flex-basis: 55%;
+	flex-shrink: 3;
     text-align: left;
     display: flex;
     flex-direction: column;
