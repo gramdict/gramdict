@@ -394,17 +394,17 @@ a.contents-link {
 
 .symbol {
     text-align: left;
-    display: flex;
+    display: inline;
     flex-direction: column;
     white-space: nowrap;
-    padding-right: 0.5rem;
+    padding-right: 0.8rem;
     min-width: 1rem;
 }
 
 .grammar {
     width: 55%;
     text-align: left;
-    display: flex;
+    display: inline;
     flex-direction: column;
 }
 

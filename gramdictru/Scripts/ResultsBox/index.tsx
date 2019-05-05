@@ -27,8 +27,8 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                             <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>
                                 {resultSet.map(r => <div className="result-entry">
                         <div className="lemma" style={{textAlign: this.props.applicationState.searchTerm === "" || this.props.applicationState.searchTerm.startsWith('*') ? 'right' : 'left'}}>{r.lemma}</div>
-                        <div className="symbol">{r.symbol}</div>
-                        <div className="grammar">{r.grammar}</div>
+                        <div className="symbol" dangerouslySetInnerHTML={{ __html: r.symbol }} />
+                        <div className="grammar" dangerouslySetInnerHTML={{ __html: r.grammar }} />
                     </div>)}
                             </div>,
                             <hr/>

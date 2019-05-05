@@ -25,18 +25,14 @@ class Filter extends React.Component<IFilterControlProps & IFilterProps> {
 const possibleFilters = [
     ["м", "мо", "мо-жо", "союз"],
     ["ж", "жо", "мн.", "межд."],
-    ["с", "со", "мн. _от_", "предл."],
+    ["с", "со", "мн. <i>от</i>", "предл."],
     ["н", "мс", "числ.", "предик."],
     ["п", "мс-п", "числ.-п", "част."],
     ["св", "нсв", "св-нсв"],
 ];
 
 const formatLabel = (filter: string) => {
-    if (filter === "мн. _от_") {
-        return <span>мн. <span className="emphasis">от</span></span>;
-    }
-
-    return <span>{filter}</span>;
+    return <span dangerouslySetInnerHTML={{ __html: filter }} />;
 }
 
 @observer
