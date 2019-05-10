@@ -394,10 +394,10 @@ a.contents-link {
 
 .symbol {
     text-align: left;
-    display: flex;
+    display: inline;
     flex-direction: column;
     white-space: nowrap;
-    padding-right: 0.5rem;
+    padding-right: 0.8rem;
     margin-right: 0.5rem;
     min-width: 1rem;
 }
@@ -406,7 +406,7 @@ a.contents-link {
     flex-basis: 55%;
     flex-shrink: 3;
     text-align: left;
-    display: flex;
+    display: inline;
     flex-direction: column;
 }
 

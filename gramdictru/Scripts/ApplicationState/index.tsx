@@ -6,11 +6,6 @@ import axios from "axios";
 import * as Papa from "papaparse";
 import * as isMobile from "ismobilejs";
 
-function ItalicsToHtml(markdown: string) {
-    const splits = markdown.split("_").map((s, i) => i % 2 == 0 ? s : <i>{s}</i>);
-    return <span>{splits}</span>;
-}
-
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
 
@@ -193,8 +188,8 @@ export class ApplicationState {
                             const [lemma, symbol, grammar] = l;
                             return {
                                 lemma,
-                                symbol: ItalicsToHtml(symbol),
-                                grammar: ItalicsToHtml(grammar)
+                                symbol: symbol,
+                                grammar: grammar
                             };
                         });
                     });
