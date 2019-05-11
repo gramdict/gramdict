@@ -37,7 +37,7 @@ const possibleFilters: { name: string, tooltip: string, link: number }[][] = [
     ],[
         { name: "с", tooltip: "существительное среднего рода, неодушевленное", link: 0},
         { name: "со", tooltip: "существительное среднего рода, одушевленное", link: 0},
-        { name: "мн. _от_", tooltip: "существительное, имеющее только множественное число, образованное от обычного существительного", link: 0},
+        { name: "мн. <i>от</i>", tooltip: "существительное, имеющее только множественное число, образованное от обычного существительного", link: 0},
         { name: "предл.", tooltip: "предлог", link: 0}
     ],[
         { name: "н", tooltip: "наречие", link: 0},
@@ -62,11 +62,7 @@ const linksToAgenda = [
 ];
 
 const formatLabelPart = (filter) => {
-    if (filter.name === "мн. _от_") {
-        return <span data-for={filter.name} data-tip={filter.tooltip}>мн. <span className="emphasis">от</span></span>;
-    }
-
-    return <span data-tip={filter.tooltip} data-for={filter.name}>{filter.name}</span>;
+    return <span data-tip={filter.tooltip} data-for={filter.name} dangerouslySetInnerHTML={{ __html: filter.name }}/>;
 };
 
 const formatLabel = (filter) => {
