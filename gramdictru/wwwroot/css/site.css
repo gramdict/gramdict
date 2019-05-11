@@ -385,7 +385,6 @@ a.contents-link {
     font-weight: bold;
     padding-right: 0.5rem;
     min-width: 30%;
-    word-break: break-all;
     display: flex;
     flex-direction: column;
     padding-left: 1.5em;
@@ -398,7 +397,7 @@ a.contents-link {
     flex-direction: column;
     white-space: nowrap;
     padding-right: 0.8rem;
-    min-width: 1rem;
+    min-width: 1.3rem;
 }
 
 .grammar {
