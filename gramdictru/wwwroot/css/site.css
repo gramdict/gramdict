@@ -519,8 +519,25 @@ a.contents-link {
     cursor: pointer;
 }
 
-.filter-inactive {
-    opacity: 0.7;
+.filter-inactive span{
+   opacity: 0.7;
+}
+
+.tooltipClass {
+   max-width: 40ex;
+}
+
+.filter-tooltip-a {
+	color: darkslategrey;
+	text-decoration: none;
+}
+
+.filter-tooltip-a:visited {
+    color: darkslategrey;
+}
+
+.filter-tooltip-a:hover {
+    text-decoration: underline;
 }
 
 .reset-filter-button {
