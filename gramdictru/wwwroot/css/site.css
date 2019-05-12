@@ -376,32 +376,31 @@ a.contents-link {
 }
 
 .result-entry {
-    display: flex;
-    break-inside: avoid;
+    padding-left: 2rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(40%, max-content) minmax(1rem, max-content) 1fr;
     margin: 0 auto;
 }
 
 .lemma {
+    white-space: nowrap;
     font-weight: bold;
     padding-right: 0.5rem;
     min-width: 30%;
     display: flex;
     flex-direction: column;
-    padding-left: 1.5em;
-    text-indent: -1.5em;
 }
 
 .symbol {
     text-align: left;
-    display: inline;
+    display: inline-block;
     flex-direction: column;
     white-space: nowrap;
-    padding-right: 0.8rem;
-    min-width: 1.3rem;
 }
 
 .grammar {
-    width: 55%;
+    padding-left: 0.5rem;
     text-align: left;
     display: inline;
     flex-direction: column;
