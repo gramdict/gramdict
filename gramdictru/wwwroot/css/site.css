@@ -562,3 +562,11 @@ a.contents-link {
 .body-content> ol > li {
     margin-top: 1em;
 }
+
+.__react_component_tooltip {
+    padding: 0.5em 1em;
+}
+
+.__react_component_tooltip.show {
+    opacity: 1;
+}
