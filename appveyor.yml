@@ -2,9 +2,7 @@ version: 1.0.{build}
 image: Visual Studio 2017
 install:
 - cmd: >-
-    nuget restore
-    cd ./gramdictru
-    npm install
+    nuget restore && cd ./gramdictru && npm install
 build:
   publish_aspnet_core: true
   verbosity: minimal
