@@ -71,7 +71,7 @@ const formatLabel = (filter) => {
             delayShow={600}
             delayHide={200}
             type="light"
-            effect="float"
+            effect="solid"
             id={filter.name}
             border={true}
             clickable={true}
