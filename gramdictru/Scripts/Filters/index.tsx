@@ -67,7 +67,15 @@ const formatLabelPart = (filter) => {
 
 const formatLabel = (filter) => {
     return [formatLabelPart(filter),
-        <ReactTooltip type="light" effect="float" id={filter.name} border={true} clickable={true} getContent={(dataTip) =>
+        <ReactTooltip
+            delayShow={600}
+            delayHide={200}
+            type="light"
+            effect="float"
+            id={filter.name}
+            border={true}
+            clickable={true}
+            getContent={(dataTip) =>
             [
                 <div className="tooltipClass">
                     <span className="tooltipClass">{dataTip}&nbsp;</span>
