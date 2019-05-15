@@ -523,7 +523,8 @@ a.contents-link {
 }
 
 .tooltipClass {
-   max-width: 40ex;
+    max-width: 40ex;
+    font-weight: normal;
 }
 
 .filter-tooltip-a {
@@ -542,7 +543,7 @@ a.contents-link {
 .reset-filter-button {
     color: white;
     position: relative;
-    left: 215px;
+    left: 340px;
     bottom: 26px;
     cursor: pointer;
     height: 0;
