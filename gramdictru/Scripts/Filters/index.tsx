@@ -43,29 +43,32 @@ const possibleFilters: Row[] = [
     ],[
         { name: "ж", tooltip: "существительное женского рода, неодушевленное", link: 0},
         { name: "жо", tooltip: "существительное женского рода, одушевленное", link: 0},
-        [{ name: "мо⁺", tooltip: "мужское имя, изредка может быть женским", link: 2 }, { name: "жо⁺", tooltip: "женское имя, изредка может быть мужским", link: 2 }],
+        [
+            { name: "мо⁺", tooltip: "мужское имя, изредка может быть женским", link: 2 }, 
+            { name: "жо⁺", tooltip: "женское имя, изредка может быть мужским", link: 2 }
+        ],
         { name: "мн. <i>от</i>", tooltip: "существительное, имеющее только множественное число, образованное от обычного существительного", link: 0 },
         { name: "предл.", tooltip: "предлог", link: 0 },
-        { name: "<i>см.</i>.", tooltip: "ссылочная статья" }
+        { name: "<i>см.</i>", tooltip: "ссылочная статья" }
     ],[
         { name: "с", tooltip: "существительное среднего рода, неодушевленное", link: 0},
         { name: "со", tooltip: "существительное среднего рода, одушевленное", link: 0 },
         [{ name: "§1", tooltip: "слова типа <b>полдела</b>", link: 3 }, { name: "§2", tooltip: "слова типа <b>полвторого</b>", link: 4 }],
         { name: "мн. одуш.", tooltip: "одушевленное существительное, имеющее только множественное число", link: 0 },
-        { name: "сравн.", tooltip: "unknown", link: 0 },
+        { name: "сравн.", tooltip: "сравнительная степень", link: 0 },
         { name: "<i>Р. мн.</i>", tooltip: "форма родительного падежа множественного числа" }
     ],[
-        { name: "ф", tooltip: "фамилия", link: 5 },
+        { name: "ф.", tooltip: "фамилия", link: 5 },
         { name: "мс", tooltip: "местоимение", link: 0},
         { name: "числ.", tooltip: "числительное", link: 0 },
         { name: "мн. неод.", tooltip: "неодушевленное существительное, имеющее только множественное число", link: 0 },
-        { name: "ввоан.", tooltip: "unknown", link: 0 },
+        { name: "вводн.", tooltip: "вводное слово", link: 0 },
         { name: "част.", tooltip: "частица", link: 0 }
     ],[
         { name: "п", tooltip: "прилагательное", link:0},
         { name: "мс-п", tooltip: "местоимение-прилагательное", link: 0},
         { name: "числ.-п", tooltip: "порядковое числительное", link: 0 },
-        { name: "предик.", tooltip: "unknown", link: 0 },
+        { name: "предик.", tooltip: "предикатив", link: 0 },
         { name: "межд.", tooltip: "междометие", link: 0 },
         { name: "<i>(нет)</i>", tooltip: "нет буквенного символа" }
     ],[
@@ -79,10 +82,10 @@ const possibleFilters: Row[] = [
 const linksToAgenda = [
     ['(буквенные символы)','/declension/symbols#main-symbol'],
     ['(буквенные символы глаголов)', '/conjugation#verb-symbol'],
-    ['(буквенные символы)', '/names#sup-plus'],
-    ['(буквенные символы)', '/declension/paragraphs#para1'],
-    ['(буквенные символы)', '/declension/paragraphs#para2'],
-    ['(буквенные символы)', '/names#symbol-f']
+    ['(символ ⁺)', '/names#sup-plus'],
+    ['(§1)', '/declension/paragraphs#para1'],
+    ['(§2)', '/declension/paragraphs#para2'],
+    ['(символ ф.)', '/names#symbol-f']
 ];
 
 const formatLabelPart = (filter) => {
