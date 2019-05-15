@@ -1,5 +1,7 @@
 version: 1.0.{build}
 image: Visual Studio 2017
+configuration:
+- Release
 install:
 - cmd: >-
     nuget restore && cd ./gramdictru && npm install
