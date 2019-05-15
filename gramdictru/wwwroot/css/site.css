@@ -564,6 +564,10 @@ a.contents-link {
 }
 
 .__react_component_tooltip {
+    padding: 0;
+}
+
+.tooltip-clickable-wrapper {
     padding: 0.5em 1em;
 }
 

@@ -75,14 +75,20 @@ const formatLabel = (filter) => {
             id={filter.name}
             border={true}
             clickable={true}
+            isCapture={true}
+            globalEventOff="click"
             getContent={(dataTip) =>
-            [
-                <div className="tooltipClass">
-                    <span className="tooltipClass">{dataTip}&nbsp;</span>
-                    <br/>
-                    <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
-                </div>
-        ]} />
+                [
+                    <div className="tooltip-clickable-wrapper" onClick={(event) => {
+                            event.stopPropagation();
+                        }}>
+                        <div className="tooltipClass">
+                        <span className="tooltipClass">{dataTip}&nbsp;</span>
+                        <br/>
+                        <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+                        </div>
+                    </div>
+        ]}/>
     ];
 }
 
