@@ -53,7 +53,10 @@ const possibleFilters: Row[] = [
     ],[
         { name: "с", tooltip: "существительное среднего рода, неодушевленное", link: 0},
         { name: "со", tooltip: "существительное среднего рода, одушевленное", link: 0 },
-        [{ name: "§1", tooltip: "слова типа <b>полдела</b>", link: 3 }, { name: "§2", tooltip: "слова типа <b>полвторого</b>", link: 4 }],
+        [
+            { name: "§1", tooltip: "слова типа <b>полдела</b>", link: 3 }, 
+            { name: "§2", tooltip: "слова типа <b>полвторого</b>", link: 4 }
+        ],
         { name: "мн. одуш.", tooltip: "одушевленное существительное, имеющее только множественное число", link: 0 },
         { name: "сравн.", tooltip: "сравнительная степень", link: 0 },
         { name: "<i>Р. мн.</i>", tooltip: "форма родительного падежа множественного числа" }
@@ -113,7 +116,7 @@ const formatLabel = (filter) => {
                     <span className="tooltipClass" dangerouslySetInnerHTML={{ __html: `${dataTip}&nbsp;` }}></span>
                     {typeof filter.link == "number" && <React.Fragment>
                         <br/>
-                        <a href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+                        <a target="_blank" href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
                     </React.Fragment>}
                 </div>
             </div>

@@ -525,6 +525,7 @@ a.contents-link {
 .tooltipClass {
     max-width: 40ex;
     font-weight: normal;
+    text-align: center;
 }
 
 .filter-tooltip-a {
