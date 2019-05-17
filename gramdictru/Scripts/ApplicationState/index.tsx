@@ -201,7 +201,7 @@ export class ApplicationState {
 
             try {
                 let uri =
-                    `http://localhost:5000/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+                    `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
                 if (filters.length > 0) {
                     uri = uri + `&symbol=${filters}`;
                 }
