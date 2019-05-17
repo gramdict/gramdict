@@ -487,6 +487,13 @@ a.contents-link {
     background-clip: padding-box;
 }
 
+.filter-wrapper {
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
 .filter-control {
     color: white;
     margin-left: 0.5em;
@@ -494,7 +501,6 @@ a.contents-link {
 }
 
 .filter-table {
-    color: white;
     display: table;
     margin: unset;
     font-size: large;
@@ -542,12 +548,13 @@ a.contents-link {
 }
 
 .reset-filter-button {
-    color: white;
-    position: relative;
-    left: 340px;
-    bottom: 26px;
     cursor: pointer;
-    height: 0;
+    flex-grow: 1;
+}
+
+.filter-totals {
+    padding-left: 1em;
+    margin: 0 auto;
 }
 
 .smallbr {

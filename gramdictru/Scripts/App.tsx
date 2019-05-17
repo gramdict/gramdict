@@ -46,13 +46,17 @@ reaction(
     }
 );
 
+function setSearchBarHeight() {
+    const newHeight = (document.getElementsByClassName("search-bar")[0].getElementsByClassName("centerer")[0] as HTMLElement)
+        .offsetHeight;
+    root.style.setProperty("--search-bar-height", `${newHeight}px`);
+}
+
 reaction(
     () => applicationState.filtersAreOpen,
     (_, __) => {
         setTimeout(() => {
-            const newHeight = (document.getElementsByClassName("search-bar")[0].getElementsByClassName("centerer")[0] as HTMLElement)
-                    .offsetHeight;
-            root.style.setProperty("--search-bar-height", `${newHeight}px`);
+            setSearchBarHeight();
         });
     });
 
@@ -75,6 +79,7 @@ export function resize() {
     const elements = document.getElementsByClassName("page");
     const first: any = elements[0];
     if (!!first) {
+        setSearchBarHeight();
         const toCenter = document.getElementsByClassName("centerer");
         for (let index = 0; index < toCenter.length; index++) {
             (toCenter[index] as any).style.width = `${first.offsetWidth}px`;
