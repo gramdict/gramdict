@@ -1,13 +1,47 @@
-import * as React from "react";
+﻿import * as React from "react";
 import { flow, observable, action, computed } from "mobx";
 import { resize } from "../App";
 import { CancellablePromise } from "mobx/lib/api/flow";
 import axios from "axios";
-import * as Papa from "papaparse";
 import * as isMobile from "ismobilejs";
+
+type ApiEntry = {
+    lemma: string,
+    symbol: string,
+    grammar: string,
+}
+
+type ApiResponse = {
+    ["matching-entries-count"]: number,
+    ["total-entries-count"]: number,
+    entries: ApiEntry[],
+}
 
 export class ApplicationState {
     currentSearch: CancellablePromise<{}>;
+
+    @observable
+    matchingEntriesCount: number;
+
+    @observable
+    totalEntriesCount: number;
+
+    @computed
+    get filterTotals() {
+        if (typeof this.matchingEntriesCount === "undefined" || typeof this.totalEntriesCount === "undefined") {
+            return "";
+        }
+
+        if (this.matchingEntriesCount === this.totalEntriesCount) {
+            return `Статей: ${this.matchingEntriesCount}`;
+        }
+
+        if (this.matchingEntriesCount < this.totalEntriesCount) {
+            return `Статей: ${this.matchingEntriesCount} из ${this.totalEntriesCount}`;
+        }
+
+        return "";
+    }
 
     @observable
     hasSearched = false;
@@ -173,26 +207,13 @@ export class ApplicationState {
                 }
 
                 console.log("making request", uri);
-                const data = yield axios.get(uri,
+                const data: ApiResponse = yield axios.get(uri,
                     {
                         timeout: 30000,
                         responseType: "text",
                     })
-                    .then((response) => {
-                        const [_, ...lines] = Papa.parse(response.data,
-                            {
-                                skipEmptyLines: true,
-                                delimiter: ",",
-                            }).data;
-                        return lines.map(l => {
-                            const [lemma, symbol, grammar] = l;
-                            return {
-                                lemma,
-                                symbol: symbol,
-                                grammar: grammar
-                            };
-                        });
-                    });
+                    .then((response) => response.data);
+                
 
                 if (callback !== undefined) {
                     callback(term, filters);
@@ -200,16 +221,18 @@ export class ApplicationState {
 
                 this.hasSearched = true;
 
-                if (data.length < this.pageSize) {
-                    console.log(`Got ${data.length} lines which is less than the page size of ${this.pageSize}`);
+                if (data.entries.length < this.pageSize) {
+                    console.log(`Got ${data.entries.length} lines which is less than the page size of ${this.pageSize}`);
                     this.reachedLimit = true;
                 } else {
-                    console.log(`Got ${data.length} lines`);
+                    console.log(`Got ${data.entries.length} lines`);
                     this.reachedLimit = false;
                 }
 
-                this.results.push(data);
-                this.total += data.length;
+                this.totalEntriesCount = data["total-entries-count"];
+                this.matchingEntriesCount = data["matching-entries-count"];
+                this.results.push(data.entries);
+                this.total += data.entries.length;
                 this.searchedTerm = term;
                 this.pageNumber++;
                 this.callback = undefined;

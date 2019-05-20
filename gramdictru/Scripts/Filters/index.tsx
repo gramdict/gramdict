@@ -114,10 +114,11 @@ const formatLabel = (filter) => {
             }}>
                 <div className="tooltipClass">
                     <span className="tooltipClass" dangerouslySetInnerHTML={{ __html: `${dataTip}&nbsp;` }}></span>
-                    {typeof filter.link == "number" && <React.Fragment>
-                        <br/>
-                        <a target="_blank" href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
-                    </React.Fragment>}
+                    {typeof filter.link == "number" &&
+                        <React.Fragment>
+                            <br/>
+                            <a target="_blank" href={linksToAgenda[filter.link][1]}>{linksToAgenda[filter.link][0]}</a>
+                        </React.Fragment>}
                 </div>
             </div>
         ]}/>
@@ -128,38 +129,42 @@ const formatLabel = (filter) => {
 @observer
 export class Filters extends React.Component<IFilterControlProps> {
     render() {
-        return [
-            <table className="filter-table">
-                <tbody>
-                {possibleFilters.map(row =>
-                <tr>
-                    {row.map(item => {
-                                let width = 1;
-                                let items: Entry[];
-                                if (Array.isArray(item)) {
-                                    items = item;
-                                } else {
-                                    width = item.width;
-                                    items = [item];
-                                }
+        return <div className="filter-wrapper">
+                   <table className="filter-table">
+                       <tbody>
+                       {possibleFilters.map(row =>
+                           <tr>
+                               {row.map(item => {
+                                   let width = 1;
+                                   let items: Entry[];
+                                   if (Array.isArray(item)) {
+                                       items = item;
+                                   } else {
+                                       width = item.width;
+                                       items = [item];
+                                   }
 
-                                const filters = items
-                                    .map((entry, i) =>
-                                        <React.Fragment>
-                                            <Filter filter={entry.name} applicationState={this.props.applicationState}>
-                                                {formatLabel(entry)}
-                                            </Filter>
-                                            {i < items.length - 1 ? " " : "" }
-                                        </React.Fragment>);
+                                   const filters = items
+                                       .map((entry, i) =>
+                                           <React.Fragment>
+                                               <Filter filter={entry.name} applicationState={this.props
+                                                   .applicationState}>
+                                                   {formatLabel(entry)}
+                                               </Filter>
+                                               {i < items.length - 1 ? " " : "" }
+                                           </React.Fragment>);
 
-                                return <td colSpan={width}>{filters}</td>;
-                            })}
-                </tr>)}
-                </tbody>
-            </table>,
-<div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>];
+                                   return <td colSpan={width}>{filters}</td>;
+                               })}
+                           </tr>)}
+                       </tbody>
+                   </table>
+                   <div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>
+                   <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
+               </div>;
+    }
 }
-            }
+
 
 
 
