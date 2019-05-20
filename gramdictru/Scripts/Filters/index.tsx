@@ -2,6 +2,7 @@
 import ReactTooltip from "react-tooltip";
 import { ApplicationState } from "../ApplicationState";
 import { observer } from "mobx-react";
+import { ListFilters } from "../ListFilter/index";
 
 export interface IFilterControlProps
 {
@@ -159,9 +160,12 @@ export class Filters extends React.Component<IFilterControlProps> {
                            </tr>)}
                        </tbody>
                    </table>
-                   <div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>
-                   <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
-               </div>;
+            <div className="lists-and-reset">
+                <ListFilters applicationState={this.props.applicationState} />
+                <div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>
+            </div>
+            <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
+        </div>;
     }
 }
 

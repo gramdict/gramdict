@@ -82,6 +82,9 @@ export class ApplicationState {
     @observable
     filters = new Map<string, boolean>();
 
+    @observable
+    lists = new Map<string, boolean>();
+
     @computed
     get canLoadMore() {
         return !this.reachedLimit && !this.isLoading;
@@ -108,6 +111,13 @@ export class ApplicationState {
     @action
     resetFilters() {
         this.filters.clear();
+        this.lists.clear();
+        this.search();
+    }
+
+    @action
+    toggleList(list: string) {
+        this.lists.set(list, !this.lists.get(list));
         this.search();
     }
 
@@ -126,15 +136,22 @@ export class ApplicationState {
     }
 
     @action
-    applyState(term: string, filters: string) {
+    applyState(term: string, filters: string, lists: string) {
         const decodedSearchTerm = decodeURIComponent(term as string);
         const decodedFilters = (filters as string).split(",").filter(x => x.length > 0).map(f => decodeURIComponent(f));
-        
+        const decodedLists = lists.split(",").filter(x => x.length > 0).map(l => decodeURIComponent(l));
+
         this.searchTerm = decodedSearchTerm === "*" ? "" : decodedSearchTerm;
         this.filters.clear();
         for (let filter of decodedFilters) {
             console.log("applying filter", filter);
             this.filters.set(filter, true);
+        }
+
+        this.lists.clear();
+        for (let list of decodedLists) {
+            console.log("applying list", list);
+            this.lists.set(list, true);
         }
 
         this.search(true);
@@ -158,7 +175,7 @@ export class ApplicationState {
         console.log("Beginning new search");
         this.pageNumber = 0;
 
-        this.callback = (term: string, filters: string) => {
+        this.callback = (term: string, filters: string, lists: string) => {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
@@ -166,10 +183,18 @@ export class ApplicationState {
             scrollTo(0, 0);
 
             if (!suppressHistory) {
-                const uri = `/search/${term}` + ((filters.length > 0) ? `?symbol=${filters}` : "");
+                const queryString = [
+                    filters.length > 0 ? `symbol=${filters}` : "",
+                    lists.length > 0 ? `list=${lists}` : "",
+                ]
+                    .filter(s => s.length > 0)
+                    .join("&");
+
+                const uri = `/search/${term}` + ((queryString.length > 0) ? `?${queryString}` : "");
                 history.pushState({
                         term,
                         filters,
+                        lists
                     },
                     document.title,
                     uri);
@@ -188,7 +213,7 @@ export class ApplicationState {
             }
         }
 
-        this.currentSearch = flow(function*(callback?: (term: string, filters: string) => void) {
+        this.currentSearch = flow(function*(callback?: (term: string, filters: string, lists: string) => void) {
             this.isLoading = true;
             this.hasError = false;
 
@@ -198,12 +223,20 @@ export class ApplicationState {
                 .filter(arr => arr[1])
                 .map(arr => encodeURIComponent(arr[0]))
                 .join(",");
+            const lists = Array.from(this.lists.entries())
+                .filter(arr => arr[1])
+                .map(arr => encodeURIComponent(arr[0]))
+                .join(",");
 
             try {
                 let uri =
-                    `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
+                    `http://localhost:5000/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
                 if (filters.length > 0) {
                     uri = uri + `&symbol=${filters}`;
+                }
+
+                if (lists.length > 0) {
+                    uri = uri + `&list=${lists}`;
                 }
 
                 console.log("making request", uri);
@@ -216,7 +249,7 @@ export class ApplicationState {
                 
 
                 if (callback !== undefined) {
-                    callback(term, filters);
+                    callback(term, filters, lists);
                 }
 
                 this.hasSearched = true;
@@ -255,4 +288,5 @@ export type Result = {
     lemma: string;
     symbol: string;
     grammar: string;
+    list: string;
 }
