@@ -491,7 +491,8 @@ a.contents-link {
     color: white;
     display: flex;
     align-items: flex-end;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 .filter-control {
@@ -522,6 +523,7 @@ a.contents-link {
 
 .filter {
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .filter-inactive span {
