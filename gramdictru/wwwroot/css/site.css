@@ -562,8 +562,9 @@ a.contents-link {
     flex-direction: column;
 }
 
-.symbol-filters {
+.scrollable-filters {
     overflow-x: auto;
+    display: flex;
 }
 
 .list-filters > tbody {
