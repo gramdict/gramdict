@@ -510,6 +510,7 @@ a.contents-link {
 .filter-table td {
     text-align: left;
     border: unset;
+    white-space: nowrap;
 }
 
 .filter-table td:first-child {
@@ -522,7 +523,6 @@ a.contents-link {
 
 .filter {
     cursor: pointer;
-    white-space: nowrap;
 }
 
 .filter-inactive span {
