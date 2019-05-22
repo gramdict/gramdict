@@ -7,4 +7,5 @@
     window["term"] = "@Html.Raw(Model.Term)";
     const urlParams = new URLSearchParams(window.location.search);
     window["symbol"] = urlParams.get('symbol') || "";
+    window["lists"] = urlParams.get('list') || "";
 </script>

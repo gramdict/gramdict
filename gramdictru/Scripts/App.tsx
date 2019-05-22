@@ -14,10 +14,11 @@ const root = document.documentElement;
 
 const initialTerm = window["term"];
 const initialSymbol = window["symbol"];
+const initialLists = window["lists"];
 
-if (typeof initialTerm !== "undefined" && typeof initialSymbol !== "undefined") {
-    console.log("Loading with initial state", initialTerm, initialSymbol);
-    applicationState.applyState(initialTerm, initialSymbol);
+if (typeof initialTerm !== "undefined" && typeof initialSymbol !== "undefined" && typeof initialLists !== "undefined") {
+    console.log("Loading with initial state", initialTerm, initialSymbol, initialLists);
+    applicationState.applyState(initialTerm, initialSymbol, initialLists);
 }
 
 window.onpopstate = function (event) {
@@ -27,9 +28,10 @@ window.onpopstate = function (event) {
         return;
     }
 
-    const { term, filters } = event.state;
-    if (typeof term === "string" && typeof filters === "string") {
-        applicationState.applyState(term, filters);
+    const { term, filters, lists } = event.state;
+    console.log(event.state);
+    if (typeof term === "string" && typeof filters === "string" && typeof lists === "string") {
+        applicationState.applyState(term, filters, lists);
     }
 };
 
