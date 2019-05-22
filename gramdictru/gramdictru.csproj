@@ -5,6 +5,9 @@
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Scripts\ListFilter\index.tsx" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.1" PrivateAssets="All" />
@@ -23,6 +26,7 @@
     <None Include="wwwroot\permalink.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <TypeScriptCompile Include="Scripts\ListFilter\index.tsx" />
   </ItemGroup>
   <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
