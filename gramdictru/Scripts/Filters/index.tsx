@@ -131,6 +131,7 @@ const formatLabel = (filter) => {
 export class Filters extends React.Component<IFilterControlProps> {
     render() {
         return <div className="filter-wrapper">
+            <div className="symbol-filters">
                    <table className="filter-table">
                        <tbody>
                        {possibleFilters.map(row =>
@@ -160,9 +161,12 @@ export class Filters extends React.Component<IFilterControlProps> {
                            </tr>)}
                        </tbody>
                    </table>
+            </div>
             <div className="lists-and-reset">
                 <ListFilters applicationState={this.props.applicationState} />
-                <div className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</div>
+                <div className="reset-filter-button-wrapper">
+                    <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
+                </div>
             </div>
             <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
         </div>;

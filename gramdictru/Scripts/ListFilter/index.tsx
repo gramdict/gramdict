@@ -36,10 +36,17 @@ type ListFiltersProps = {
 
 export class ListFilters extends React.PureComponent<ListFiltersProps> {
     render() {
-        return <div className="list-filters">
-            {Lists.map(l => <Filter applicationState={this.props.applicationState} list={l.key} key={l.key}>
-                <span>{l.label}</span>
-            </Filter>)}
-        </div>;
+        return <table className="filter-table list-filters">
+            <tbody>
+                   {Lists.map(l => 
+                <tr key={l.key}>
+                    <td>
+                        <Filter applicationState={this.props.applicationState} list={l.key}>
+                            <span>{l.label}</span>
+                        </Filter>
+                    </td>
+                </tr>)}
+            </tbody>
+        </table>;
     }
 }

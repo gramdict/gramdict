@@ -491,8 +491,7 @@ a.contents-link {
     color: white;
     display: flex;
     align-items: flex-end;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: wrap;
 }
 
 .filter-control {
@@ -549,6 +548,10 @@ a.contents-link {
     text-decoration: underline;
 }
 
+.reset-filter-button-wrapper {
+    margin-left: 0.45em;
+}
+
 .reset-filter-button {
     cursor: pointer;
 }
@@ -557,6 +560,19 @@ a.contents-link {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+}
+
+.symbol-filters {
+    overflow-x: auto;
+}
+
+.list-filters > tbody {
+    margin: unset;
+}
+
+.filter-table.list-filters td,
+.filter-table.list-filters td:first-child {
+    text-align: left;
 }
 
 .lists-and-reset {
