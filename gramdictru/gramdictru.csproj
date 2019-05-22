@@ -19,6 +19,11 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\permalink.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
   </Target>
