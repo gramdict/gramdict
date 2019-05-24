@@ -31,7 +31,7 @@ body {
     max-width: 50em;
     text-align: justify;
     display: inline-block;
-    overflow-x: visible;
+    overflow-x: hidden;
     margin-bottom: 50px;
     width: 100%;
 }
@@ -41,7 +41,14 @@ body {
         max-width: calc(100% - var(--body-padding) * 2);
     }
 }
+@media only screen and (max-width: 50 em){
 
+    section.novoe {
+         columns: 1;
+         column-fill:auto;
+     
+    }
+}
 .page a {
     color: #303e00;
     text-decoration: none;
