@@ -34,10 +34,7 @@ body {
     max-width: 50em;
     text-align: justify;
     display: inline-block;
-<<<<<<< HEAD
-=======
     overflow-x: hidden;
->>>>>>> fe39b765f457f8a95d83c68e590d5b8e6ffe7a69
     margin-bottom: 50px;
     width: 100%;
 }
@@ -49,7 +46,7 @@ body {
 }
 @media only screen and (max-width: 50 em){
 
-<<<<<<< HEAD
+
 
 @media (max-width: 200px) {
       .column1 {
@@ -63,21 +60,7 @@ body {
          overflow-x:hidden;
         
      }
-
-
-
-
-    
-
-
-     
-=======
-    section.novoe {
-         columns: 1;
-         column-fill:auto;
-     
-    }
->>>>>>> fe39b765f457f8a95d83c68e590d5b8e6ffe7a69
+  
 }
 .page a {
     color: #303e00;
