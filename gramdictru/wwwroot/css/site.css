@@ -108,7 +108,7 @@ body {
     }
 }
 
-.abstract {
+.front-page {
     line-height: 120%;
 }
 
@@ -526,6 +526,7 @@ a.contents-link {
     background-clip: padding-box;
 }
 
+<<<<<<< HEAD
 .filter-control {
     color: white;
     margin-left: 0.5em;
@@ -583,4 +584,8 @@ a.contents-link {
 
 .body-content> ol > li {
     margin-top: 1em;
+=======
+#goals {
+    clear: both;
+>>>>>>> 6664ef30ea33749781d503d6c21d1eb41895920f
 }
