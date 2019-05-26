@@ -55,6 +55,16 @@ body {
     text-decoration: underline;
 }
 
+.page h1 > a:visited,
+.page h2 > a:visited,
+.page h3 > a:visited,
+.page h4 > a:visited,
+.page h5 > a:visited,
+.page h6 > a:visited
+{
+    color: black;
+}
+
 @media (max-width: 500px) {
     img#cover {
         display: block;
