@@ -6,6 +6,9 @@
     
     --body-padding: 8px;
 }
+html {
+    overflow-x: hidden;
+}
 
 body {
     font-family: serif;
@@ -31,7 +34,6 @@ body {
     max-width: 50em;
     text-align: justify;
     display: inline-block;
-    overflow-x: hidden;
     margin-bottom: 50px;
     width: 100%;
 }
@@ -41,13 +43,28 @@ body {
         max-width: calc(100% - var(--body-padding) * 2);
     }
 }
-@media only screen and (max-width: 50 em){
 
-    section.novoe {
-         columns: 1;
-         column-fill:auto;
+
+@media (max-width: 200px) {
+      .column1 {
+        position: fixed;
+        z-index: 1;
+        
+     }
+     .column1 {
+         position: fixed;
+         z-index: 2;
+         overflow-x:hidden;
+        
+     }
+
+
+
+
+    
+
+
      
-    }
 }
 .page a {
     color: #303e00;
@@ -56,7 +73,7 @@ body {
 
 .page a:visited {
     color: #858e4e;
-}
+}   q
 
 .page a:hover {
     text-decoration: underline;
