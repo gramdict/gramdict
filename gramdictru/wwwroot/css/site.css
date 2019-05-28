@@ -49,7 +49,7 @@ body {
 
 
 @media (max-width: 200px) {
-      .column1 {
+      .column {
         position: fixed;
         z-index: 1;
         
