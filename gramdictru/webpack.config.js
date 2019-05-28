@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     entry: {
         bundle: path.join(__dirname, 'Scripts/App.tsx'),
+        contentsPage: path.join(__dirname, 'Pages/contents.tsx'),
     },
     devtool: "source-map",
     output: {
