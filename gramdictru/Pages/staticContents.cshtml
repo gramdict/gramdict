@@ -77,27 +77,26 @@
             const mapped = allAccordions.map(aa => {
                 let sub = "";
                 if (aa.subAccordions.length > 0) {
-                    sub = `\n\t<AccordionItemPanel>
-    ${aa.subAccordions.map(sa => `\t\t<${sa} />\n`).join("")}
-\t</AccordionItemPanel>`;
+                    sub = `\n\t<AccordionItemPanel>\n\t\t<Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+    ${aa.subAccordions.map(sa => `\t\t\t<${sa} />`).join("\n")}
+\t</Accordion>
+\t\t</AccordionItemPanel>`;
                 }
                 return `function ${aa.name}() {
-    return <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
-        <AccordionItem>
+    return <AccordionItem>
         <AccordionItemHeading>
             <AccordionItemButton>
                 ${aa.header}
             </AccordionItemButton>
         </AccordionItemHeading>${sub}
-        </AccordionItem>
-    </Accordion>
+    </AccordionItem>
 }\n`;
             })
 
             mapped.push(`function ContentsPage() {
-    return <React.Fragment>
+    return <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         ${rootAccordions.map(ra => `<${ra} />`).join("\n")}
-    </React.Fragment>
+    </Accordion>
 }`);
 
             mapped.unshift(`
