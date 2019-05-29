@@ -83,7 +83,7 @@
 \t\t</AccordionItemPanel>`;
                 }
                 return `function ${aa.name}() {
-    return <AccordionItem>
+    return <AccordionItem data-has-children={${aa.subAccordions.length > 0}}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 ${aa.header}

@@ -31,6 +31,6 @@ module.exports = {
         "react-infinite-scroll-component": "InfiniteScroll",
         "react-debounce-input": 'DebounceInput',
         "axios": "axios",
-        "papaparse": "Papa",
+        "react-accessible-accordion": "reactAccessibleAccordion"
     }
 };

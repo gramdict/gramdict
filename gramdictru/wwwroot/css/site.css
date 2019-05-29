@@ -624,3 +624,59 @@ a.contents-link {
 .__react_component_tooltip.show {
     opacity: 1;
 }
+
+
+/**
+* ----------------------------------------------
+* Accordion Styles
+* ----------------------------------------------
+**/
+.accordion__button {
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+.accordion__button:hover {
+    background-color: #ddd;
+}
+
+.accordion__item[data-has-children=true] > .accordion__heading > .accordion__button:before {
+    display: inline-block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-right: 12px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+    transform: rotate(45deg) !important;
+}
+
+.accordion__panel {
+    padding-left: 20px;
+    animation: accordion-fade-in 0.35s ease-in;
+}
+
+@keyframes accordion-fade-in {
+     0% {
+         opacity: 0;
+     }
+
+     100% {
+         opacity: 1;
+     }
+ }
+
+/**
+* ----------------------------------------------
+* End of Accordion Styles
+* ----------------------------------------------
+**/
