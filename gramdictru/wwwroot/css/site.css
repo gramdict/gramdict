@@ -157,12 +157,12 @@ p {
     text-indent: 2em;
 }
 
-code, word-end {
+code, word-end, .word-end {
     font-family: Times;
     font-style: italic;
 }
 
-word-end {
+word-end, .word-end {
     white-space: nowrap;
 }
 
