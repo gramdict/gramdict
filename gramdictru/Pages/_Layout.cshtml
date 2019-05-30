@@ -70,6 +70,14 @@
                                     page.removeAttribute('style');
                                 }else {
                                     page.style.transform= 'translateY('+filter_wrapper.offsetHeight+'px)';
+                                    $(".filter-table-wrap").mCustomScrollbar({
+                                        axis: 'x', // horizontal scrollbar
+                                        scrollbarPosition: 'outside',                       
+                                        autoDraggerLength: false,
+                                        alwaysShowScrollbar: 2,
+                                        updateOnContentResize: true,                    
+                                    });
+
                                 }
                                 clearInterval(timerId);
                             }            
