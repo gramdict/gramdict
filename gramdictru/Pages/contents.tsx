@@ -11,7 +11,7 @@ import {
 } from 'react-accessible-accordion';
 
 function Preface() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={1}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface">Предисловие</a>
@@ -21,7 +21,7 @@ function Preface() {
 }
 
 function Preface1InverseOrder() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#inverse-order">Инверсионный порядок слов</a>
@@ -31,7 +31,7 @@ function Preface1InverseOrder() {
 }
 
 function Preface1Classes() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#classes">Грамматические разряды</a>
@@ -41,7 +41,7 @@ function Preface1Classes() {
 }
 
 function Preface1Immutable() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#immutable">Неизменяемые существительные</a>
@@ -51,7 +51,7 @@ function Preface1Immutable() {
 }
 
 function Preface1SingulariaTantum() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#singularia-tantum">Singularia tantum</a>
@@ -61,7 +61,7 @@ function Preface1SingulariaTantum() {
 }
 
 function Preface1PluraliaTantum() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#pluralia-tantum">Pluralia tantum</a>
@@ -71,7 +71,7 @@ function Preface1PluraliaTantum() {
 }
 
 function Preface1Nouns() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#nouns">Существительные</a>
@@ -88,7 +88,7 @@ function Preface1Nouns() {
 }
 
 function Preface1ShortForms() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#short-forms">Краткие формы</a>
@@ -98,7 +98,7 @@ function Preface1ShortForms() {
 }
 
 function Preface1Comparative() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#comparative">Сравнительная степень</a>
@@ -108,7 +108,7 @@ function Preface1Comparative() {
 }
 
 function Preface1Adjectives() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#adjectives">Прилагательные</a>
@@ -124,7 +124,7 @@ function Preface1Adjectives() {
 }
 
 function Preface1Pronouns() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#pronouns">Местоимения</a>
@@ -134,7 +134,7 @@ function Preface1Pronouns() {
 }
 
 function Preface1Numerals() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#numerals">Числительные</a>
@@ -144,7 +144,7 @@ function Preface1Numerals() {
 }
 
 function Preface1Verbs() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#verbs">Глаголы</a>
@@ -154,7 +154,7 @@ function Preface1Verbs() {
 }
 
 function Preface1Potential() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#potential">Потенциальные формы</a>
@@ -164,7 +164,7 @@ function Preface1Potential() {
 }
 
 function Preface1Difficulty() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#difficulty">Затрудненность</a>
@@ -174,7 +174,7 @@ function Preface1Difficulty() {
 }
 
 function Preface1UnstableAnimacy() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#unstable-animacy">Неустойчивая одушевленность</a>
@@ -184,7 +184,7 @@ function Preface1UnstableAnimacy() {
 }
 
 function Preface1UnstableAspect() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#unstable-aspect">Неустойчивый глагольный вид</a>
@@ -194,7 +194,7 @@ function Preface1UnstableAspect() {
 }
 
 function Preface1Sources() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#sources">Источники и словник словаря</a>
@@ -204,7 +204,7 @@ function Preface1Sources() {
 }
 
 function Preface1Norm() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1#norm">Нормативность словаря и отражение вариантов</a>
@@ -214,7 +214,7 @@ function Preface1Norm() {
 }
 
 function Preface1() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={1}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="preface1">Предисловие к первому изданию</a>
@@ -241,7 +241,7 @@ function Preface1() {
 }
 
 function HowtouseOrder() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#order">Способ записи слов и порядок их расположения</a>
@@ -251,7 +251,7 @@ function HowtouseOrder() {
 }
 
 function HowtouseMainSymbol() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#main-symbol">Основной буквенный символ</a>
@@ -261,7 +261,7 @@ function HowtouseMainSymbol() {
 }
 
 function HowtouseDigits() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#digits">Цифры</a>
@@ -271,7 +271,7 @@ function HowtouseDigits() {
 }
 
 function HowtouseZvezdochka() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#zvezdochka">Надстрочная звездочка (*) или кружочек (°) при цифре</a>
@@ -281,7 +281,7 @@ function HowtouseZvezdochka() {
 }
 
 function HowtouseLatin() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#latin">Латинская буква</a>
@@ -291,7 +291,7 @@ function HowtouseLatin() {
 }
 
 function HowtouseRussianchars() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#russianchars">Русская буква или буквенная последовательность</a>
@@ -301,7 +301,7 @@ function HowtouseRussianchars() {
 }
 
 function HowtouseChare() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#chare">Знак «ё»</a>
@@ -311,7 +311,7 @@ function HowtouseChare() {
 }
 
 function HowtouseAngleBrackets() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#angle-brackets">Угловые скобки</a>
@@ -321,7 +321,7 @@ function HowtouseAngleBrackets() {
 }
 
 function HowtouseIndex() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#index">Индекс</a>
@@ -341,7 +341,7 @@ function HowtouseIndex() {
 }
 
 function HowtouseZnak1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak1">Знаки —, ☓, ☒, ∼.</a>
@@ -351,7 +351,7 @@ function HowtouseZnak1() {
 }
 
 function HowtouseZnak2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak2">Знак + внутри индекса</a>
@@ -361,7 +361,7 @@ function HowtouseZnak2() {
 }
 
 function HowtouseZnak3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak3">Пометы П<sub>2</sub> и Р<sub>2</sub></a>
@@ -371,7 +371,7 @@ function HowtouseZnak3() {
 }
 
 function HowtouseZnak4() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak4">Помета «§...»</a>
@@ -381,7 +381,7 @@ function HowtouseZnak4() {
 }
 
 function HowtouseZnak5() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak5">Отсылка к другому слову</a>
@@ -391,7 +391,7 @@ function HowtouseZnak5() {
 }
 
 function HowtouseZnak6() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak6">Различные словесные указания о формах</a>
@@ -401,7 +401,7 @@ function HowtouseZnak6() {
 }
 
 function HowtouseZnak7() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak7">Указание значения</a>
@@ -411,7 +411,7 @@ function HowtouseZnak7() {
 }
 
 function HowtouseZnak8() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak8">Указания за знаком △</a>
@@ -421,7 +421,7 @@ function HowtouseZnak8() {
 }
 
 function HowtouseZnak9() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak9">Указания за знаком ✧</a>
@@ -431,7 +431,7 @@ function HowtouseZnak9() {
 }
 
 function HowtouseZnak10() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#znak10">Указания за знаком ◑</a>
@@ -441,7 +441,7 @@ function HowtouseZnak10() {
 }
 
 function HowtouseAdditionalSymbols() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#additional-symbols">Дополнительные пометы и указания</a>
@@ -465,7 +465,7 @@ function HowtouseAdditionalSymbols() {
 }
 
 function HowtouseFormat() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#format">Строение словарной статьи</a>
@@ -482,7 +482,7 @@ function HowtouseFormat() {
 }
 
 function HowtouseSpecial1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special1">Сокращенная запись форм</a>
@@ -492,7 +492,7 @@ function HowtouseSpecial1() {
 }
 
 function HowtouseSpecial2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special2">Омонимы</a>
@@ -502,7 +502,7 @@ function HowtouseSpecial2() {
 }
 
 function HowtouseSpecial3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special3">Слова с ограниченной сочетаемостью</a>
@@ -512,7 +512,7 @@ function HowtouseSpecial3() {
 }
 
 function HowtouseSpecial4() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special4">Оформление вариантов</a>
@@ -522,7 +522,7 @@ function HowtouseSpecial4() {
 }
 
 function HowtouseSpecial5() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special5">Квадратные скобки</a>
@@ -532,7 +532,7 @@ function HowtouseSpecial5() {
 }
 
 function HowtouseSpecialCases() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#special-cases">Особые случаи оформления словарной статьи</a>
@@ -551,7 +551,7 @@ function HowtouseSpecialCases() {
 }
 
 function HowtouseBuild1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#build1">Построение с помощью образцов</a>
@@ -561,7 +561,7 @@ function HowtouseBuild1() {
 }
 
 function HowtouseBuild2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#build2">Построение непосредственно по индексу</a>
@@ -571,7 +571,7 @@ function HowtouseBuild2() {
 }
 
 function HowtouseBuildingForms() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#building-forms">Как построить нужные формы слова</a>
@@ -587,7 +587,7 @@ function HowtouseBuildingForms() {
 }
 
 function HowtouseAbbreviations() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#abbreviations">Условные сокращения</a>
@@ -597,7 +597,7 @@ function HowtouseAbbreviations() {
 }
 
 function HowtouseCondisional2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#condisional2">Условные знаки</a>
@@ -607,7 +607,7 @@ function HowtouseCondisional2() {
 }
 
 function HowtouseCondisional() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse#condisional">Условные знаки и сокращения</a>
@@ -623,7 +623,7 @@ function HowtouseCondisional() {
 }
 
 function Howtouse() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={1}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="howtouse">Как пользоваться словарем</a>
@@ -642,7 +642,7 @@ function Howtouse() {
 }
 
 function DeclensionSymbolsMainCharacters() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#main-characters">Основная синтаксическая характеристика имени</a>
@@ -652,7 +652,7 @@ function DeclensionSymbolsMainCharacters() {
 }
 
 function DeclensionSymbolsStandart1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#standart1">Стандартные окончания субстантивного склонения</a>
@@ -662,7 +662,7 @@ function DeclensionSymbolsStandart1() {
 }
 
 function DeclensionSymbolsS1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={7}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#s1">Полные формы</a>
@@ -672,7 +672,7 @@ function DeclensionSymbolsS1() {
 }
 
 function DeclensionSymbolsS2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={7}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#s2">Краткие формы</a>
@@ -682,7 +682,7 @@ function DeclensionSymbolsS2() {
 }
 
 function DeclensionSymbolsStandart2() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#standart2">Стандартные окончания адъективного склонения</a>
@@ -698,7 +698,7 @@ function DeclensionSymbolsStandart2() {
 }
 
 function DeclensionSymbolsStandart3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#standart3">Стандартные окончания местоименного склонения</a>
@@ -708,7 +708,7 @@ function DeclensionSymbolsStandart3() {
 }
 
 function DeclensionSymbolsMainMorph() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#main-morph">
@@ -727,7 +727,7 @@ function DeclensionSymbolsMainMorph() {
 }
 
 function DeclensionSymbolsMainSymbol() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#main-symbol">Буквенные символы</a>
@@ -743,7 +743,7 @@ function DeclensionSymbolsMainSymbol() {
 }
 
 function DeclensionSymbolsChoose1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#choose1">Прилагательные</a>
@@ -753,7 +753,7 @@ function DeclensionSymbolsChoose1() {
 }
 
 function DeclensionSymbolsChoose2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#choose2">Существительные</a>
@@ -763,7 +763,7 @@ function DeclensionSymbolsChoose2() {
 }
 
 function DeclensionSymbolsChoose3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#choose3">Местоимения и числительные</a>
@@ -773,7 +773,7 @@ function DeclensionSymbolsChoose3() {
 }
 
 function DeclensionSymbolsChoose() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#choose">Выбор нужной группы окончаний в приведенных выше таблицах</a>
@@ -790,7 +790,7 @@ function DeclensionSymbolsChoose() {
 }
 
 function DeclensionSymbolsC1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#c1">Отличия типов склонения 3—7 от 1, 2</a>
@@ -800,7 +800,7 @@ function DeclensionSymbolsC1() {
 }
 
 function DeclensionSymbolsMeaning1() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning1">Цифра индекса</a>
@@ -815,7 +815,7 @@ function DeclensionSymbolsMeaning1() {
 }
 
 function DeclensionSymbolsMeaning2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning2">Звездочка при цифре</a>
@@ -825,7 +825,7 @@ function DeclensionSymbolsMeaning2() {
 }
 
 function DeclensionSymbolsMeaning3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning3">Кружочек при цифре</a>
@@ -835,7 +835,7 @@ function DeclensionSymbolsMeaning3() {
 }
 
 function DeclensionSymbolsScheme1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme1">Основные схемы ударения (без штрихов)</a>
@@ -845,7 +845,7 @@ function DeclensionSymbolsScheme1() {
 }
 
 function DeclensionSymbolsScheme2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme2">Образцы основных схем ударения</a>
@@ -855,7 +855,7 @@ function DeclensionSymbolsScheme2() {
 }
 
 function DeclensionSymbolsScheme3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme3">Второстепенные схемы ударения (со штрихами)</a>
@@ -865,7 +865,7 @@ function DeclensionSymbolsScheme3() {
 }
 
 function DeclensionSymbolsLatin1() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#latin1">Схемы ударения в субстантивном склонении</a>
@@ -882,7 +882,7 @@ function DeclensionSymbolsLatin1() {
 }
 
 function DeclensionSymbolsScheme4() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme4">Схемы ударения полных форм</a>
@@ -892,7 +892,7 @@ function DeclensionSymbolsScheme4() {
 }
 
 function DeclensionSymbolsScheme5() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme5">Образцы схем ударения кратких форм</a>
@@ -902,7 +902,7 @@ function DeclensionSymbolsScheme5() {
 }
 
 function DeclensionSymbolsScheme6() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#scheme6">Второстепенные схемы ударения (со штрихами)</a>
@@ -912,7 +912,7 @@ function DeclensionSymbolsScheme6() {
 }
 
 function DeclensionSymbolsLatin2() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#latin2">Схемы ударения в адъективном склонении</a>
@@ -929,7 +929,7 @@ function DeclensionSymbolsLatin2() {
 }
 
 function DeclensionSymbolsLatin3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#latin3">Схемы ударения в местоименном склонении</a>
@@ -939,7 +939,7 @@ function DeclensionSymbolsLatin3() {
 }
 
 function DeclensionSymbolsAdditional1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#additional1">Правило о положении ударения внутри основы</a>
@@ -949,7 +949,7 @@ function DeclensionSymbolsAdditional1() {
 }
 
 function DeclensionSymbolsAdditional2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#additional2">Правило о положении ударения внутри окончания</a>
@@ -959,7 +959,7 @@ function DeclensionSymbolsAdditional2() {
 }
 
 function DeclensionSymbolsAdditional3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#additional3">Правило о положении ударения при неслоговом окончании</a>
@@ -969,7 +969,7 @@ function DeclensionSymbolsAdditional3() {
 }
 
 function DeclensionSymbolsLatin4() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#latin4">Дополнительные правила об ударении</a>
@@ -986,7 +986,7 @@ function DeclensionSymbolsLatin4() {
 }
 
 function DeclensionSymbolsMeaning4() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning4">
@@ -1006,7 +1006,7 @@ function DeclensionSymbolsMeaning4() {
 }
 
 function DeclensionSymbolsCircledNumber() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#circled-number">Цифра в кружке</a>
@@ -1016,7 +1016,7 @@ function DeclensionSymbolsCircledNumber() {
 }
 
 function DeclensionSymbolsYo() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#yo">Помета «ё»</a>
@@ -1026,7 +1026,7 @@ function DeclensionSymbolsYo() {
 }
 
 function DeclensionSymbolsBuildUsingIndex() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#build-using-index">Построение форм склонения по индексу</a>
@@ -1036,7 +1036,7 @@ function DeclensionSymbolsBuildUsingIndex() {
 }
 
 function DeclensionSymbolsBuildComparative() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#build-comparative">Построение сравнительной степени прилагательных</a>
@@ -1046,7 +1046,7 @@ function DeclensionSymbolsBuildComparative() {
 }
 
 function DeclensionSymbolsMeaning() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning">Значение буквенных символов и элементов индекса у имен</a>
@@ -1070,7 +1070,7 @@ function DeclensionSymbolsMeaning() {
 }
 
 function DeclensionSymbolsPatterns1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns1">Полные и сокращенные парадигмы</a>
@@ -1080,7 +1080,7 @@ function DeclensionSymbolsPatterns1() {
 }
 
 function DeclensionSymbolsPatterns2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns2">Особенности, связанные с одушевленностью — неодушевленностью существительных</a>
@@ -1090,7 +1090,7 @@ function DeclensionSymbolsPatterns2() {
 }
 
 function DeclensionSymbolsRestoreParadigm() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#restore-paradigm">Правила восстановления невыписанных форм парадигмы</a>
@@ -1100,7 +1100,7 @@ function DeclensionSymbolsRestoreParadigm() {
 }
 
 function DeclensionSymbolsPatterns4() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns4">Как найти нужный образец</a>
@@ -1110,7 +1110,7 @@ function DeclensionSymbolsPatterns4() {
 }
 
 function DeclensionSymbolsFound1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#found1">Особое правило о винительном падеже существительных</a>
@@ -1120,7 +1120,7 @@ function DeclensionSymbolsFound1() {
 }
 
 function DeclensionSymbolsFound2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#found2">Общие правила построения форм по заданному образцу</a>
@@ -1130,7 +1130,7 @@ function DeclensionSymbolsFound2() {
 }
 
 function DeclensionSymbolsFound3() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#found3">Буквенный состав формы А'</a>
@@ -1140,7 +1140,7 @@ function DeclensionSymbolsFound3() {
 }
 
 function DeclensionSymbolsFound4() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#found4">Ударение формы А'</a>
@@ -1150,7 +1150,7 @@ function DeclensionSymbolsFound4() {
 }
 
 function DeclensionSymbolsPatterns5() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns5">Как просклонять слово по найденному образцу</a>
@@ -1168,7 +1168,7 @@ function DeclensionSymbolsPatterns5() {
 }
 
 function DeclensionSymbolsPatterns6() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns6">Субстантивное склонение</a>
@@ -1178,7 +1178,7 @@ function DeclensionSymbolsPatterns6() {
 }
 
 function DeclensionSymbolsA1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#a1">Типы 1—7</a>
@@ -1188,7 +1188,7 @@ function DeclensionSymbolsA1() {
 }
 
 function DeclensionSymbolsA2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#a2">Схема ударения а</a>
@@ -1198,7 +1198,7 @@ function DeclensionSymbolsA2() {
 }
 
 function DeclensionSymbolsM1() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#m1">А. Индексы простые</a>
@@ -1214,7 +1214,7 @@ function DeclensionSymbolsM1() {
 }
 
 function DeclensionSymbolsPatterns7() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns7">Мужской род</a>
@@ -1229,7 +1229,7 @@ function DeclensionSymbolsPatterns7() {
 }
 
 function Адъективноесклонение() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <span>Адъективное склонение</span>
@@ -1239,7 +1239,7 @@ function Адъективноесклонение() {
 }
 
 function DeclensionSymbolsD1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#d1">Склонение числительных 50, 60, 70, 80</a>
@@ -1249,7 +1249,7 @@ function DeclensionSymbolsD1() {
 }
 
 function DeclensionSymbolsD2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#d2">Склонение названий сотен</a>
@@ -1259,7 +1259,7 @@ function DeclensionSymbolsD2() {
 }
 
 function Склонениечислительных() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <span>Склонение числительных</span>
@@ -1275,7 +1275,7 @@ function Склонениечислительных() {
 }
 
 function DeclensionSymbolsPatterns() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#patterns">Образцы склонения</a>
@@ -1298,7 +1298,7 @@ function DeclensionSymbolsPatterns() {
 }
 
 function DeclensionSymbolsMinusNouns() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#minus-nouns">Знак — (минус) (у существительных)</a>
@@ -1308,7 +1308,7 @@ function DeclensionSymbolsMinusNouns() {
 }
 
 function DeclensionSymbolsMinusAdjectives() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#minus-adjectives">Знак — (минус) (у прилагательных)</a>
@@ -1318,7 +1318,7 @@ function DeclensionSymbolsMinusAdjectives() {
 }
 
 function DeclensionSymbolsCrossAdjectives() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#cross-adjectives">Знак <span className="cross"></span> (у прилагательных)</a>
@@ -1328,7 +1328,7 @@ function DeclensionSymbolsCrossAdjectives() {
 }
 
 function DeclensionSymbolsBoxedCrossAdjectives() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#boxed-cross-adjectives">Знак <span className="boxed-cross"></span> (у прилагательных)</a>
@@ -1338,7 +1338,7 @@ function DeclensionSymbolsBoxedCrossAdjectives() {
 }
 
 function DeclensionSymbolsTildeAdjectives() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#tilde-adjectives">Знак ~ (у прилагательных)</a>
@@ -1348,7 +1348,7 @@ function DeclensionSymbolsTildeAdjectives() {
 }
 
 function DeclensionSymbolsP2Nouns() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#p2-nouns">Помета П<sub>2</sub> (у существительных)</a>
@@ -1358,7 +1358,7 @@ function DeclensionSymbolsP2Nouns() {
 }
 
 function DeclensionSymbolsR2Nouns() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#r2-nouns">Помета Р<sub>2</sub> (у существительных)</a>
@@ -1368,7 +1368,7 @@ function DeclensionSymbolsR2Nouns() {
 }
 
 function DeclensionSymbolsMeaningAdditional() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#meaning-additional">Значение дополнительных помет и указаний при именах</a>
@@ -1389,7 +1389,7 @@ function DeclensionSymbolsMeaningAdditional() {
 }
 
 function DeclensionStressed_prepositionStr1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/stressed_preposition#str1">Существительные</a>
@@ -1399,7 +1399,7 @@ function DeclensionStressed_prepositionStr1() {
 }
 
 function DeclensionStressed_prepositionStr2() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/stressed_preposition#str2">Числительные</a>
@@ -1409,7 +1409,7 @@ function DeclensionStressed_prepositionStr2() {
 }
 
 function DeclensionStressed_preposition() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/stressed_preposition">Сведения о переносе ударения на предлог (у существительных и числительных)</a>
@@ -1425,7 +1425,7 @@ function DeclensionStressed_preposition() {
 }
 
 function DeclensionParagraphs() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/paragraphs">Дополнительные особенности в склонении</a>&nbsp;<br />&nbsp;<a href="declension/paragraphs#para1">§1</a>&nbsp;<a href="declension/paragraphs#para2">§2</a>&nbsp;<a href="declension/paragraphs#para3">§3</a>&nbsp;<a href="declension/paragraphs#para4">§4</a>&nbsp;<a href="declension/paragraphs#para5">§5</a>&nbsp;<a href="declension/paragraphs#para6">§6</a>&nbsp;<a href="declension/paragraphs#para7">§7</a>&nbsp;<a href="declension/paragraphs#para8">§8</a>&nbsp;<a href="declension/paragraphs#para9">§9</a>&nbsp;<a href="declension/paragraphs#para10">§10</a>&nbsp;<a href="declension/paragraphs#para11">§11</a>&nbsp;<a href="declension/paragraphs#para12">§12</a>
@@ -1435,7 +1435,7 @@ function DeclensionParagraphs() {
 }
 
 function DeclensionSymbolsDeclension() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols#declension">Склонение</a>
@@ -1454,7 +1454,7 @@ function DeclensionSymbolsDeclension() {
 }
 
 function ConjugationVerbSymbol() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#verb-symbol">Буквенные символы</a>
@@ -1464,7 +1464,7 @@ function ConjugationVerbSymbol() {
 }
 
 function ConjugationHead51() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head51">Стандартные чередования согласных</a>
@@ -1474,7 +1474,7 @@ function ConjugationHead51() {
 }
 
 function ConjugationHead52() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head52">Таблица типов спряжения</a>
@@ -1484,7 +1484,7 @@ function ConjugationHead52() {
 }
 
 function ConjugationHead42() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head42">Цифра индекса</a>
@@ -1500,7 +1500,7 @@ function ConjugationHead42() {
 }
 
 function ConjugationHead43() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head43">Звездочка при цифре</a>
@@ -1510,7 +1510,7 @@ function ConjugationHead43() {
 }
 
 function ConjugationHead44() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head44">Кружочек при цифре</a>
@@ -1520,7 +1520,7 @@ function ConjugationHead44() {
 }
 
 function ConjugationHead61() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head61">Образцы основных схем ударения настоящего времени</a>
@@ -1530,7 +1530,7 @@ function ConjugationHead61() {
 }
 
 function ConjugationHead53() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head53">Схемы ударения настоящего времени</a>
@@ -1545,7 +1545,7 @@ function ConjugationHead53() {
 }
 
 function ConjugationHead62() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head62">Образцы схем ударения прошедшего времени</a>
@@ -1555,7 +1555,7 @@ function ConjugationHead62() {
 }
 
 function ConjugationHead54() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head54">Схемы ударения прошедшего времени</a>
@@ -1570,7 +1570,7 @@ function ConjugationHead54() {
 }
 
 function ConjugationHead63() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head63">Правило о положении ударения внутри основы</a>
@@ -1580,7 +1580,7 @@ function ConjugationHead63() {
 }
 
 function ConjugationHead64() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head64">Правило о положении ударения внутри окончания</a>
@@ -1590,7 +1590,7 @@ function ConjugationHead64() {
 }
 
 function ConjugationHead65() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head65">Правило о положении ударения при неслоговом окончании</a>
@@ -1600,7 +1600,7 @@ function ConjugationHead65() {
 }
 
 function ConjugationHead55() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head55">Дополнительные правила об ударении</a>
@@ -1617,7 +1617,7 @@ function ConjugationHead55() {
 }
 
 function ConjugationHead45() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head45">Латинская буква</a>
@@ -1634,7 +1634,7 @@ function ConjugationHead45() {
 }
 
 function ConjugationAlternation() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#alternation">Русская буква или буквенная последовательность в скобках</a>
@@ -1644,7 +1644,7 @@ function ConjugationAlternation() {
 }
 
 function ConjugationDigitsinround() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#digitsinround">
@@ -1656,7 +1656,7 @@ function ConjugationDigitsinround() {
 }
 
 function ConjugationVerbYo() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#verb-yo">Помета «ё» (или «о»)</a>
@@ -1666,7 +1666,7 @@ function ConjugationVerbYo() {
 }
 
 function ConjugationHead31() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation#head31">Значение буквенных символов и элементов индекса у глаголов</a>
@@ -1688,7 +1688,7 @@ function ConjugationHead31() {
 }
 
 function ConjugationSymbolsPresentFuture() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#present-future">Настоящее-будущее время</a>
@@ -1698,7 +1698,7 @@ function ConjugationSymbolsPresentFuture() {
 }
 
 function ConjugationSymbolsPast() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#past">Прошедшее время</a>
@@ -1708,7 +1708,7 @@ function ConjugationSymbolsPast() {
 }
 
 function ConjugationSymbolsFuture() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#future">Будущее время несовершенного вида</a>
@@ -1718,7 +1718,7 @@ function ConjugationSymbolsFuture() {
 }
 
 function ConjugationSymbolsImperative() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#imperative">Повелительное наклонение</a>
@@ -1728,7 +1728,7 @@ function ConjugationSymbolsImperative() {
 }
 
 function ConjugationSymbolsSubjunctive() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#subjunctive">Сослагательное наклонение</a>
@@ -1738,7 +1738,7 @@ function ConjugationSymbolsSubjunctive() {
 }
 
 function ConjugationSymbolsHead511() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head511">Личные формы на <span className="word-end">-ся</span> (<span className="word-end">-сь</span>) со страдательным значением</a>
@@ -1748,7 +1748,7 @@ function ConjugationSymbolsHead511() {
 }
 
 function ConjugationSymbolsHead46() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head46">Личные формы</a>
@@ -1768,7 +1768,7 @@ function ConjugationSymbolsHead46() {
 }
 
 function ConjugationSymbolsHead512() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head512">Действительное причастие настоящего времени</a>
@@ -1778,7 +1778,7 @@ function ConjugationSymbolsHead512() {
 }
 
 function ConjugationSymbolsHead513() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head513">Деепричастие настоящего времени</a>
@@ -1788,7 +1788,7 @@ function ConjugationSymbolsHead513() {
 }
 
 function ConjugationSymbolsHead514() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head514">Действительное причастие прошедшего времени</a>
@@ -1798,7 +1798,7 @@ function ConjugationSymbolsHead514() {
 }
 
 function ConjugationSymbolsHead515() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head515">Деепричастие прошедшего времени</a>
@@ -1808,7 +1808,7 @@ function ConjugationSymbolsHead515() {
 }
 
 function ConjugationSymbolsHead516() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head516">Страдательное причастие настоящего времени</a>
@@ -1818,7 +1818,7 @@ function ConjugationSymbolsHead516() {
 }
 
 function ConjugationSymbolsHead517() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head517">Страдательное причастие прошедшего времени</a>
@@ -1828,7 +1828,7 @@ function ConjugationSymbolsHead517() {
 }
 
 function ConjugationSymbolsHead518() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head518">Неличные формы на <span className="word-end">-ся</span> (<span className="word-end">-сь</span>) со страдательным значением</a>
@@ -1838,7 +1838,7 @@ function ConjugationSymbolsHead518() {
 }
 
 function ConjugationSymbolsHead47() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#head47">Неличные формы</a>
@@ -1859,7 +1859,7 @@ function ConjugationSymbolsHead47() {
 }
 
 function ConjugationSymbolsBuildUsingIndex() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols#build-using-index">Построение глагольных форм по индексу</a>
@@ -1875,7 +1875,7 @@ function ConjugationSymbolsBuildUsingIndex() {
 }
 
 function ConjugationModelsHead66() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head66">Правило распределения <strong>-ся</strong> и <strong>-сь</strong></a>
@@ -1885,7 +1885,7 @@ function ConjugationModelsHead66() {
 }
 
 function ConjugationModelsHead519() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head519">Особенность возвратных глаголов</a>
@@ -1900,7 +1900,7 @@ function ConjugationModelsHead519() {
 }
 
 function ConjugationModelsHead67() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head67">Наст. (буд.) и повел.</a>
@@ -1910,7 +1910,7 @@ function ConjugationModelsHead67() {
 }
 
 function ConjugationModelsHead68() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head68">Прош.</a>
@@ -1920,7 +1920,7 @@ function ConjugationModelsHead68() {
 }
 
 function ConjugationModelsHead69() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head69">Прич. страд.</a>
@@ -1930,7 +1930,7 @@ function ConjugationModelsHead69() {
 }
 
 function ConjugationModelsHead520() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head520">Сокращенная запись глагольной парадигмы и восстановление остальных форм по этой записи</a>
@@ -1947,7 +1947,7 @@ function ConjugationModelsHead520() {
 }
 
 function ConjugationModelsHead521() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head521">Как найти нужный образец (или образцы)</a>
@@ -1957,7 +1957,7 @@ function ConjugationModelsHead521() {
 }
 
 function ConjugationModelsHead522() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#head522">Как проспрягать глагол по найденному образцу</a>
@@ -1967,7 +1967,7 @@ function ConjugationModelsHead522() {
 }
 
 function ConjugationModelsShape() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models#shape">Состав форм у глаголов разных грамматических групп</a>
@@ -1985,7 +1985,7 @@ function ConjugationModelsShape() {
 }
 
 function ConjugationModels() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/models">Образцы спряжения</a>
@@ -2000,7 +2000,7 @@ function ConjugationModels() {
 }
 
 function ConjugationSymbols2VerbCross() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#verb-cross">Знак <span className="cross"></span></a>
@@ -2010,7 +2010,7 @@ function ConjugationSymbols2VerbCross() {
 }
 
 function ConjugationSymbols2VerbBoxedCross() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#verb-boxed-cross">Знак <span className="boxed-cross"></span></a>
@@ -2020,7 +2020,7 @@ function ConjugationSymbols2VerbBoxedCross() {
 }
 
 function ConjugationSymbols2Zhd() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#zhd">Запись «прич. страд. -жд-»</a>
@@ -2030,7 +2030,7 @@ function ConjugationSymbols2Zhd() {
 }
 
 function ConjugationSymbols2Forms() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#forms">Формы, приведенные полностью, но не за знаком Δ</a>
@@ -2040,7 +2040,7 @@ function ConjugationSymbols2Forms() {
 }
 
 function ConjugationSymbols2Stressed_particle() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#stressed_particle">Сведения о переносе ударения на частицу</a>
@@ -2050,7 +2050,7 @@ function ConjugationSymbols2Stressed_particle() {
 }
 
 function ConjugationSymbols2AspectImperfect() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#aspect-imperfect">Построение глагола несовершенного вида</a>&nbsp;<a href="conjugation/symbols2#aspect-I">◑I</a>&nbsp;<a href="conjugation/symbols2#aspect-II">◑II</a>&nbsp;<a href="conjugation/symbols2#aspect-III">◑III</a>
@@ -2060,7 +2060,7 @@ function ConjugationSymbols2AspectImperfect() {
 }
 
 function ConjugationSymbols2Table1() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#table1">Таблица построения глаголов совершенного вида</a>
@@ -2070,7 +2070,7 @@ function ConjugationSymbols2Table1() {
 }
 
 function ConjugationSymbols2AspectPerfect() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#aspect-perfect">Построение глагола совершенного вида</a>
@@ -2085,7 +2085,7 @@ function ConjugationSymbols2AspectPerfect() {
 }
 
 function ConjugationSymbols2Aspect() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2#aspect">Указания за знаком ◑ – сведения о глаголе противоположного вида</a>
@@ -2101,7 +2101,7 @@ function ConjugationSymbols2Aspect() {
 }
 
 function Дополнительныеособенностивспряжении() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <span>Дополнительные особенности в спряжении</span>&nbsp;<br />&nbsp;<a href="conjugation/symbols2#para13">§13</a>&nbsp;<a href="conjugation/symbols2#para14">§14</a>&nbsp;<a href="conjugation/symbols2#para15">§15</a>&nbsp;<a href="conjugation/symbols2#para16">§16</a>&nbsp;<a href="conjugation/symbols2#para17">§17</a>&nbsp;<a href="conjugation/symbols2#para18">§18</a>
@@ -2111,7 +2111,7 @@ function Дополнительныеособенностивспряжении(
 }
 
 function ConjugationSymbols2() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation/symbols2">Значение дополнительных помет и указаний при глаголе</a>
@@ -2132,7 +2132,7 @@ function ConjugationSymbols2() {
 }
 
 function Conjugation() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="conjugation">Спряжение</a>
@@ -2150,7 +2150,7 @@ function Conjugation() {
 }
 
 function DeclensionSymbols() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={1}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="declension/symbols">
@@ -2168,7 +2168,7 @@ function DeclensionSymbols() {
 }
 
 function NamesPrincip() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#princip">Принципы отбора имен собственных</a>
@@ -2178,7 +2178,7 @@ function NamesPrincip() {
 }
 
 function NamesProblem() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#problem">Проблема вариативности ударения и фонетического состава у имен собственных</a>
@@ -2188,7 +2188,7 @@ function NamesProblem() {
 }
 
 function NamesOsoben() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#osoben">Особенности оформления статей</a>
@@ -2198,7 +2198,7 @@ function NamesOsoben() {
 }
 
 function NamesConsokra() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#consokra">Условные сокращения</a>
@@ -2208,7 +2208,7 @@ function NamesConsokra() {
 }
 
 function NamesConznaki() {
-    return <AccordionItem data-has-children={false}>
+    return <AccordionItem data-has-children={false} aria-level={6}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#conznaki">Условные знаки</a>
@@ -2218,7 +2218,7 @@ function NamesConznaki() {
 }
 
 function NamesPom() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={5}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#pom">Пометы, условные знаки</a>
@@ -2234,7 +2234,7 @@ function NamesPom() {
 }
 
 function NamesDopol() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={4}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#dopol">Дополнительные особенности</a>&nbsp;<br />&nbsp;<a href="conjugation/symbols2#para19">§19</a>&nbsp;<a href="conjugation/symbols2#para20">§20</a>&nbsp;<a href="conjugation/symbols2#para21">§21</a>&nbsp;<a href="conjugation/symbols2#para22">§22</a>&nbsp;<a href="conjugation/symbols2#para23">§23</a>&nbsp;<a href="conjugation/symbols2#para24">§24</a>&nbsp;<a href="conjugation/symbols2#para25">§25</a>&nbsp;<a href="conjugation/symbols2#para26">§26</a>&nbsp;<a href="conjugation/symbols2#para27">§27</a>&nbsp;<a href="conjugation/symbols2#para28">§28</a>&nbsp;<a href="conjugation/symbols2#para29">§29</a>&nbsp;<a href="conjugation/symbols2#para30">§30</a>
@@ -2249,7 +2249,7 @@ function NamesDopol() {
 }
 
 function NamesProdacha() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={3}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#prodacha">Подача материала</a>
@@ -2265,7 +2265,7 @@ function NamesProdacha() {
 }
 
 function NamesNames() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={2}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names#names">Имена собственные</a>
@@ -2282,7 +2282,7 @@ function NamesNames() {
 }
 
 function Names() {
-    return <AccordionItem data-has-children={true}>
+    return <AccordionItem data-has-children={true} aria-level={1}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 <a href="names">Приложение. Имена собственные</a>

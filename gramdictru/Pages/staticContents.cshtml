@@ -16,7 +16,7 @@
             );
         }
 
-        function ProcessListItem(listItem) {
+        function ProcessListItem(listItem, depth) {
             const children = listItem.children;
             const header = [];
             let subAccordions = [];
@@ -25,7 +25,7 @@
             for (let child of children) {
                 //if (name == "Дополнительныеособенностивспряжении")
                 if (child.tagName == 'UL') {
-                    subAccordions = ProcessList(child);
+                    subAccordions = ProcessList(child, depth + 1);
                 } else {
                     if (!name) {
                         if (child.tagName === 'A') {
@@ -55,16 +55,17 @@
                 name: name,
                 header: header.join("&nbsp;"),
                 subAccordions: subAccordions,
+                depth: depth,
             };
 
             allAccordions.push(result);
             return result;
         }
 
-        function ProcessList(list) {
+        function ProcessList(list, depth) {
             const accordians = [];
             for (let child of list.children) {
-                accordians.push(ProcessListItem(child).name);
+                accordians.push(ProcessListItem(child, depth).name);
             }
 
             return accordians;
@@ -72,7 +73,7 @@
 
         function Generate() {
             const startOfList = document.getElementById('contents');
-            const rootAccordions = ProcessList(startOfList);
+            const rootAccordions = ProcessList(startOfList, 1);
 
             const mapped = allAccordions.map(aa => {
                 let sub = "";
@@ -83,7 +84,7 @@
 \t\t</AccordionItemPanel>`;
                 }
                 return `function ${aa.name}() {
-    return <AccordionItem data-has-children={${aa.subAccordions.length > 0}}>
+    return <AccordionItem data-has-children={${aa.subAccordions.length > 0}} aria-level={${aa.depth}}>
         <AccordionItemHeading>
             <AccordionItemButton>
                 ${aa.header}
