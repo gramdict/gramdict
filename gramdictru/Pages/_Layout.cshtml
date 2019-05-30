@@ -85,20 +85,27 @@
                 if(!$('#mCSB_1_scrollbar_horizontal').length && $(".filter-table-wrap").length){
                     $(".filter-table-wrap").mCustomScrollbar({
                         axis: 'x', // horizontal scrollbar
-                        scrollbarPosition: 'outside',
-                        // setWidth: '100%',
+                        scrollbarPosition: 'outside',                       
                         autoDraggerLength: false,
-                        // callbacks:{
-                        //     whileScrolling: function(){
-                        //         //$('#mCSB_2_container').css('left', $('#mCSB_1_container').css('left'));
-                        //        // $('#mCSB_2_dragger_horizontal').css('left', $('#mCSB_1_dragger_horizontal').css('left'));                
-
-                        //     }
-                        // }
+                        alwaysShowScrollbar: 2,
+                        updateOnContentResize: true,                    
                     });
                     clearInterval(timerScroll);
                 }
             }, 10);
+
+            if($('.mCustomScrollBox').length){
+                $('.filter-table-wrap').mCustomScrollbar("destroy");
+                $(".filter-table-wrap").mCustomScrollbar({
+                        axis: 'x', // horizontal scrollbar
+                        scrollbarPosition: 'outside',                        
+                        autoDraggerLength: false,
+                        alwaysShowScrollbar: 2,
+                        updateOnContentResize: true,                     
+                });
+
+
+            }
         });
         $(window).resize();
     </script>

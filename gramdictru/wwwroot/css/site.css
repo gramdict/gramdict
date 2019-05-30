@@ -864,6 +864,14 @@ a.contents-link {
     opacity: 1;
 }
 
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail{background: #828282; height: 5px;}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background: #F2994A;}
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{background: #F2994A;}
+.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar{background: #F2994A;}
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100%;}
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{top: 2px;}
+.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 15px; width: 90%; margin: 0 auto;}
+.filter-table-wrap{ position: static !important;}
 
 @media (max-width: 1300px){
     .filter-wrapper{max-width: 90%; flex-wrap: wrap; padding-bottom: 20px;} 
@@ -883,13 +891,6 @@ a.contents-link {
     .search-bar{position: absolute;}
     .filter-table-wrap{width: 60% !important; position: static !important;}
     .filter-table-main{min-width: 700px;}
-
+    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 70px; width: 90%; margin: 0 auto;}
+    .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100px;}
 }
-
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail{background: #828282; height: 5px;}
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100px;}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{top: 2px;}
-.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 70px; width: 90%; margin: 0 auto;}
