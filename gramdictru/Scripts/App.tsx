@@ -51,7 +51,7 @@ reaction(
 function setSearchBarHeight() {
     const newHeight = (document.getElementsByClassName("search-bar")[0].getElementsByClassName("centerer")[0] as HTMLElement)
         .offsetHeight;
-    root.style.setProperty("--search-bar-height", `${newHeight}px`);
+    //root.style.setProperty("--search-bar-height", `${newHeight}px`);
 }
 
 reaction(
@@ -98,13 +98,13 @@ class MyComponent extends React.Component {
             <div className="search-bar">
                 <div className="centerer">
                     <div className="search-controls">
+                        <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
                         <SearchBox applicationState={applicationState} />
                         {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}
-                        <a className="contents-link" href="/contents">Содержание</a>
                     </div>
                     {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
                 </div>
-                <Loader applicationState={applicationState} />
+                
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];

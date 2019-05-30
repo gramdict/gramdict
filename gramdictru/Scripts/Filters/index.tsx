@@ -3,6 +3,7 @@ import ReactTooltip from "react-tooltip";
 import { ApplicationState } from "../ApplicationState";
 import { observer } from "mobx-react";
 import { ListFilters } from "../ListFilter/index";
+import { Loader } from "../Loader/index";
 
 export interface IFilterControlProps
 {
@@ -163,12 +164,14 @@ export class Filters extends React.Component<IFilterControlProps> {
                    </table>
                 <div className="lists-and-reset">
                     <ListFilters applicationState={this.props.applicationState} />
-                    <div className="reset-filter-button-wrapper">
-                        <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
-                    </div>
+                    
                 </div>
             </div>
-            <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
+            <div className="reset-filter-button-wrapper">
+                <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
+                <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
+            </div>   
+            <Loader applicationState={this.props.applicationState} />               
         </div>;
     }
 }

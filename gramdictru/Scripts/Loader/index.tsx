@@ -12,10 +12,12 @@ export class Loader extends React.Component<ILoaderProps> {
     render() {
         if (this.props.applicationState.isLoading) {
             return <div className="loading-bar">
-                <div />
-                <div />
-                <div />
-                <div />
+                <div>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                </div>
             </div>;
         }
 
@@ -28,6 +30,7 @@ export class Loader extends React.Component<ILoaderProps> {
                    </div>;
         }
 
-        return <div className="search-bar-padding" />;
+         return <div className="search-bar-padding" />;
+
     }
 }
