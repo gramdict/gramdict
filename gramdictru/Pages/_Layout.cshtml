@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5700898-10"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/jquery.mCustomScrollbar.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -13,6 +15,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Грамматический словарь русского языка</title>
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Yandex.Metrika counter -->
@@ -76,6 +79,28 @@
                 clearInterval(timerListener);
             }
         }, 100);
+
+        $(window).on('resize', function(){
+            var timerScroll = setInterval(function() {
+                if(!$('#mCSB_1_scrollbar_horizontal').length && $(".filter-table-wrap").length){
+                    $(".filter-table-wrap").mCustomScrollbar({
+                        axis: 'x', // horizontal scrollbar
+                        scrollbarPosition: 'outside',
+                        // setWidth: '100%',
+                        autoDraggerLength: false,
+                        // callbacks:{
+                        //     whileScrolling: function(){
+                        //         //$('#mCSB_2_container').css('left', $('#mCSB_1_container').css('left'));
+                        //        // $('#mCSB_2_dragger_horizontal').css('left', $('#mCSB_1_dragger_horizontal').css('left'));                
+
+                        //     }
+                        // }
+                    });
+                    clearInterval(timerScroll);
+                }
+            }, 10);
+        });
+        $(window).resize();
     </script>
 </body>
 </html>

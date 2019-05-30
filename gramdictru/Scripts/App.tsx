@@ -104,7 +104,7 @@ class MyComponent extends React.Component {
                     </div>
                     {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
                 </div>
-                
+                <Loader applicationState={applicationState} />
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];
