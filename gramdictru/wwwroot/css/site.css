@@ -771,7 +771,7 @@ a.contents-link {
 }
 
 .scrollable-filters {
-    /* overflow-x: auto; */
+    overflow-x: auto;
     display: flex;
     padding-left: 20px;
 }
