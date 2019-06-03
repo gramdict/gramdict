@@ -652,14 +652,14 @@ a.contents-link {
     color: white;
     display: flex;
     /* align-items: flex-end; */
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     position: absolute;
     width: 100%;
     max-width: 1170px;
     background: #333333;
     margin-top: 1px;
     padding: 15px 0;
-    padding-bottom: 45px;
+    /*padding-bottom: 45px;*/
 }
 
 
@@ -773,7 +773,7 @@ a.contents-link {
 .scrollable-filters {
     overflow-x: auto;
     display: flex;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 .list-filters > tbody {
@@ -870,12 +870,14 @@ a.contents-link {
 .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar{background: #F2994A;}
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100%;}
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{top: 2px;}
-.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 15px; width: 90%; margin: 0 auto;}
-.filter-table-wrap{ position: static !important;}
-
-@media (max-width: 1300px){
-    .filter-wrapper{max-width: 90%; flex-wrap: wrap; padding-bottom: 20px;} 
-    .reset-filter-button-wrapper{flex-direction: row; margin-left: 0; padding-left: 20px; margin-top: 50px; width: 100%;}
+/*.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 15px; width: 90%; margin: 0 auto;}*/
+.filter-table-wrap, .scrollable-filters { position: static !important;}
+.filter-table-wrap{display: flex;}
+.filter-wrapper{position: relative;}
+.mCSB_scrollTools{visibility: hidden;}
+@media (max-width: 1300px) {
+    .filter-wrapper {padding: 10px 0;} 
+    .reset-filter-button-wrapper{flex-direction: row; margin-left: 0; padding-left: 20px; margin-top: 40px; width: 100%;}
     .list-filters{border-right: none;}
     .filter-table.list-filters tr td{padding: 8px 15px;}
     .scrollable-filters{width: 100%;}
@@ -891,6 +893,8 @@ a.contents-link {
     .search-bar{position: absolute;}
     .filter-table-wrap{width: 60% !important; position: static !important;}
     .filter-table-main{min-width: 700px;}
-    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 70px; width: 90%; margin: 0 auto;}
+    .lists-and-reset {min-width: 228px;}
+    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 53px; width: 90%; margin: 0 auto;}
     .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100px;}
+    table tr td {padding: 1px 30px;}
 }

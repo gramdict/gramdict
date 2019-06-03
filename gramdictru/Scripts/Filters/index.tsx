@@ -162,10 +162,11 @@ export class Filters extends React.Component<IFilterControlProps> {
                            </tr>)}
                        </tbody>
                    </table>
-                   </div>
+                   
                 <div className="lists-and-reset">
                     <ListFilters applicationState={this.props.applicationState} />
                     
+                </div>
                 </div>
             </div>
             <div className="reset-filter-button-wrapper">
