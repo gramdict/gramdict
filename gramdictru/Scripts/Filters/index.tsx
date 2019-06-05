@@ -132,8 +132,7 @@ export class Filters extends React.Component<IFilterControlProps> {
     render() {
         return <div className="filter-wrapper">
             <div className="scrollable-filters">
-            <div className="filter-table-wrap">
-            <table className="filter-table filter-table-main">
+            <table className="filter-table">
                        <tbody>
                        {possibleFilters.map(row =>
                            <tr>
@@ -162,17 +161,14 @@ export class Filters extends React.Component<IFilterControlProps> {
                            </tr>)}
                        </tbody>
                    </table>
-                   
                 <div className="lists-and-reset">
                     <ListFilters applicationState={this.props.applicationState} />
-                    
-                </div>
+                    <div className="reset-filter-button-wrapper">
+                        <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
+                    </div>
                 </div>
             </div>
-            <div className="reset-filter-button-wrapper">
-                <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
-                <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
-            </div>                 
+            <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
         </div>;
     }
 }

@@ -620,6 +620,8 @@ a.contents-link {
     font-size: medium;
     font-weight: normal;
     margin-top: 0.5rem;
+    z-index: 9999999999999;
+    position: relative;
 }
 
 .search-bar-padding {
@@ -665,8 +667,8 @@ a.contents-link {
 
 
 
-.filter-control.filter-control-open{background-color: #333333; background-image: url('../filter-icon.svg');}
-.filter-control.filter-control-close{background-color: #828282; background-image: url('../filter-icon.svg');}
+.filter-control.fa-chevron-circle-down{background-color: #333333; background-image: url('../filter-icon.svg');}
+.filter-control.fa-chevron-circle-up{background-color: #828282; background-image: url('../filter-icon.svg');}
 
 .filter-control {
     color: white;
@@ -683,6 +685,7 @@ a.contents-link {
     background-repeat: no-repeat;
     background-position: center;
     margin-right: 20px;
+    font-size: 0;
 }
 
 .filter-table {
@@ -744,7 +747,10 @@ a.contents-link {
 }
 
 .reset-filter-button-wrapper {
-    margin-left: 0.45em;
+    display: flex;    
+    align-items: center;
+    justify-content: center;   
+    
 }
 
 .reset-filter-button {
@@ -763,10 +769,8 @@ a.contents-link {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    font-weight: 600;
-    font-size: 16px;
-    border-left: 1px solid #4F4F4F;
-    border-right: 1px solid #4F4F4F;
+    /* font-weight: 600; */
+    font-size: 16px;    
     padding: 0px 15px;
 }
 
@@ -790,6 +794,8 @@ a.contents-link {
     display: flex;
     flex-direction: column;
     align-self: stretch;
+    border-left: 1px solid #4F4F4F;
+    border-right: 1px solid #4F4F4F;
 }
 
 .filter-totals {
@@ -798,16 +804,10 @@ a.contents-link {
     font-size: 14px;
     font-weight: 500;
     text-align: right;
+    align-self: flex-end;
 }
 
-.reset-filter-button-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-grow: 1;
-    padding-right: 20px;
-}
+
 
 .smallbr {
     line-height: 50%;
@@ -871,30 +871,22 @@ a.contents-link {
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100%;}
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{top: 2px;}
 /*.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 15px; width: 90%; margin: 0 auto;}*/
-.filter-table-wrap, .scrollable-filters { position: static !important;}
+/* .filter-table-wrap, .scrollable-filters { position: static !important;} */
 .filter-table-wrap{display: flex;}
 .filter-wrapper{position: relative;}
 .mCSB_scrollTools{visibility: hidden;}
+.mCSB_container{display: flex;}
+.mCSB_container > .filter-table{min-width: 700px;}
+.mCSB_container > .lists-and-reset{min-width: 231px;}
 @media (max-width: 1300px) {
-    .filter-wrapper {padding: 10px 0;} 
-    .reset-filter-button-wrapper{flex-direction: row; margin-left: 0; padding-left: 20px; margin-top: 40px; width: 100%;}
+    .filter-wrapper{padding: 10px 10px; box-sizing: border-box;} 
     .list-filters{border-right: none;}
-    .filter-table.list-filters tr td{padding: 8px 15px;}
+    .filter-table.list-filters tr td{padding: 1px 15px;}
+    .lists-and-reset{border: none;}
     .scrollable-filters{width: 100%;}
-    /* .filter-wrapper table > tbody{display: block;}
-    .filter-table tr{display: flex; flex-wrap: wrap;}
-    .filter-table td{display: block; width: 33%; padding: 0; text-align: left !important; padding-bottom: 10px;}
-    .scrollable-filters{width: 100%;}
-    .filter-table.list-filters td{width: 100%;}
-    .filter-table:not(.list-filters){width: 70%;}
-    .filter-table:not(.list-filters) td{box-sizing: border-box; padding-right: 10px;} */
-    .lists-and-reset{width: 40%;}
-    .filter span{white-space: normal;  word-break: break-all;}
-    .search-bar{position: absolute;}
-    .filter-table-wrap{width: 60% !important; position: static !important;}
-    .filter-table-main{min-width: 700px;}
-    .lists-and-reset {min-width: 228px;}
-    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 53px; width: 90%; margin: 0 auto;}
+    .filter-totals{margin-top: 30px; width: 100%; text-align: center;}
+    .reset-filter-button-wrapper{justify-content: flex-start; padding-left: 35px;}
+    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: -30px; width: 90%; margin: 0 auto;}
     .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100px;}
     table tr td {padding: 1px 30px;}
 }

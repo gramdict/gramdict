@@ -97,7 +97,7 @@ export class ApplicationState {
 
     @action
     toggleFilterControl() {
-        this.filtersAreOpen = !this.filtersAreOpen;        
+        this.filtersAreOpen = !this.filtersAreOpen;
     }
 
     callback?: () => void;

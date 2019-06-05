@@ -95,47 +95,38 @@
             }
         }, 100);
 
+        var delay = (function(){
+                var timer = 0;
+                return function(callback, ms){
+                    clearTimeout (timer);
+                    timer = setTimeout(callback, ms);
+                };
+            })();
+
         $(window).on('resize', function(){
-            var timerScroll = setInterval(function() {
-                if(!$('#mCSB_1_scrollbar_horizontal').length && $(".filter-table-wrap").length){
+            delay(function(){          
+                
+  
+                if($('.mCustomScrollBox').length){
+                    $('.scrollable-filters').mCustomScrollbar("destroy");
                     $(".scrollable-filters").mCustomScrollbar({
-                        axis: 'x', // horizontal scrollbar
-                        scrollbarPosition: 'outside',                       
-                        autoDraggerLength: false,                       
-                        updateOnContentResize: true, 
-                        callbacks:{
-                            onInit: function () {
-                                setTimeout(function () {
-                                    $('.mCSB_scrollTools').css('visibility', 'visible');
-                                }, 500);
-                                
-                              console.log("Scrollbars initialized");
+                            axis: 'x', // horizontal scrollbar
+                            scrollbarPosition: 'outside',                        
+                            updateOnContentResize: true,
+                            callbacks:{
+                                onInit: function () {
+                                    setTimeout(function () {
+                                        $('.mCSB_scrollTools').css('visibility', 'visible');
+                                    }, 500);
+                                  console.log("Scrollbars initialized");
+                                }
                             }
-                        }
+                            
                     });
-                    clearInterval(timerScroll);
+
+
                 }
-            }, 10);
-
-            if($('.mCustomScrollBox').length){
-                $('.scrollable-filters').mCustomScrollbar("destroy");
-                $(".scrollable-filters").mCustomScrollbar({
-                        axis: 'x', // horizontal scrollbar
-                        scrollbarPosition: 'outside',                        
-                        updateOnContentResize: true,
-                        callbacks:{
-                            onInit: function () {
-                                setTimeout(function () {
-                                    $('.mCSB_scrollTools').css('visibility', 'visible');
-                                }, 500);
-                              console.log("Scrollbars initialized");
-                            }
-                        }
-                        
-                });
-
-
-            }
+            }, 800);
         });
         $(window).resize();
     </script>
