@@ -103,6 +103,7 @@
                 };
             })();
 
+
         $(window).on('resize', function(){
             delay(function(){          
                 
@@ -125,7 +126,29 @@
                     });
 
 
-                }
+                }else {
+                   var timerScroll = setInterval(function() {
+                        if(!$('#mCSB_1_scrollbar_horizontal').length && $(".filter-table-wrap").length){
+                            $(".scrollable-filters").mCustomScrollbar({
+                                axis: 'x', // horizontal scrollbar
+                                scrollbarPosition: 'outside',                       
+                                autoDraggerLength: false,                       
+                                updateOnContentResize: true, 
+                                callbacks:{
+                                    onInit: function () {
+                                        setTimeout(function () {
+                                            $('.mCSB_scrollTools').css('visibility', 'visible');
+                                        }, 500);
+                                        
+                                      console.log("Scrollbars initialized");
+                                    }
+                                }
+                            });
+                            clearInterval(timerScroll);
+                        }
+                    }, 10);                        
+
+                }       
             }, 800);
         });
         $(window).resize();
