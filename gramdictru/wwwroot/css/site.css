@@ -804,9 +804,11 @@ a.contents-link {
     font-size: 14px;
     font-weight: 500;
     text-align: right;
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.filter-totals .reset-filter-button{color: #F2F2F2;}
 
 
 .smallbr {
@@ -864,29 +866,34 @@ a.contents-link {
     opacity: 1;
 }
 
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail{background: #828282; height: 5px;}
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar{background: #F2994A;}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100%;}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{top: 2px;}
-/*.mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: 15px; width: 90%; margin: 0 auto;}*/
-/* .filter-table-wrap, .scrollable-filters { position: static !important;} */
-.filter-table-wrap{display: flex;}
-.filter-wrapper{position: relative;}
-.mCSB_scrollTools{visibility: hidden;}
-.mCSB_container{display: flex;}
-.mCSB_container > .filter-table{min-width: 700px;}
-.mCSB_container > .lists-and-reset{min-width: 231px;}
+
+
 @media (max-width: 1300px) {
-    .filter-wrapper{padding: 10px 10px; box-sizing: border-box;} 
+    .filter-wrapper{padding: 10px 10px; box-sizing: border-box; max-width: 90%;} 
     .list-filters{border-right: none;}
     .filter-table.list-filters tr td{padding: 1px 15px;}
     .lists-and-reset{border: none;}
-    .scrollable-filters{width: 100%;}
-    .filter-totals{margin-top: 30px; width: 100%; text-align: center;}
-    .reset-filter-button-wrapper{justify-content: flex-start; padding-left: 35px;}
-    .mCustomScrollBox+.mCSB_scrollTools+.mCSB_scrollTools.mCSB_scrollTools_horizontal, .mCustomScrollBox+.mCSB_scrollTools.mCSB_scrollTools_horizontal{bottom: -30px; width: 90%; margin: 0 auto;}
-    .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger{width: 100px;}
+    .scrollable-filters{width: 100%; padding-bottom: 15px;}
+    .filter-totals{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 20px; padding-left: 20px;}
+    .reset-filter-button-wrapper{justify-content: flex-start; padding-left: 20px;}   
     table tr td {padding: 1px 30px;}
+}
+
+.scrollable-filters::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background: #828282;
+}
+
+.scrollable-filters::-webkit-scrollbar
+{
+    height: 5px;    
+}
+
+.scrollable-filters::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background: #F2994A;
 }

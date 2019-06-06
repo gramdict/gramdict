@@ -4,8 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5700898-10"></script>
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/jquery.mCustomScrollbar.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -15,7 +13,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Грамматический словарь русского языка</title>
-    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Yandex.Metrika counter -->
@@ -68,24 +65,7 @@
                                 var filter_wrapper = document.getElementsByClassName('filter-wrapper')[0];                    
                                 if(filter_wrapper == undefined && page.hasAttribute('style')){
                                     page.removeAttribute('style');
-                                }else {
-                                    page.style.transform= 'translateY('+filter_wrapper.offsetHeight+'px)';
-                                    $(".scrollable-filters").mCustomScrollbar({
-                                        axis: 'x', // horizontal scrollbar
-                                        scrollbarPosition: 'outside',                       
-                                        autoDraggerLength: false,                                        
-                                        updateOnContentResize: true,     
-                                        callbacks:{
-                                            onInit: function () {
-                                                setTimeout(function () {
-                                                    $('.mCSB_scrollTools').css('visibility', 'visible');
-                                                }, 500);
-                                              console.log("Scrollbars initialized");
-                                            }
-                                        }
-                                    });
-
-                                }
+                                }                              
                                 clearInterval(timerId);
                             }            
                         }, 10);
@@ -95,63 +75,6 @@
             }
         }, 100);
 
-        var delay = (function(){
-                var timer = 0;
-                return function(callback, ms){
-                    clearTimeout (timer);
-                    timer = setTimeout(callback, ms);
-                };
-            })();
-
-
-        $(window).on('resize', function(){
-            delay(function(){          
-                
-  
-                if($('.mCustomScrollBox').length){
-                    $('.scrollable-filters').mCustomScrollbar("destroy");
-                    $(".scrollable-filters").mCustomScrollbar({
-                            axis: 'x', // horizontal scrollbar
-                            scrollbarPosition: 'outside',                        
-                            updateOnContentResize: true,
-                            callbacks:{
-                                onInit: function () {
-                                    setTimeout(function () {
-                                        $('.mCSB_scrollTools').css('visibility', 'visible');
-                                    }, 500);
-                                  console.log("Scrollbars initialized");
-                                }
-                            }
-                            
-                    });
-
-
-                }else {
-                   var timerScroll = setInterval(function() {
-                        if(!$('#mCSB_1_scrollbar_horizontal').length && $(".filter-table-wrap").length){
-                            $(".scrollable-filters").mCustomScrollbar({
-                                axis: 'x', // horizontal scrollbar
-                                scrollbarPosition: 'outside',                       
-                                autoDraggerLength: false,                       
-                                updateOnContentResize: true, 
-                                callbacks:{
-                                    onInit: function () {
-                                        setTimeout(function () {
-                                            $('.mCSB_scrollTools').css('visibility', 'visible');
-                                        }, 500);
-                                        
-                                      console.log("Scrollbars initialized");
-                                    }
-                                }
-                            });
-                            clearInterval(timerScroll);
-                        }
-                    }, 10);                        
-
-                }       
-            }, 800);
-        });
-        $(window).resize();
     </script>
 </body>
 </html>
