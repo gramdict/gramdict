@@ -65,7 +65,9 @@
                                 var filter_wrapper = document.getElementsByClassName('filter-wrapper')[0];                    
                                 if(filter_wrapper == undefined && page.hasAttribute('style')){
                                     page.removeAttribute('style');
-                                }                              
+                                } else {   
+                                    page.style.transform= 'translateY('+filter_wrapper.offsetHeight+'px)';
+                                }                               
                                 clearInterval(timerId);
                             }            
                         }, 10);

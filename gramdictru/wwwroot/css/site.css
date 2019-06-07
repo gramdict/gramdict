@@ -197,7 +197,9 @@ table tr td {
 
 table tr td {
     text-indent: 0;
-    padding: 8px 30px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    
 }
 
 table tr th {
@@ -678,6 +680,7 @@ a.contents-link {
     text-align: left;
     border: unset;
     white-space: nowrap;
+    padding: 8px 30px;
 }
 
 .filter-table td:first-child {
@@ -850,7 +853,7 @@ a.contents-link {
     .scrollable-filters{width: 100%; padding-bottom: 15px;}
     .filter-totals{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
     .reset-filter-button-wrapper{justify-content: flex-start;}   
-    table tr td {padding: 1px 30px;}
+    .filter-table td {padding: 1px 30px;}
 }
 @media (max-width: 400px) {
     .filter-wrapper{padding: 5px 5px;} 
