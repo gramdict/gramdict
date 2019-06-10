@@ -700,7 +700,7 @@ a.contents-link {
 }
 
 
-.filter-active span {
+.filter-active span:not(.tooltipClass) {
    color: #F2994A;
    font-weight: 700;
 }
