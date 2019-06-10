@@ -231,12 +231,12 @@ em {
 
 p {
     text-align: justify;
-    margin-top: 0;
+    margin-top: 1em;
     margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
     text-indent: 2em;
-    line-height: 17px;
+    line-height: 18px;
     font-size: 14px;
 }
 
@@ -807,6 +807,7 @@ a.contents-link {
 .body-content> ol > li {
     margin-top: 1em;
     font-size: 14px;
+    line-height: 18px;
 }
 
 .__react_component_tooltip {
