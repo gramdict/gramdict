@@ -64,24 +64,24 @@
 }
 
 @font-face {
-    font-family: 'Cormorant';
-    src: url('../fonts/Cormorant-Medium.eot');
-    src: local('Cormorant Regular'), local('Cormorant-Medium'),
-        url('../fonts/Cormorant-Medium.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Cormorant-Medium.woff') format('woff'),
-        url('../fonts/Cormorant-Medium.ttf') format('truetype');
-    font-weight: 500;
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Bold.eot');
+    src: local('Cormorant Garamond Bold'), local('CormorantGaramond-Bold'),
+        url('../fonts/CormorantGaramond-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CormorantGaramond-Bold.woff') format('woff'),
+        url('../fonts/CormorantGaramond-Bold.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cormorant';
-    src: url('../fonts/Cormorant-Bold.eot');
-    src: local('Cormorant Bold'), local('Cormorant-Bold'),
-        url('../fonts/Cormorant-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Cormorant-Bold.woff') format('woff'),
-        url('../fonts/Cormorant-Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Medium.eot');
+    src: local('Cormorant Garamond Medium'), local('CormorantGaramond-Medium'),
+        url('../fonts/CormorantGaramond-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CormorantGaramond-Medium.woff') format('woff'),
+        url('../fonts/CormorantGaramond-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -258,7 +258,7 @@ code em, .emphasis {
     font-weight: bold;
     font-size: 20px;
     padding-top: 2em;
-    font-family: 'Cormorant';
+    font-family: 'Cormorant Garamond';
     font-weight: 500;
 
 }
@@ -453,16 +453,20 @@ table .left-aligned td {
 }
 
 
-p + h1 a.permalink, p + h2 a.permalink, p + h3 a.permalink, p + h4 a.permalink, p + h5 a.permalink, p + h6 a.permalink{font-family: Cormorant;}
+h1, h2, h3, h4, h5, h6{font-family: Cormorant Garamond;}
 
-h6 a.permalink {
-    font-family: Cormorant;
+h6 {
+    font-family: Cormorant Garamond;
     font-weight: 700;
     font-size: 16px;
 }
 
-h5 a.permalink{
-    font-size: 16px;
+h5{
+    font-size: 18px;
+}
+
+h4{
+    font-size: 22px;
 }
 
 a.contents-link {
@@ -802,6 +806,7 @@ a.contents-link {
 
 .body-content> ol > li {
     margin-top: 1em;
+    font-size: 14px;
 }
 
 .__react_component_tooltip {
