@@ -98,9 +98,9 @@ class MyComponent extends React.Component {
             <div className="search-bar">
                 <div className="centerer">
                     <div className="search-controls">
+                        <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
                         <SearchBox applicationState={applicationState} />
-                        {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}
-                        <a className="contents-link" href="/contents">Содержание</a>
+                        {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}                        
                     </div>
                     {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
                 </div>

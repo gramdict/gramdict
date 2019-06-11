@@ -163,12 +163,15 @@ export class Filters extends React.Component<IFilterControlProps> {
                    </table>
                 <div className="lists-and-reset">
                     <ListFilters applicationState={this.props.applicationState} />
-                    <div className="reset-filter-button-wrapper">
-                        <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
-                    </div>
+                    
                 </div>
             </div>
-            <div className="filter-totals">{this.props.applicationState.filterTotals}</div>
+            <div className="filter-totals">
+                <div className="reset-filter-button-wrapper">
+                    <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
+                </div>
+                {this.props.applicationState.filterTotals}
+            </div>
         </div>;
     }
 }

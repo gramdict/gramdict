@@ -52,5 +52,31 @@
     <script src="https://unpkg.com/papaparse@4.6.3/papaparse.min.js"></script>
     <script type="text/javascript" src="~/js/bundle.js"></script>
     <script type="text/javascript" src="~/permalink.js"></script>
+    <script>
+        var timerListener = setInterval(function() {
+            if(document.getElementsByClassName('filter-control')[0] != undefined){
+                document.getElementsByClassName('filter-control')[0].addEventListener('click', function(){
+                    var page = document.getElementsByClassName('page')[0];
+                    if(document.getElementsByClassName('filter-wrapper')[0] != undefined && page.hasAttribute('style')){
+                        page.removeAttribute('style');
+                    }else {
+                        var timerId = setInterval(function() {
+                            if(document.getElementsByClassName('filter-wrapper')[0] != undefined){
+                                var filter_wrapper = document.getElementsByClassName('filter-wrapper')[0];                    
+                                if(filter_wrapper == undefined && page.hasAttribute('style')){
+                                    page.removeAttribute('style');
+                                } else {   
+                                    page.style.transform= 'translateY('+filter_wrapper.offsetHeight+'px)';
+                                }                               
+                                clearInterval(timerId);
+                            }            
+                        }, 10);
+                    }     
+                })
+                clearInterval(timerListener);
+            }
+        }, 100);
+
+    </script>
 </body>
 </html>
