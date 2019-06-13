@@ -786,7 +786,7 @@ a.contents-link {
     border-right: 1px solid #4F4F4F;
 }
 
-.filter-totals {
+.filter-controls-area {
     padding-left: 1em;    
     color: #BDBDBD;
     font-size: 18px;
@@ -799,7 +799,7 @@ a.contents-link {
     align-items: flex-end;
     padding-right: 20px
 }
-.filter-totals .reset-filter-button{color: #F2F2F2;}
+.filter-controls-area .reset-filter-button{color: #F2F2F2;}
 
 
 .smallbr {
@@ -863,7 +863,7 @@ a.contents-link {
 .list-filters{border-right: none;}
 .filter-table.list-filters tr td{padding: 1px 15px;}
 .scrollable-filters{width: 100%; padding-bottom: 0px;}
-.filter-totals{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
+.filter-controls-area{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
 .reset-filter-button-wrapper{justify-content: flex-start;}   
 
 .scrollable-filters::-webkit-scrollbar-track
