@@ -1,8 +1,6 @@
 :root {
     --search-bar-height: 40px;
-    --search-bar-margin: 8px;
-    --page-margin: 16px;
-    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--page-margin));
+    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin));
     
     --body-padding: 8px;
 }
@@ -115,9 +113,55 @@ body {
     width: 100%;
 }
 
+/* PHONE */
 @media (max-width: 50em) {
+    :root {
+        --search-bar-margin: 0;
+    }
+    
     .body-content {
         max-width: calc(100% - var(--body-padding) * 2);
+    }
+
+    .search-input {
+        margin-right: calc(2*var(--body-padding));
+    }
+
+    #search-react-root > .page {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .filter-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .page.is-searching {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (min-width: 50em) {
+
+    :root {
+        --search-bar-margin: 8px;
+    }
+
+    #search-react-root > .page {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .filter-wrapper {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .page.is-searching {
+        max-width: 90%;
+        width: calc(100% - var(--body-padding) * 2);
     }
 }
 
@@ -423,11 +467,6 @@ table .left-aligned td {
     margin: -8px -8px 0 -8px;
 }
 
-#search-react-root > .page {
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
 .search-bar {
     background-color: #333333;
     font-size: larger;
@@ -626,11 +665,6 @@ a.contents-link {
     text-align: center;
 }
 
-.page.is-searching {
-    max-width: 90%;
-    width: calc(100% - var(--body-padding) * 2);
-}
-
 .page.is-searching .body-content {
     max-width: calc(100% - var(--body-padding) * 2);
 }
@@ -648,8 +682,6 @@ a.contents-link {
     background: #333333;
     margin-top: 1px;
     padding: 10px 10px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .filter-control.fa-chevron-circle-down{background-color: #333333; background-image: url('../filter-icon.svg');}
