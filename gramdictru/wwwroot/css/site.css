@@ -1,5 +1,5 @@
 :root {
-    --search-bar-height: 77px;
+    --search-bar-height: 40px;
     --search-bar-margin: 8px;
     --page-margin: 16px;
     --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--page-margin));
@@ -199,7 +199,6 @@ table tr td {
     text-indent: 0;
     padding-left: 0.25em;
     padding-right: 0.25em;
-    
 }
 
 table tr th {
@@ -462,8 +461,9 @@ table .left-aligned td {
     .search-controls a.contents-link span{display: none;}
 }
 
-
-h1, h2, h3, h4, h5, h6{font-family: Cormorant Garamond;}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Cormorant Garamond;
+}
 
 h6 {
     font-family: Cormorant Garamond;
@@ -471,11 +471,11 @@ h6 {
     font-size: 16px;
 }
 
-h5{
+h5 {
     font-size: 18px;
 }
 
-h4{
+h4 {
     font-size: 22px;
 }
 
@@ -491,14 +491,13 @@ a.contents-link {
 
 .search-input {
     margin-left: 20px;
-    height: 34px;
+    height: 24px;
     border: 0;
     padding: 0;
     flex-grow: 1;
-    padding-left: 30px;
-    font-size: 12px;
+    padding-left: .5em;
+    font-size: 14px;
     font-weight: 500;
-
 }
 
 .search-controls {
@@ -694,7 +693,7 @@ a.contents-link {
     text-align: left;
     border: unset;
     white-space: nowrap;
-    padding: 8px 30px;
+    padding: 1px 10px;
 }
 
 .filter-table td:first-child {
@@ -790,7 +789,7 @@ a.contents-link {
 .filter-totals {
     padding-left: 1em;    
     color: #BDBDBD;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     text-align: right;
     display: flex;
@@ -860,20 +859,12 @@ a.contents-link {
     opacity: 1;
 }
 
-
-
-@media (max-width: 1300px) {
-    .filter-wrapper{padding: 10px 10px; box-sizing: border-box; max-width: 90%;} 
-    .list-filters{border-right: none;}
-    .filter-table.list-filters tr td{padding: 1px 15px;}
-    .scrollable-filters{width: 100%; padding-bottom: 15px;}
-    .filter-totals{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
-    .reset-filter-button-wrapper{justify-content: flex-start;}   
-    .filter-table td {padding: 1px 30px;}
-}
-@media (max-width: 400px) {
-    .filter-wrapper{padding: 5px 5px;} 
-}
+.filter-wrapper{padding: 10px 10px; box-sizing: border-box; max-width: 90%;} 
+.list-filters{border-right: none;}
+.filter-table.list-filters tr td{padding: 1px 15px;}
+.scrollable-filters{width: 100%; padding-bottom: 0px;}
+.filter-totals{margin-top: 10px; width: 100%; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
+.reset-filter-button-wrapper{justify-content: flex-start;}   
 
 .scrollable-filters::-webkit-scrollbar-track
 {

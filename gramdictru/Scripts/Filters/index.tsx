@@ -163,7 +163,6 @@ export class Filters extends React.Component<IFilterControlProps> {
                    </table>
                 <div className="lists-and-reset">
                     <ListFilters applicationState={this.props.applicationState} />
-                    
                 </div>
             </div>
             <div className="filter-totals">
