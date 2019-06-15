@@ -116,7 +116,7 @@ body {
 /* PHONE */
 @media (max-width: 50em) {
     :root {
-        --search-bar-margin: 0;
+        --search-bar-margin: 0px;
     }
     
     .body-content {
