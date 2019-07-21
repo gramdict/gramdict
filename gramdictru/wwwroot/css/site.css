@@ -537,7 +537,7 @@ a.contents-link {
     padding-left: 2rem;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: minmax(30%, max-content) minmax(1rem, max-content) 1fr;
+    grid-template-columns: minmax(40%, max-content) minmax(1.5rem, max-content) 1fr;
     margin: 0 auto;
 }
 
@@ -547,6 +547,11 @@ a.contents-link {
     padding-right: 0.5rem;
     display: flex;
     flex-direction: column;
+    color: #555555;
+}
+
+.grammar b {
+    color: #555555;
 }
 
 .symbol {
