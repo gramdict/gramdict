@@ -124,11 +124,6 @@ body {
         margin-right: calc(2*var(--body-padding));
     }
 
-    .filter-wrapper {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
     .page {
         max-width: 100%;
         width: 100%;
@@ -141,11 +136,6 @@ body {
 
     :root {
         --search-bar-margin: 8px;
-    }
-
-    .filter-wrapper {
-        margin-left: 5%;
-        margin-right: 5%;
     }
 
     .page {
@@ -468,7 +458,7 @@ table .left-aligned td {
     padding-left: var(--body-padding);
     padding-right: var(--body-padding);
     height: 100%;
-    max-width: 1170px;
+    max-width: 860px;
 }
 
 .search-controls a.contents-link {
@@ -517,9 +507,8 @@ a.contents-link {
     margin-left: 20px;
     height: 24px;
     border: 0;
-    padding: 0;
     flex-grow: 1;
-    padding-left: .5em;
+    padding: 0 0 0 .5em;
     font-size: 14px;
     font-weight: 500;
 }
@@ -663,11 +652,12 @@ a.contents-link {
 }
 
 .filter-wrapper {
+    margin: 0 auto;
     color: white;
     background: #333333;
-    margin-top: 1px;
     padding: 10px 10px;
-    display: inline-block;
+    display: block;
+    max-width: 860px;
 }
 
 .filter-control.fa-chevron-circle-down{background-color: #333333; background-image: url('../filter-icon.svg');}
