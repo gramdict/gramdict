@@ -639,6 +639,11 @@ a.contents-link {
     padding-bottom: 1px;
 }
 
+.page.is-searching {
+    max-width: unset;
+    width: calc(100% - var(--body-padding) * 2);
+}
+
 .load-more {
     text-align: center;
 }
