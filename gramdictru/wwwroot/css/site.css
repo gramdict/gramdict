@@ -86,14 +86,14 @@ body {
     margin: 0;
     line-height: 140%;
     text-align: center;
-    background-image: url('../background-cloth-compressed.jpg');
+    background-image: url('../background.jpg');
     font-family: 'Montserrat';
 }
 
 .page {
     text-align: center;
     display: inline-block;
-    background-image: url('../page-paper-compressed.jpg');
+    background-image: url('../page.jpg');
     margin-top: var(--search-bar-total-height);
 }
 
