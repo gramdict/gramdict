@@ -10,6 +10,18 @@ import { Filters } from "./Filters";
 import { observer } from "mobx-react";
 
 const applicationState = new ApplicationState();
+reaction(
+    () => applicationState.filtersAreOpen,
+    (isOpen, reaction) => {
+        setTimeout(() => {
+            let offsetHeight = isOpen
+                ? document.getElementsByClassName("filter-wrapper")[0].clientHeight
+                : 0;
+            document.documentElement.style.setProperty("--filter-wrapper-height", `${offsetHeight}px`);
+            console.log("setheight to ", document.documentElement.style.getPropertyValue("--filter-wrapper-height"));
+        });
+    }
+);
 const root = document.documentElement;
 
 const initialTerm = window["term"];

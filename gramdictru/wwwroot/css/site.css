@@ -1,7 +1,7 @@
 :root {
+    --filter-wrapper-height: 0px;
     --search-bar-height: 40px;
-    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin));
-    
+    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--filter-wrapper-height));
     --body-padding: 8px;
 }
 
