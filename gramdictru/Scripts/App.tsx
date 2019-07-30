@@ -10,18 +10,6 @@ import { Filters } from "./Filters";
 import { observer } from "mobx-react";
 
 const applicationState = new ApplicationState();
-reaction(
-    () => applicationState.filtersAreOpen,
-    (isOpen, reaction) => {
-        setTimeout(() => {
-            let offsetHeight = isOpen
-                ? document.getElementsByClassName("filter-wrapper")[0].clientHeight
-                : 0;
-            document.documentElement.style.setProperty("--filter-wrapper-height", `${offsetHeight}px`);
-            console.log("setheight to ", document.documentElement.style.getPropertyValue("--filter-wrapper-height"));
-        });
-    }
-);
 const root = document.documentElement;
 
 const initialTerm = window["term"];
@@ -60,20 +48,6 @@ reaction(
     }
 );
 
-function setSearchBarHeight() {
-    const newHeight = (document.getElementsByClassName("search-bar")[0].getElementsByClassName("centerer")[0] as HTMLElement)
-        .offsetHeight;
-    root.style.setProperty("--search-bar-height", `${newHeight}px`);
-}
-
-reaction(
-    () => applicationState.filtersAreOpen,
-    (_, __) => {
-        setTimeout(() => {
-            setSearchBarHeight();
-        });
-    });
-
 function debounce(func, wait, immediate) {
     var timeout;
     return function () {
@@ -93,7 +67,6 @@ export function resize() {
     const elements = document.getElementsByClassName("page");
     const first: any = elements[0];
     if (!!first) {
-        setSearchBarHeight();
         const toCenter = document.getElementsByClassName("centerer");
         for (let index = 0; index < toCenter.length; index++) {
             (toCenter[index] as any).style.width = `${first.offsetWidth}px`;
@@ -108,11 +81,13 @@ class MyComponent extends React.Component {
     render() {
         return [
             <div className="search-bar">
-                <div className="centerer">
-                    <div className="search-controls">
-                        <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
-                        <SearchBox applicationState={applicationState} />
-                        {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}                        
+                <div className="search-bar-wrapper">
+                    <div className="centerer">
+                        <div className="search-controls">
+                            <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
+                            <SearchBox applicationState={applicationState} />
+                            {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}                        
+                        </div>
                     </div>
                 </div>
                 <Loader applicationState={applicationState} />

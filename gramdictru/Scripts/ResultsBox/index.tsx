@@ -13,7 +13,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
 
     render() {
         return this.props.applicationState.hasSearched &&
-            <div className="page is-searching">
+            <div className="page is-searching" id="search-results">
                 <div className="body-content">
                     <InfinityScroll
                         dataLength={this.props.applicationState.total}

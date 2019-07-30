@@ -1,8 +1,6 @@
 :root {
-    --filter-wrapper-height: 0px;
-    --search-bar-height: 40px;
-    --search-bar-total-height: calc(var(--search-bar-height) + var(--search-bar-margin) + var(--filter-wrapper-height));
     --body-padding: 8px;
+    --search-bar-total-height: 40px;
 }
 
 @font-face {
@@ -94,7 +92,6 @@ body {
     text-align: center;
     display: inline-block;
     background-image: url('../page.jpg');
-    margin-top: var(--search-bar-total-height);
 }
 
 .body-content {
@@ -442,14 +439,27 @@ table .left-aligned td {
     border: none;
 }
 
+#search-react-root {
+    position: fixed;
+    width: 100vw;
+    z-index: 999;
+}
+
+#search-react-root.has-searched {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .search-bar {
-    background-color: #333333;
     font-size: larger;
     margin-bottom: var(--search-bar-margin);
-    position: fixed;
     width: 100%;
-    height: var(--search-bar-height);
-    z-index: 9999999;
+}
+
+.search-bar-wrapper {
+    background-color: #333333;
 }
 
 .centerer {
@@ -457,7 +467,6 @@ table .left-aligned td {
     margin: 0 auto;
     padding-left: var(--body-padding);
     padding-right: var(--body-padding);
-    height: 100%;
     max-width: 860px;
 }
 
@@ -514,7 +523,6 @@ a.contents-link {
 }
 
 .search-controls {
-    height: 100%;
     text-align: left;
     display: flex;
     align-items: center;
@@ -641,7 +649,8 @@ a.contents-link {
 
 .page.is-searching {
     max-width: unset;
-    width: calc(100% - var(--body-padding) * 2);
+    /*width: calc(100% - var(--body-padding) * 2);*/
+    width: 100%;
 }
 
 .load-more {
