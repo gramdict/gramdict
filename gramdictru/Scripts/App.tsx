@@ -1,4 +1,4 @@
-﻿import * as React from "react";
+import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
@@ -45,6 +45,9 @@ reaction(
             const currentDisplay = currentStyle.display;
             currentStyle.display = (currentDisplay === "") ? "none" : "";
         }
+
+        const root = document.getElementById("search-react-root");
+        root.classList.add("has-searched");
     }
 );
 

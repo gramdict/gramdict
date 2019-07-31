@@ -22,6 +22,10 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         loader={<h4>Loading...</h4>}
                         ref={c => this.loader = c}
                         scrollThreshold="0px"
+                        scrollableTarget="search-results"
+                        style={{
+                            overflow: "hidden"
+                        }}
                         key={this.props.applicationState.searchedTerm}>
                         {this.props.applicationState.results.map(resultSet => [
                             <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>
