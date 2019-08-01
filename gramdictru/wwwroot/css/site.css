@@ -471,7 +471,7 @@ table .left-aligned td {
     margin: 0 auto;
     padding-left: var(--body-padding);
     padding-right: var(--body-padding);
-    max-width: 860px;
+    max-width: calc(46rem + calc(var(--body-padding) * 2));
 }
 
 .search-controls a.contents-link {
