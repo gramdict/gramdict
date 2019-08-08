@@ -13,7 +13,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
 
     render() {
         return this.props.applicationState.hasSearched &&
-            <div className="page is-searching">
+            <div className="page is-searching" id="search-results">
                 <div className="body-content">
                     <InfinityScroll
                         dataLength={this.props.applicationState.total}
@@ -21,7 +21,11 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         hasMore={!this.props.applicationState.reachedLimit}
                         loader={<h4>Loading...</h4>}
                         ref={c => this.loader = c}
-                        scrollThreshold="0px"
+                        scrollThreshold="50px"
+                        scrollableTarget="search-results"
+                        style={{
+                            overflow: "hidden"
+                        }}
                         key={this.props.applicationState.searchedTerm}>
                         {this.props.applicationState.results.map(resultSet => [
                             <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>

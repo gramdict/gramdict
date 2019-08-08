@@ -1,4 +1,4 @@
-﻿import * as React from "react";
+import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
@@ -45,22 +45,11 @@ reaction(
             const currentDisplay = currentStyle.display;
             currentStyle.display = (currentDisplay === "") ? "none" : "";
         }
+
+        const root = document.getElementById("search-react-root");
+        root.classList.add("has-searched");
     }
 );
-
-function setSearchBarHeight() {
-    const newHeight = (document.getElementsByClassName("search-bar")[0].getElementsByClassName("centerer")[0] as HTMLElement)
-        .offsetHeight;
-    root.style.setProperty("--search-bar-height", `${newHeight}px`);
-}
-
-reaction(
-    () => applicationState.filtersAreOpen,
-    (_, __) => {
-        setTimeout(() => {
-            setSearchBarHeight();
-        });
-    });
 
 function debounce(func, wait, immediate) {
     var timeout;
@@ -81,7 +70,6 @@ export function resize() {
     const elements = document.getElementsByClassName("page");
     const first: any = elements[0];
     if (!!first) {
-        setSearchBarHeight();
         const toCenter = document.getElementsByClassName("centerer");
         for (let index = 0; index < toCenter.length; index++) {
             (toCenter[index] as any).style.width = `${first.offsetWidth}px`;
@@ -96,11 +84,13 @@ class MyComponent extends React.Component {
     render() {
         return [
             <div className="search-bar">
-                <div className="centerer">
-                    <div className="search-controls">
-                        <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
-                        <SearchBox applicationState={applicationState} />
-                        {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}                        
+                <div className="search-bar-wrapper">
+                    <div className="centerer">
+                        <div className="search-controls">
+                            <a className="contents-link" href="/contents"><i className="fas fa-bars"></i><span>Содержание</span></a>
+                            <SearchBox applicationState={applicationState} />
+                            {applicationState.hasSearched && <FilterControl applicationState={applicationState}/>}                        
+                        </div>
                     </div>
                 </div>
                 <Loader applicationState={applicationState} />
