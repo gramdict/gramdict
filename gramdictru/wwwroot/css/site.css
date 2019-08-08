@@ -84,6 +84,7 @@ body {
     margin: 0;
     line-height: 140%;
     text-align: center;
+    background-color: #e0e0e0;
     background-image: url('../background.jpg');
     font-family: 'Montserrat';
 }
@@ -91,6 +92,7 @@ body {
 .page {
     text-align: center;
     display: inline-block;
+    background-color: #f5f5f5;
     background-image: url('../page.jpg');
 }
 
