@@ -100,6 +100,11 @@ export class ApplicationState {
         this.filtersAreOpen = !this.filtersAreOpen;
     }
 
+    @action
+    closeFilterControl() {
+        this.filtersAreOpen = false;
+    }
+
     callback?: () => void;
 
     @action

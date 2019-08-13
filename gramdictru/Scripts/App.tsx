@@ -8,6 +8,7 @@ import { Loader } from "./Loader/index";
 import { FilterControl } from "./FilterControl";
 import { Filters } from "./Filters";
 import { observer } from "mobx-react";
+import AnimateHeight from "react-animate-height";
 
 const applicationState = new ApplicationState();
 const root = document.documentElement;
@@ -48,6 +49,11 @@ reaction(
 
         const root = document.getElementById("search-react-root");
         root.classList.add("has-searched");
+
+        setTimeout(() => {
+            document.getElementById("search-results").addEventListener("scroll",
+                () => applicationState.closeFilterControl());
+        });
     }
 );
 
@@ -94,7 +100,9 @@ class MyComponent extends React.Component {
                     </div>
                 </div>
                 <Loader applicationState={applicationState} />
-                {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
+                <AnimateHeight duration={400} height={applicationState.filtersAreOpen ? "auto" : "0"}>
+                    <Filters applicationState={applicationState} />
+                </AnimateHeight>
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];
