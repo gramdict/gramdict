@@ -37,6 +37,15 @@ window.onpopstate = function (event) {
 };
 
 reaction(
+    () => applicationState.filtersAreOpen,
+    (open, reaction) => {
+        if (open) {
+            const current = document.getElementById("search-results").scrollTop;
+            document.documentElement.style.setProperty("--scroll-position", current + "px");
+        }
+    });
+
+reaction(
     () => applicationState.hasSearched,
     (_, reaction) => {
         console.log("Searching has happened, removing original page");
@@ -51,8 +60,47 @@ reaction(
         root.classList.add("has-searched");
 
         setTimeout(() => {
+            let previous = 0;
+            let closeTimeout = 0;
+            let adjustTimeout = 0;
+            const filters = document.getElementsByClassName("static-filters")[0];
+
             document.getElementById("search-results").addEventListener("scroll",
-                () => applicationState.closeFilterControl());
+                () => {
+                    const current = document.getElementById("search-results").scrollTop;
+                    const last = previous;
+                    previous = current;
+                    const isFullyOpen = (filters as any).style.height == "auto";
+
+                    const offset = current + "px";
+                    if (isFullyOpen && current < last) {
+                        document.documentElement.style.setProperty("--scroll-position", offset);
+                    }
+
+                    if (!isFullyOpen) {
+                        document.documentElement.style.setProperty("--scroll-position", offset);
+                    }
+
+                    if (isFullyOpen) {
+                        const currentFilterPosition =
+                            parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
+                        const diff = Math.abs(currentFilterPosition - current);
+                        if (diff > 5) {
+                            if (closeTimeout) {
+                                clearTimeout(closeTimeout);
+                            }
+
+                            closeTimeout = window.setTimeout(() => {
+                                    applicationState.closeFilterControl();
+                                },
+                                50);
+
+                            return;
+                        }
+
+                        //setTimeout(() => , 0);
+                    }
+                });
         });
     }
 );
@@ -100,9 +148,6 @@ class MyComponent extends React.Component {
                     </div>
                 </div>
                 <Loader applicationState={applicationState} />
-                <AnimateHeight duration={400} height={applicationState.filtersAreOpen ? "auto" : "0"}>
-                    <Filters applicationState={applicationState} />
-                </AnimateHeight>
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];
