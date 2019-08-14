@@ -40,8 +40,9 @@ reaction(
     () => applicationState.filtersAreOpen,
     (open, reaction) => {
         if (open) {
-            const current = document.getElementById("search-results").scrollTop;
-            document.documentElement.style.setProperty("--scroll-position", current + "px");
+            const searchResults = document.getElementById("search-results");
+            searchResults.classList.remove("scrolling-down");
+            searchResults.classList.add("scrolling-up");
         }
     });
 
@@ -64,28 +65,30 @@ reaction(
             let closeTimeout = 0;
             let adjustTimeout = 0;
             const filters = document.getElementsByClassName("static-filters")[0];
+            const searchResults = document.getElementById("search-results");
 
-            document.getElementById("search-results").addEventListener("scroll",
+            searchResults.addEventListener("scroll",
                 () => {
-                    const current = document.getElementById("search-results").scrollTop;
-                    const last = previous;
-                    previous = current;
-                    const isFullyOpen = (filters as any).style.height == "auto";
+                    const current = searchResults.scrollTop;
+                    const goingUp = current <= previous;
+                    if (goingUp) {
+                        searchResults.classList.remove("scrolling-down");
+                        searchResults.classList.add("scrolling-up");
+                    } else {
+                        if (!searchResults.classList.contains("scrolling-down")) {
+                            const offset = current + "px";
+                            document.documentElement.style.setProperty("--scroll-position", offset);
+                        }
 
-                    const offset = current + "px";
-                    if (isFullyOpen && current < last) {
-                        document.documentElement.style.setProperty("--scroll-position", offset);
-                    }
+                        searchResults.classList.add("scrolling-down");
+                        searchResults.classList.remove("scrolling-up");
 
-                    if (!isFullyOpen) {
-                        document.documentElement.style.setProperty("--scroll-position", offset);
-                    }
+                        const currentFilterPosition = parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
+                        const filterHeight = (filters as any).offsetHeight;
+                        const pixelsDownFilter = current - currentFilterPosition;
+                        const percentageThrough = (pixelsDownFilter / filterHeight) * 100;
 
-                    if (isFullyOpen) {
-                        const currentFilterPosition =
-                            parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
-                        const diff = Math.abs(currentFilterPosition - current);
-                        if (diff > 5) {
+                        if (percentageThrough >= 10) {
                             if (closeTimeout) {
                                 clearTimeout(closeTimeout);
                             }
@@ -94,13 +97,12 @@ reaction(
                                     applicationState.closeFilterControl();
                                 },
                                 50);
-
-                            return;
                         }
-
-                        //setTimeout(() => , 0);
                     }
-                });
+
+                    previous = current;
+                },
+                false);
         });
     }
 );

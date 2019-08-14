@@ -911,7 +911,12 @@ a.contents-link {
     background: #F2994A;
 }
 
-.static-filters {
+#search-results.scrolling-down .static-filters {
     position: relative;
     transform: translateY(var(--scroll-position));
+}
+
+#search-results.scrolling-up .static-filters {
+    position: sticky;
+    top: 0;
 }
