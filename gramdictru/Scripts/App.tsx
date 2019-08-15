@@ -63,46 +63,59 @@ reaction(
         setTimeout(() => {
             let previous = 0;
             let closeTimeout = 0;
-            let adjustTimeout = 0;
+            let isTouching = false;
             const filters = document.getElementsByClassName("static-filters")[0];
             const searchResults = document.getElementById("search-results");
 
-            searchResults.addEventListener("scroll",
-                () => {
-                    const current = searchResults.scrollTop;
-                    const goingUp = current <= previous;
-                    if (goingUp) {
-                        searchResults.classList.remove("scrolling-down");
-                        searchResults.classList.add("scrolling-up");
-                    } else {
-                        if (!searchResults.classList.contains("scrolling-down")) {
-                            const offset = current + "px";
-                            document.documentElement.style.setProperty("--scroll-position", offset);
-                        }
-
-                        searchResults.classList.add("scrolling-down");
-                        searchResults.classList.remove("scrolling-up");
-
-                        const currentFilterPosition = parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
-                        const filterHeight = (filters as any).offsetHeight;
-                        const pixelsDownFilter = current - currentFilterPosition;
-                        const percentageThrough = (pixelsDownFilter / filterHeight) * 100;
-
-                        if (percentageThrough >= 10) {
-                            if (closeTimeout) {
-                                clearTimeout(closeTimeout);
-                            }
-
-                            closeTimeout = window.setTimeout(() => {
-                                    applicationState.closeFilterControl();
-                                },
-                                50);
-                        }
+            function updateFiltersAfterMoving() {
+                const current = searchResults.scrollTop;
+                const goingUp = current < previous;
+                if (goingUp) {
+                    searchResults.classList.remove("scrolling-down");
+                    searchResults.classList.add("scrolling-up");
+                } else {
+                    if (!searchResults.classList.contains("scrolling-down")) {
+                        const offset = current + "px";
+                        document.documentElement.style.setProperty("--scroll-position", offset);
                     }
 
-                    previous = current;
-                },
-                false);
+                    searchResults.classList.add("scrolling-down");
+                    searchResults.classList.remove("scrolling-up");
+
+                    const currentFilterPosition = parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
+                    const filterHeight = (filters as any).offsetHeight;
+                    const pixelsDownFilter = current - currentFilterPosition;
+                    const percentageThrough = (pixelsDownFilter / filterHeight) * 100;
+
+                    if (percentageThrough >= 10) {
+                        if (closeTimeout) {
+                            clearTimeout(closeTimeout);
+                        }
+
+                        closeTimeout = window.setTimeout(() => {
+                            if (!isTouching) {
+                                applicationState.closeFilterControl();
+                            }
+                            },
+                            50);
+                    }
+                }
+
+                previous = current;
+            }
+
+            searchResults.addEventListener("touchstart", () => {
+                isTouching = true;
+            });
+            searchResults.addEventListener("touchend", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            });
+            searchResults.addEventListener("touchcancel", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            });
+            searchResults.addEventListener("scroll", () => updateFiltersAfterMoving(), false);
         });
     }
 );

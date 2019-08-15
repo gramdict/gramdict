@@ -81,6 +81,10 @@
     font-style: normal;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
     margin: 0;
     line-height: 140%;
@@ -88,6 +92,9 @@ body {
     background-color: #e0e0e0;
     background-image: url('../background.jpg');
     font-family: 'Montserrat';
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .page {
@@ -452,7 +459,7 @@ table .left-aligned td {
     position: unset;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    max-height: 100vh;
 }
 
 .has-searched .search-bar {
