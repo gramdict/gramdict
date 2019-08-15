@@ -111,6 +111,13 @@ reaction(
                 isTouching = false;
                 updateFiltersAfterMoving();
             });
+            searchResults.addEventListener("mousedown", () => {
+                isTouching = true;
+            });
+            searchResults.addEventListener("mouseup", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            });
             searchResults.addEventListener("touchcancel", () => {
                 isTouching = false;
                 updateFiltersAfterMoving();
