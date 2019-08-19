@@ -122,10 +122,6 @@ body {
         max-width: calc(100% - var(--body-padding) * 2);
     }
 
-    .search-input {
-        margin-right: calc(2*var(--body-padding));
-    }
-
     .page {
         max-width: 100%;
         width: 100%;
@@ -708,7 +704,7 @@ a.contents-link {
     background-size: 55%;
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 20px;
+    margin-right: 5px;
     font-size: 0;
 }
 
