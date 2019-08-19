@@ -16,10 +16,14 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     render() {
         return this.props.applicationState.hasSearched &&
             <div className="page is-searching" id="search-results">
-            <AnimateHeight className="static-filters" duration={400} height={this.props.applicationState.filtersAreOpen ? "auto" : "0"} style={{
+            <AnimateHeight className="static-filters"
+                duration={this.props.applicationState.nextAnimationTime}
+                height={this.props.applicationState.nextAnimationHeight}
+                onAnimationEnd={val => this.props.applicationState.ensureFilterAreClosed()}
+                style={{
                 backgroundImage: "url('../background.jpg')"
         }}>
-                    <Filters applicationState={this.props.applicationState} />
+                <Filters applicationState={this.props.applicationState} />
             </AnimateHeight>
                 <div className="body-content">
                     <InfinityScroll

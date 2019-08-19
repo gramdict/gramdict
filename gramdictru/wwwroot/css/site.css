@@ -81,10 +81,6 @@
     font-style: normal;
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     margin: 0;
     line-height: 140%;
@@ -94,7 +90,6 @@ body {
     font-family: 'Montserrat';
     max-width: 100vw;
     max-height: 100vh;
-    overflow: hidden;
 }
 
 .page {
@@ -482,6 +477,7 @@ table .left-aligned td {
     padding-left: var(--body-padding);
     padding-right: var(--body-padding);
     max-width: calc(46rem + calc(var(--body-padding) * 2));
+    box-sizing: border-box;
 }
 
 .search-controls a.contents-link {
@@ -926,4 +922,8 @@ a.contents-link {
 #search-results.scrolling-up .static-filters {
     position: sticky;
     top: 0;
+}
+
+#search-results.filters-invisible {
+    overflow-anchor: auto;
 }

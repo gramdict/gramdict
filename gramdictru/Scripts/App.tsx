@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
-import { ApplicationState } from "./ApplicationState";
+import { ApplicationState, defaultAnimationTime } from "./ApplicationState";
 import { Loader } from "./Loader/index";
 import { FilterControl } from "./FilterControl";
 import { Filters } from "./Filters";
@@ -36,6 +36,8 @@ window.onpopstate = function (event) {
     }
 };
 
+let hasBegunAnimating = false;
+
 reaction(
     () => applicationState.filtersAreOpen,
     (open, reaction) => {
@@ -43,6 +45,8 @@ reaction(
             const searchResults = document.getElementById("search-results");
             searchResults.classList.remove("scrolling-down");
             searchResults.classList.add("scrolling-up");
+            searchResults.classList.remove("filters-invisible");
+            hasBegunAnimating = false;
         }
     });
 
@@ -68,61 +72,87 @@ reaction(
             const searchResults = document.getElementById("search-results");
 
             function updateFiltersAfterMoving() {
-                const current = searchResults.scrollTop;
-                const goingUp = current < previous;
-                if (goingUp) {
-                    searchResults.classList.remove("scrolling-down");
-                    searchResults.classList.add("scrolling-up");
-                } else {
-                    if (!searchResults.classList.contains("scrolling-down")) {
-                        const offset = current + "px";
-                        document.documentElement.style.setProperty("--scroll-position", offset);
-                    }
+                if (applicationState.filtersAreOpen) {
+                    const current = searchResults.scrollTop;
+                    const goingUp = current <= previous;
+                    const goingDown = current >= previous;
 
-                    searchResults.classList.add("scrolling-down");
-                    searchResults.classList.remove("scrolling-up");
-
-                    const currentFilterPosition = parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
+                    const currentFilterPosition =
+                        parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
                     const filterHeight = (filters as any).offsetHeight;
                     const pixelsDownFilter = current - currentFilterPosition;
                     const percentageThrough = (pixelsDownFilter / filterHeight) * 100;
+                    const isAtTop = percentageThrough <= 0;
 
-                    if (percentageThrough >= 10) {
-                        if (closeTimeout) {
-                            clearTimeout(closeTimeout);
+                    if (goingUp) {
+                        if (isAtTop) {
+                            searchResults.classList.remove("scrolling-down");
+                            searchResults.classList.add("scrolling-up");
+                        }
+                    } else {
+                        if (!searchResults.classList.contains("scrolling-down")) {
+                            const offset = current + "px";
+                            document.documentElement.style.setProperty("--scroll-position", offset);
                         }
 
-                        closeTimeout = window.setTimeout(() => {
-                            if (!isTouching) {
-                                applicationState.closeFilterControl();
-                            }
-                            },
-                            50);
-                    }
-                }
+                        searchResults.classList.add("scrolling-down");
+                        searchResults.classList.remove("scrolling-up");
 
-                previous = current;
+                    }
+
+                    if (goingDown) {
+                        if (percentageThrough >= 10 && !hasBegunAnimating && !isTouching) {
+                            if (closeTimeout) {
+                                clearTimeout(closeTimeout);
+                            }
+
+                            closeTimeout = window.setTimeout(() => {
+                                    hasBegunAnimating = true;
+                                    const isWithinBounds = 0 <= percentageThrough && percentageThrough < 100;
+                                    if (isWithinBounds) {
+                                        const multiplier = percentageThrough / 100;
+                                        applicationState.closeFilterControl(
+                                            (filters as any).offsetHeight * multiplier,
+                                            defaultAnimationTime * (1 - multiplier)
+                                        );
+                                    } else {
+                                        applicationState.closeFilterControl();
+                                    }
+                                },
+                                100);
+                        }
+                    }
+
+                    const completelyCovered = percentageThrough >= 100;
+                    if (completelyCovered) {
+                        searchResults.classList.add("filters-invisible");
+                    } else {
+                        searchResults.classList.remove("filters-invisible");
+                    }
+
+                    previous = current;
+                }
             }
 
             searchResults.addEventListener("touchstart", () => {
                 isTouching = true;
-            });
+            }, { passive: true });
             searchResults.addEventListener("touchend", () => {
                 isTouching = false;
                 updateFiltersAfterMoving();
-            });
+            }, { passive: true });
             searchResults.addEventListener("mousedown", () => {
                 isTouching = true;
-            });
+            }, { passive: true });
             searchResults.addEventListener("mouseup", () => {
                 isTouching = false;
                 updateFiltersAfterMoving();
-            });
+            }, { passive: true });
             searchResults.addEventListener("touchcancel", () => {
                 isTouching = false;
                 updateFiltersAfterMoving();
-            });
-            searchResults.addEventListener("scroll", () => updateFiltersAfterMoving(), false);
+            }, { passive: true });
+            searchResults.addEventListener("scroll", () => updateFiltersAfterMoving(), { passive: true });
         });
     }
 );
