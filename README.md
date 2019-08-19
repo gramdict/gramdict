@@ -7,3 +7,4 @@ Issues to include in regression tests:
 * "да" layout weirdness [#47](https://github.com/morpher-ru/gramdict/issues/47) http://gramdict.ru/search/да
 * Typing into the search box or selecting filters must update the URL
 * When opening a link with filters, the filters bar must be open: http://gramdict.ru/search/*?symbol=м
+* When opening a link with an anchor, the linked to paragraph must be at the top and its first line fully visible (provided there is enough text below): http://gramdict.ru/preface#computer-applications
