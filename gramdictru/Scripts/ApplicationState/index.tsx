@@ -17,7 +17,29 @@ type ApiResponse = {
     entries: ApiEntry[],
 }
 
+export const defaultAnimationTime = 400;
+
 export class ApplicationState {
+    @action
+    ensureFilterAreClosed() {
+        if (!this.filtersAreOpen) {
+            const searchResults = document.getElementById("search-results");
+            searchResults.classList.add("filters-invisible");
+
+            setTimeout(() => {
+                this.closeFilterControl();
+                searchResults.scrollBy(0, 1);
+            }, 0);
+        }
+    }
+
+    @observable
+    nextAnimationHeight: string | number = 0;
+    
+    @observable
+    nextAnimationTime: number = defaultAnimationTime;
+
+
     currentSearch: CancellablePromise<{}>;
 
     @observable
@@ -97,7 +119,25 @@ export class ApplicationState {
 
     @action
     toggleFilterControl() {
-        this.filtersAreOpen = !this.filtersAreOpen;
+        if (this.filtersAreOpen) {
+            this.closeFilterControl();
+        } else {
+            this.openFilterControl();
+        }
+    }
+
+    @action
+    openFilterControl() {
+        this.filtersAreOpen = true;
+        this.nextAnimationHeight = "auto";
+        this.nextAnimationTime = defaultAnimationTime;
+    }
+
+    @action
+    closeFilterControl(size = 0, time = defaultAnimationTime) {
+        this.filtersAreOpen = false;
+        this.nextAnimationHeight = size;
+        this.nextAnimationTime = time;
     }
 
     callback?: () => void;
@@ -156,7 +196,7 @@ export class ApplicationState {
 
         this.search(true);
         if (decodedFilters.length > 0) {
-            setTimeout(() => this.filtersAreOpen = true);
+            setTimeout(() => this.openFilterControl());
         }
     }
 
