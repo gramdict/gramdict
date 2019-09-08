@@ -2,6 +2,8 @@ import { ApplicationState } from "../ApplicationState/index";
 import * as InfinityScroll from "react-infinite-scroll-component";
 import { observer } from "mobx-react";
 import * as React from "react";
+import AnimateHeight from "react-animate-height";
+import { Filters } from "../Filters/index";
 
 export interface IResultBoxProps {
     applicationState: ApplicationState
@@ -14,6 +16,15 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
     render() {
         return this.props.applicationState.hasSearched &&
             <div className="page is-searching" id="search-results">
+            <AnimateHeight className="static-filters"
+                duration={this.props.applicationState.nextAnimationTime}
+                height={this.props.applicationState.nextAnimationHeight}
+                onAnimationEnd={val => this.props.applicationState.ensureFilterAreClosed()}
+                style={{
+                backgroundImage: "url('../background.jpg')"
+        }}>
+                <Filters applicationState={this.props.applicationState} />
+            </AnimateHeight>
                 <div className="body-content">
                     <InfinityScroll
                         dataLength={this.props.applicationState.total}

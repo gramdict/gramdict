@@ -3,11 +3,12 @@ import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { SearchBox } from "./SearchBox";
 import { ResultsBox } from "./ResultsBox";
-import { ApplicationState } from "./ApplicationState";
+import { ApplicationState, defaultAnimationTime } from "./ApplicationState";
 import { Loader } from "./Loader/index";
 import { FilterControl } from "./FilterControl";
 import { Filters } from "./Filters";
 import { observer } from "mobx-react";
+import AnimateHeight from "react-animate-height";
 
 const applicationState = new ApplicationState();
 const root = document.documentElement;
@@ -35,6 +36,20 @@ window.onpopstate = function (event) {
     }
 };
 
+let hasBegunAnimating = false;
+
+reaction(
+    () => applicationState.filtersAreOpen,
+    (open, reaction) => {
+        if (open) {
+            const searchResults = document.getElementById("search-results");
+            searchResults.classList.remove("scrolling-down");
+            searchResults.classList.add("scrolling-up");
+            searchResults.classList.remove("filters-invisible");
+            hasBegunAnimating = false;
+        }
+    });
+
 reaction(
     () => applicationState.hasSearched,
     (_, reaction) => {
@@ -48,6 +63,97 @@ reaction(
 
         const root = document.getElementById("search-react-root");
         root.classList.add("has-searched");
+
+        setTimeout(() => {
+            let previous = 0;
+            let closeTimeout = 0;
+            let isTouching = false;
+            const filters = document.getElementsByClassName("static-filters")[0];
+            const searchResults = document.getElementById("search-results");
+
+            function updateFiltersAfterMoving() {
+                if (applicationState.filtersAreOpen) {
+                    const current = searchResults.scrollTop;
+                    const goingUp = current <= previous;
+                    const goingDown = current >= previous;
+
+                    const currentFilterPosition =
+                        parseInt(document.documentElement.style.getPropertyValue("--scroll-position")) || 0;
+                    const filterHeight = (filters as any).offsetHeight;
+                    const pixelsDownFilter = current - currentFilterPosition;
+                    const percentageThrough = (pixelsDownFilter / filterHeight) * 100;
+                    const isAtTop = percentageThrough <= 0;
+
+                    if (goingUp) {
+                        if (isAtTop) {
+                            searchResults.classList.remove("scrolling-down");
+                            searchResults.classList.add("scrolling-up");
+                        }
+                    } else {
+                        if (!searchResults.classList.contains("scrolling-down")) {
+                            const offset = current + "px";
+                            document.documentElement.style.setProperty("--scroll-position", offset);
+                        }
+
+                        searchResults.classList.add("scrolling-down");
+                        searchResults.classList.remove("scrolling-up");
+
+                    }
+
+                    if (goingDown) {
+                        if (percentageThrough >= 10 && !hasBegunAnimating && !isTouching) {
+                            if (closeTimeout) {
+                                clearTimeout(closeTimeout);
+                            }
+
+                            closeTimeout = window.setTimeout(() => {
+                                    hasBegunAnimating = true;
+                                    const isWithinBounds = 0 <= percentageThrough && percentageThrough < 100;
+                                    if (isWithinBounds) {
+                                        const multiplier = percentageThrough / 100;
+                                        applicationState.closeFilterControl(
+                                            (filters as any).offsetHeight * multiplier,
+                                            defaultAnimationTime * (1 - multiplier)
+                                        );
+                                    } else {
+                                        applicationState.closeFilterControl();
+                                    }
+                                },
+                                100);
+                        }
+                    }
+
+                    const completelyCovered = percentageThrough >= 100;
+                    if (completelyCovered) {
+                        searchResults.classList.add("filters-invisible");
+                    } else {
+                        searchResults.classList.remove("filters-invisible");
+                    }
+
+                    previous = current;
+                }
+            }
+
+            searchResults.addEventListener("touchstart", () => {
+                isTouching = true;
+            }, { passive: true });
+            searchResults.addEventListener("touchend", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            }, { passive: true });
+            searchResults.addEventListener("mousedown", () => {
+                isTouching = true;
+            }, { passive: true });
+            searchResults.addEventListener("mouseup", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            }, { passive: true });
+            searchResults.addEventListener("touchcancel", () => {
+                isTouching = false;
+                updateFiltersAfterMoving();
+            }, { passive: true });
+            searchResults.addEventListener("scroll", () => updateFiltersAfterMoving(), { passive: true });
+        });
     }
 );
 
@@ -94,7 +200,6 @@ class MyComponent extends React.Component {
                     </div>
                 </div>
                 <Loader applicationState={applicationState} />
-                {applicationState.filtersAreOpen && <Filters applicationState={applicationState} />}
             </div>,
             <ResultsBox applicationState={applicationState}/>
         ];
