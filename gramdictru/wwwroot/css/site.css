@@ -671,12 +671,22 @@ a.contents-link {
     max-width: calc(100% - var(--body-padding) * 2);
 }
 
-:target {
-    border-top: var(--search-bar-total-height) solid transparent;
-    margin-top: -var(--search-bar-total-height);
+:target::before {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: -1;
+    padding-top: var(--search-bar-total-height);
+    margin-top: calc(0px - var(--search-bar-total-height));
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
     background-clip: padding-box;
+}
+
+:target .permalink {
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 2em;
 }
 
 .filter-wrapper {
