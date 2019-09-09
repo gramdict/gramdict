@@ -689,6 +689,21 @@ a.contents-link {
     margin-right: 2em;
 }
 
+.permalink:first-child ~ a {
+    position: relative;
+    bottom: 0.5em;
+    font-size: 0.8em;
+}
+
+h1:target .permalink,
+h2:target .permalink,
+h3:target .permalink,
+h4:target .permalink,
+h5:target .permalink,
+h6:target .permalink {
+    margin-right: 0;
+}
+
 .filter-wrapper {
     margin: 0 auto;
     color: white;
