@@ -333,6 +333,12 @@ table.left-aligned tr td:nth-last-child(1) {
     padding-right: 0;
 }
 
+@media screen and (max-width: 40em) {
+    table.left-aligned {
+        margin-left: 0;
+    }
+}
+
 .letter {
     font-weight: bold;
 }
