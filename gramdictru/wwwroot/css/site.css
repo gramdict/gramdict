@@ -333,6 +333,12 @@ table.left-aligned tr td:nth-last-child(1) {
     padding-right: 0;
 }
 
+@media screen and (max-width: 40em) {
+    table.left-aligned {
+        margin-left: 0;
+    }
+}
+
 .letter {
     font-weight: bold;
 }
@@ -371,16 +377,13 @@ ul#contents {
     text-indent: 0;
 }
 
-.row .column {
-    float: left;
-    width: 50%;
-    height: auto; 
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.row .column {
+    height: auto; 
 }
 
 .tr1 {
@@ -388,12 +391,13 @@ ul#contents {
     border-collapse: collapse;
 }
 
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
+@media screen and (max-width: 50em) {
+    .row {
+        flex-direction: column;
     }
+
     .tr1 {
-        border-right: solid 0px #000000 !important;
+        border-right: none;
     }
 }
 
