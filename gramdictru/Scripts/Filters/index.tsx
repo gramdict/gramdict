@@ -384,12 +384,13 @@ const formatLabel = (filter) => {
     ];
 }
 
-const FilterTableRows = ({ rows, getter, toggle }: {
+const FilterTableRows = ({ rows, getter, toggle, className }: {
     rows: Row[],
     getter: Map<string, boolean>,
     toggle: (something: string) => void,
+    className?: string
 }) => (<React.Fragment>{rows.map(row =>
-    <tr>
+    <tr className={className}>
         {row && row.map(item => {
             let width = 1;
             let items: Entry[];
@@ -453,7 +454,7 @@ index => this.props.applicationState.toggleIndex(index)}>
                                            </Filter>)}
                                    </div></td>
                            </tr>
-                           <FilterTableRows rows={[circles]} getter={this.props.applicationState.circles} toggle={c =>
+                           <FilterTableRows className="circle-row" rows={[circles]} getter={this.props.applicationState.circles} toggle={c =>
                                this.props.applicationState.toggleCircle((c))}/>
                            <FilterTableRows rows={para} getter={this.props.applicationState.paras} toggle={p => this
                                .props.applicationState.togglePara((p))}/>

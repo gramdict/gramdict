@@ -796,6 +796,11 @@ h6:target .permalink {
     text-decoration: underline;
 }
 
+.circle-row {
+    line-height: 1.6em;
+    font-size: 1.6em;
+}
+
 .reset-filter-button-wrapper {
     display: flex;    
     align-items: center;
