@@ -109,16 +109,236 @@ const stresses: Row[] = [
     ],
 ]
 
-const indexes = range(0, 17).map(i => i.toString()).map(i => ({ name: i, tooltip: i }));
-const circles: Row = [undefined, ..."① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨".split(" ").map(c => ({ name: c, tooltip: c }))];
-function range(start, count) {
-    return Array.apply(0, Array(count))
-        .map((element, index) => index + start);
-}
+const indexes = [
+    {
+        name: "0",
+        tooltip: "0"
+    },
+    {
+        name: "1",
+        tooltip: "1"
+    },
+    {
+        name: "2",
+        tooltip: "2"
+    },
+    {
+        name: "3",
+        tooltip: "3"
+    },
+    {
+        name: "4",
+        tooltip: "4"
+    },
+    {
+        name: "5",
+        tooltip: "5"
+    },
+    {
+        name: "6",
+        tooltip: "6"
+    },
+    {
+        name: "7",
+        tooltip: "7"
+    },
+    {
+        name: "8",
+        tooltip: "8"
+    },
+    {
+        name: "9",
+        tooltip: "9"
+    },
+    {
+        name: "10",
+        tooltip: "10"
+    },
+    {
+        name: "11",
+        tooltip: "11"
+    },
+    {
+        name: "12",
+        tooltip: "12"
+    },
+    {
+        name: "13",
+        tooltip: "13"
+    },
+    {
+        name: "14",
+        tooltip: "14"
+    },
+    {
+        name: "15",
+        tooltip: "15"
+    },
+    {
+        name: "16",
+        tooltip: "16"
+    }
+];
+const circles: Row = [
+    undefined,
+    {
+        name: "①",
+        tooltip: "①"
+    },
+    {
+        name: "②",
+        tooltip: "②"
+    },
+    {
+        name: "③",
+        tooltip: "③"
+    },
+    {
+        name: "④",
+        tooltip: "④"
+    },
+    {
+        name: "⑤",
+        tooltip: "⑤"
+    },
+    {
+        name: "⑥",
+        tooltip: "⑥"
+    },
+    {
+        name: "⑦",
+        tooltip: "⑦"
+    },
+    {
+        name: "⑧",
+        tooltip: "⑧"
+    },
+    {
+        name: "⑨",
+        tooltip: "⑨"
+    }
+];
 const para: Row[] = [
-    [undefined, undefined, ...range(3, 8).map(c => ({ name: `§${c}`, tooltip: `§${c}` }))],
-    range(11, 10).map(c => ({ name: `§${c}`, tooltip: `§${c}` })),
-    range(21, 10).map(c => ({ name: `§${c}`, tooltip: `§${c}` }))
+    [
+        undefined,
+        undefined, 
+        {
+            name: "§3",
+            tooltip: "§3"
+        },
+        {
+            name: "§4",
+            tooltip: "§4"
+        },
+        {
+            name: "§5",
+            tooltip: "§5"
+        },
+        {
+            name: "§6",
+            tooltip: "§6"
+        },
+        {
+            name: "§7",
+            tooltip: "§7"
+        },
+        {
+            name: "§8",
+            tooltip: "§8"
+        },
+        {
+            name: "§9",
+            tooltip: "§9"
+        },
+        {
+            name: "§10",
+            tooltip: "§10"
+        }
+    ],
+    [
+        {
+            name: "§11",
+            tooltip: "§11"
+        },
+        {
+            name: "§12",
+            tooltip: "§12"
+        },
+        {
+            name: "§13",
+            tooltip: "§13"
+        },
+        {
+            name: "§14",
+            tooltip: "§14"
+        },
+        {
+            name: "§15",
+            tooltip: "§15"
+        },
+        {
+            name: "§16",
+            tooltip: "§16"
+        },
+        {
+            name: "§17",
+            tooltip: "§17"
+        },
+        {
+            name: "§18",
+            tooltip: "§18"
+        },
+        {
+            name: "§19",
+            tooltip: "§19"
+        },
+        {
+            name: "§20",
+            tooltip: "§20"
+        }
+    ],
+    [
+        {
+            name: "§21",
+            tooltip: "§21"
+        },
+        {
+            name: "§22",
+            tooltip: "§22"
+        },
+        {
+            name: "§23",
+            tooltip: "§23"
+        },
+        {
+            name: "§24",
+            tooltip: "§24"
+        },
+        {
+            name: "§25",
+            tooltip: "§25"
+        },
+        {
+            name: "§26",
+            tooltip: "§26"
+        },
+        {
+            name: "§27",
+            tooltip: "§27"
+        },
+        {
+            name: "§28",
+            tooltip: "§28"
+        },
+        {
+            name: "§29",
+            tooltip: "§29"
+        },
+        {
+            name: "§30",
+            tooltip: "§30"
+        }
+    ]
 ];
 
 const linksToAgenda = [
