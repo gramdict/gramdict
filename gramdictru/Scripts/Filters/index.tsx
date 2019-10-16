@@ -11,14 +11,16 @@ export interface IFilterControlProps
 
 interface IFilterProps {
     filter: string,
+    getter: Map<string, boolean>,
+    toggle: (something: string) => void,
 }
 
 @observer
-class Filter extends React.Component<IFilterControlProps & IFilterProps> {
+class Filter extends React.Component<IFilterProps> {
     render() {
         return <span
-            className={"filter " + (this.props.applicationState.filters.get(this.props.filter) ? "filter-active" : "filter-inactive")}
-            onClick={() => this.props.applicationState.toggleFilter(this.props.filter)}>
+            className={"filter " + (this.props.getter.get(this.props.filter) ? "filter-active" : "filter-inactive")}
+            onClick={() => this.props.toggle(this.props.filter)}>
             {this.props.children}
         </span>;
     }
@@ -31,7 +33,7 @@ type Entry = {
 }
 
 type Nested = Entry[];
-type Row = Array<Entry & { width?: number } | Nested>
+type Row = Array<Entry & { width?: number } | Nested | undefined>
 
 const possibleFilters: Row[] = [
     [
@@ -82,6 +84,42 @@ const possibleFilters: Row[] = [
         { name: "предикативное мс", tooltip: "предикативное местоимение", link: 0, width: 3 }
     ]
 ];
+const stresses: Row[] = [
+    [
+        { name: "a", tooltip: "a"}
+    ],
+    [
+        { name: "b", tooltip: "b" },
+        { name: "b'", tooltip: "b'" }
+    ],
+    [
+        { name: "c", tooltip: "c" }
+    ],
+    [
+        { name: "d", tooltip: "d" },
+        { name: "d'", tooltip: "d'" }
+    ],
+    [
+        { name: "e", tooltip: "e" }
+    ],
+    [
+        { name: "f", tooltip: "f" },
+        { name: "f'", tooltip: "f'" },
+        { name: "f''", tooltip: "f''" }
+    ],
+]
+
+const indexes = range(0, 17).map(i => i.toString()).map(i => ({ name: i, tooltip: i }));
+const circles: Row = [undefined, ..."① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨".split(" ").map(c => ({ name: c, tooltip: c }))];
+function range(start, count) {
+    return Array.apply(0, Array(count))
+        .map((element, index) => index + start);
+}
+const para: Row[] = [
+    [undefined, undefined, ...range(3, 8).map(c => ({ name: `§${c}`, tooltip: `§${c}` }))],
+    range(11, 10).map(c => ({ name: `§${c}`, tooltip: `§${c}` })),
+    range(21, 10).map(c => ({ name: `§${c}`, tooltip: `§${c}` }))
+];
 
 const linksToAgenda = [
     ['(буквенные символы)','/declension/symbols#main-symbol'],
@@ -126,52 +164,93 @@ const formatLabel = (filter) => {
     ];
 }
 
+const FilterTableRows = ({ rows, getter, toggle }: {
+    rows: Row[],
+    getter: Map<string, boolean>,
+    toggle: (something: string) => void,
+}) => (<React.Fragment>{rows.map(row =>
+    <tr>
+        {row && row.map(item => {
+            let width = 1;
+            let items: Entry[];
+            if (Array.isArray(item)) {
+                items = item;
+            } else if (item === undefined) {
+                items = [];
+            } else {
+                width = item.width;
+                items = [item];
+            }
+
+            const filters = items
+                .map((entry, i) =>
+                    <React.Fragment>
+                        <Filter filter={entry.name} getter={getter} toggle={toggle}>
+                            {formatLabel(entry)}
+                        </Filter>
+                        {i < items.length - 1 ? " " : ""}
+                    </React.Fragment>);
+
+            return <td colSpan={width}>{filters}</td>;
+        })}
+           </tr>)}</React.Fragment>);
+    
+const FilterTable = ({ children }: { children?: React.ReactNode }) =>
+(<table className="filter-table">
+        <tbody>
+            {children}
+        </tbody>
+    </table>);
+
+const ExtraTable = ({ children }: { children?: React.ReactNode }) =>
+    (<table className="filter-table extra-table">
+     <tbody>
+     {children}
+     </tbody>
+ </table>);
 
 @observer
 export class Filters extends React.Component<IFilterControlProps> {
     render() {
         return <div className="filter-wrapper">
-            <div className="scrollable-filters">
-            <table className="filter-table">
-                       <tbody>
-                       {possibleFilters.map(row =>
+                   <div className="scrollable-filters">
+                       <FilterTable>
+                           <FilterTableRows rows={possibleFilters} getter={this.props.applicationState.filters
+} toggle={f => this.props.applicationState.toggleFilter(f)}/>
+                       </FilterTable>
+                       <FilterTable>
+                           <FilterTableRows rows={stresses} getter={this.props.applicationState.stresses} toggle={s =>
+                               this.props.applicationState.toggleStress((s))}/>
+                       </FilterTable>
+                       <ExtraTable>
                            <tr>
-                               {row.map(item => {
-                                   let width = 1;
-                                   let items: Entry[];
-                                   if (Array.isArray(item)) {
-                                       items = item;
-                                   } else {
-                                       width = item.width;
-                                       items = [item];
-                                   }
+                               <td colSpan={10}>
+                                   <div className="filter-indexes">
+                                       {indexes.map(i =>
+                                           <Filter filter={i.name} getter={this.props.applicationState.indexes} toggle={
+index => this.props.applicationState.toggleIndex(index)}>
+                                               {formatLabel(i)}
+                                           </Filter>)}
+                                   </div></td>
+                           </tr>
+                           <FilterTableRows rows={[circles]} getter={this.props.applicationState.circles} toggle={c =>
+                               this.props.applicationState.toggleCircle((c))}/>
+                           <FilterTableRows rows={para} getter={this.props.applicationState.paras} toggle={p => this
+                               .props.applicationState.togglePara((p))}/>
+                       </ExtraTable>
 
-                                   const filters = items
-                                       .map((entry, i) =>
-                                           <React.Fragment>
-                                               <Filter filter={entry.name} applicationState={this.props
-                                                   .applicationState}>
-                                                   {formatLabel(entry)}
-                                               </Filter>
-                                               {i < items.length - 1 ? " " : "" }
-                                           </React.Fragment>);
-
-                                   return <td colSpan={width}>{filters}</td>;
-                               })}
-                           </tr>)}
-                       </tbody>
-                   </table>
-                <div className="list-filters-wrapper">
-                    <ListFilters applicationState={this.props.applicationState} />
-                </div>
-            </div>
-            <div className="filter-controls-area">
-                <div className="reset-filter-button-wrapper">
-                    <span className="reset-filter-button" onClick={() => this.props.applicationState.resetFilters()}>Reset</span>
-                </div>
-                {this.props.applicationState.filterTotals}
-            </div>
-        </div>;
+                       <div className="list-filters-wrapper">
+                           <ListFilters applicationState={this.props.applicationState}/>
+                       </div>
+                   </div>
+                   <div className="filter-controls-area">
+                       <div className="reset-filter-button-wrapper">
+                           <span className="reset-filter-button" onClick={() => this.props.applicationState
+                               .resetFilters()}>Reset</span>
+                       </div>
+                       {this.props.applicationState.filterTotals}
+                   </div>
+               </div>;
     }
 }
 

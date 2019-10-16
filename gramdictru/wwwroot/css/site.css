@@ -752,12 +752,17 @@ h6:target .permalink {
     padding: 1px 10px;
 }
 
-.filter-table td:first-child {
+.filter-table td:first-child, .filter-table.extra-table td {
     text-align: center;
 }
 
 .filter-table td:nth-child(2) {
     text-align: center;
+}
+
+.filter-indexes {
+    display: flex;
+    justify-content: space-between;
 }
 
 .filter {
@@ -823,6 +828,10 @@ h6:target .permalink {
     display: flex;
 }
 
+.scrollable-filters > * + * {
+    border-left: 1px solid #4F4F4F;
+}
+
 .list-filters > tbody {
     margin: unset;
 }
@@ -837,8 +846,6 @@ h6:target .permalink {
     display: flex;
     flex-direction: column;
     align-self: stretch;
-    border-left: 1px solid #4F4F4F;
-    border-right: 1px solid #4F4F4F;
 }
 
 .filter-controls-area {

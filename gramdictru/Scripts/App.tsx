@@ -16,10 +16,14 @@ const root = document.documentElement;
 const initialTerm = window["term"];
 const initialSymbol = window["symbol"];
 const initialLists = window["lists"];
+const initialIndexes = window["index"];
+const initialStresses = window["stress"];
+const initialCircles = window["circle"];
+const initialParas = window["para"];
 
-if (typeof initialTerm !== "undefined" && typeof initialSymbol !== "undefined" && typeof initialLists !== "undefined") {
+if (typeof initialTerm !== "undefined" && typeof initialSymbol !== "undefined" && typeof initialLists !== "undefined" && typeof initialIndexes !== "undefined" && typeof initialStresses !== "undefined" && typeof initialCircles !== "undefined" && typeof initialParas !== "undefined") {
     console.log("Loading with initial state", initialTerm, initialSymbol, initialLists);
-    applicationState.applyState(initialTerm, initialSymbol, initialLists);
+    applicationState.applyState(initialTerm, initialSymbol, initialLists, initialIndexes, initialStresses, initialCircles, initialParas);
 }
 
 window.onpopstate = function (event) {
@@ -29,10 +33,11 @@ window.onpopstate = function (event) {
         return;
     }
 
-    const { term, filters, lists } = event.state;
-    console.log(event.state);
-    if (typeof term === "string" && typeof filters === "string" && typeof lists === "string") {
-        applicationState.applyState(term, filters, lists);
+    const { term, symbol, list, index, stress, circle, para } = event.state;
+    console.log("Should update state", event.state);
+    if (typeof term === "string" && typeof symbol === "string" && typeof list === "string" && typeof index === "string" && typeof stress === "string" && typeof circle === "string" && typeof para === "string") {
+        console.log("will update")
+        applicationState.applyState(term, symbol, list, index, stress, circle, para);
     }
 };
 
@@ -52,7 +57,11 @@ reaction(
 
 reaction(
     () => applicationState.hasSearched,
-    (_, reaction) => {
+    (value, reaction) => {
+        if (!value) {
+            return;
+        }
+
         console.log("Searching has happened, removing original page");
         const elements = document.getElementsByClassName("page");
         for (let index = 0; index < elements.length; index++) {
