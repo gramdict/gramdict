@@ -714,7 +714,7 @@ h6:target .permalink {
     background: #333333;
     padding: 10px 10px;
     display: block;
-    max-width: 1280px;
+    max-width: max-content;
 }
 
 .filter-control.fa-chevron-circle-down{background-color: #333333; background-image: url('../filter-icon.svg');}
