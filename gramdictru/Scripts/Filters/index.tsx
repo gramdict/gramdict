@@ -86,33 +86,36 @@ const possibleFilters: Row[] = [
 ];
 const stresses: Row[] = [
     [
-        { name: "a", tooltip: "a"}
+        { name: "a", tooltip: "Постоянное ударение на основе"},
+        { name: "a'", tooltip: "Постоянное ударение на основе, но в кратких формах ж. (у прилагательных) возможно колебание."}
     ],
     [
-        { name: "b", tooltip: "b" },
-        { name: "b'", tooltip: "b'" }
+        { name: "b", tooltip: "Постоянное ударение на окончании" },
+        { name: "b'", tooltip: "(У существительных) как схема b, только в T. ед. ударение на основе.<br/>(У прилагательных) постоянное ударение на основе, но в кратких формах мн. ч. возможно колебание." }
     ],
     [
-        { name: "c", tooltip: "c" }
+        { name: "c", tooltip: "(У существительных) в единственном ударение на основе, во множественном - на окончании. <br/>(У прилагательных и в прош.) на окончаниях в прош. ж, в прочих формах на основе." },
+        { name: "c'", tooltip: "" },
+        { name: "c''", tooltip: "" }
     ],
     [
-        { name: "d", tooltip: "d" },
-        { name: "d'", tooltip: "d'" }
+        { name: "d", tooltip: "В единственном ударение на окончании, во множественном - на основе." },
+        { name: "d'", tooltip: "Как схема d, только в В. ед. ударение на первом слоге." }
     ],
     [
         { name: "e", tooltip: "e" }
     ],
     [
         { name: "f", tooltip: "f" },
-        { name: "f'", tooltip: "f'" },
+        { name: "f'", tooltip: "Как схема f, только в В. ед. ударение на первом слоге." },
         { name: "f''", tooltip: "f''" }
     ],
-]
+];
 
 const indexes = [
     {
         name: "0",
-        tooltip: "0"
+        tooltip: "Неизменяемое (несклоняемое, неспрягаемое) слово"
     },
     {
         name: "1",
@@ -179,6 +182,7 @@ const indexes = [
         tooltip: "16"
     }
 ];
+
 const circles: Row = [
     undefined,
     {
@@ -218,6 +222,7 @@ const circles: Row = [
         tooltip: "⑨"
     }
 ];
+
 const para: Row[] = [
     [
         undefined,
@@ -382,7 +387,7 @@ const formatLabel = (filter) => {
             </div>
         ]}/>
     ];
-}
+};
 
 const FilterTableRows = ({ rows, getter, toggle, className }: {
     rows: Row[],
