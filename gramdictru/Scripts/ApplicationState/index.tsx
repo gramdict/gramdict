@@ -17,6 +17,16 @@ type ApiResponse = {
     entries: ApiEntry[],
 }
 
+const circleString = "①②③④⑤⑥⑦⑧⑨";
+function apiValueNormalizer(value: string) {
+    const circleIndex = circleString.indexOf(value);
+    if (circleIndex > -1) {
+        return (circleIndex + 1).toString();
+    }
+
+    return value.replace("§", "");
+}
+
 export const defaultAnimationTime = 400;
 
 export class ApplicationState {
@@ -107,6 +117,18 @@ export class ApplicationState {
     @observable
     lists = new Map<string, boolean>();
 
+    @observable
+    stresses = new Map<string, boolean>();
+
+    @observable
+    indexes = new Map<string, boolean>();
+
+    @observable
+    circles = new Map<string, boolean>();
+
+    @observable
+    paras = new Map<string, boolean>();
+
     @computed
     get canLoadMore() {
         return !this.reachedLimit && !this.isLoading;
@@ -149,15 +171,43 @@ export class ApplicationState {
     }
 
     @action
-    resetFilters() {
-        this.filters.clear();
-        this.lists.clear();
+    toggleList(list: string) {
+        this.lists.set(list, !this.lists.get(list));
         this.search();
     }
 
     @action
-    toggleList(list: string) {
-        this.lists.set(list, !this.lists.get(list));
+    toggleIndex(index: string) {
+        this.indexes.set(index, !this.indexes.get(index));
+        this.search();
+    }
+
+    @action
+    toggleStress(stress: string) {
+        this.stresses.set(stress, !this.stresses.get(stress));
+        this.search();
+    }
+
+    @action
+    toggleCircle(circle: string) {
+        this.circles.set(circle, !this.circles.get(circle));
+        this.search();
+    }
+
+    @action
+    togglePara(para: string) {
+        this.paras.set(para, !this.paras.get(para));
+        this.search();
+    }
+
+    @action
+    resetFilters() {
+        this.filters.clear();
+        this.lists.clear();
+        this.indexes.clear();
+        this.stresses.clear();
+        this.circles.clear();
+        this.paras.clear();
         this.search();
     }
 
@@ -176,26 +226,29 @@ export class ApplicationState {
     }
 
     @action
-    applyState(term: string, filters: string, lists: string) {
+    applyState(term: string, filters: string, lists: string, indexes: string, stresses: string, circles: string, paras: string) {
+        const fixupFilter = (encoded: string, filters: Map<string, boolean>) => {
+            const decoded = encoded.split(",").filter(x => x.length > 0).map(l => decodeURIComponent(l));
+            filters.clear();
+            for (let filter of decoded) {
+                filters.set(filter, true);
+            }
+
+            return filters.size > 0;
+        }
+
         const decodedSearchTerm = decodeURIComponent(term as string);
-        const decodedFilters = (filters as string).split(",").filter(x => x.length > 0).map(f => decodeURIComponent(f));
-        const decodedLists = lists.split(",").filter(x => x.length > 0).map(l => decodeURIComponent(l));
-
         this.searchTerm = decodedSearchTerm === "*" ? "" : decodedSearchTerm;
-        this.filters.clear();
-        for (let filter of decodedFilters) {
-            console.log("applying filter", filter);
-            this.filters.set(filter, true);
-        }
 
-        this.lists.clear();
-        for (let list of decodedLists) {
-            console.log("applying list", list);
-            this.lists.set(list, true);
-        }
-
+        const hasFilters = fixupFilter(filters, this.filters);
+        fixupFilter(lists, this.lists);
+        fixupFilter(indexes, this.indexes);
+        fixupFilter(stresses, this.stresses);
+        fixupFilter(circles, this.circles);
+        fixupFilter(paras, this.paras);
+        
         this.search(true);
-        if (decodedFilters.length > 0) {
+        if (hasFilters) {
             setTimeout(() => this.openFilterControl());
         }
     }
@@ -211,11 +264,20 @@ export class ApplicationState {
         this.filtersAreOpen = false;
     }
 
+    pageEncode = (thing: Map<string, boolean>) => Array.from(thing.entries())
+        .filter(arr => arr[1])
+        .map(arr => encodeURIComponent(arr[0]))
+        .join(",");
+    apiEncode = (thing: Map<string, boolean>) => Array.from(thing.entries())
+        .filter(arr => arr[1])
+        .map(arr => encodeURIComponent(apiValueNormalizer(arr[0])))
+        .join(",");
+
     search = flow(function* (suppressHistory = false) {
         console.log("Beginning new search");
         this.pageNumber = 0;
 
-        this.callback = (term: string, filters: string, lists: string) => {
+        this.callback = (term: string, queryString: string, state: any) => {
             this.results.clear();
             this.total = 0;
             this.reachedLimit = false;
@@ -223,18 +285,10 @@ export class ApplicationState {
             scrollTo(0, 0);
 
             if (!suppressHistory) {
-                const queryString = [
-                    filters.length > 0 ? `symbol=${filters}` : "",
-                    lists.length > 0 ? `list=${lists}` : "",
-                ]
-                    .filter(s => s.length > 0)
-                    .join("&");
-
                 const uri = `/search/${term}` + ((queryString.length > 0) ? `?${queryString}` : "");
                 history.pushState({
                         term,
-                        filters,
-                        lists
+                        ...state
                     },
                     document.title,
                     uri);
@@ -253,31 +307,43 @@ export class ApplicationState {
             }
         }
 
-        this.currentSearch = flow(function*(callback?: (term: string, filters: string, lists: string) => void) {
+        this.currentSearch = flow(function* (callback?: (term: string, queryString: string, state: any) => void) {
             this.isLoading = true;
             this.hasError = false;
 
             let term = encodeURIComponent(this.searchTerm.trim());
             term = term == "" ? "*" : term;
-            const filters = Array.from(this.filters.entries())
-                .filter(arr => arr[1])
-                .map(arr => encodeURIComponent(arr[0]))
-                .join(",");
-            const lists = Array.from(this.lists.entries())
-                .filter(arr => arr[1])
-                .map(arr => encodeURIComponent(arr[0]))
-                .join(",");
+            
+            const apiSearchParams = {
+                pagesize: this.pageSize.toString(),
+                pagenum: this.pageNumber.toString(),
+                symbol: this.apiEncode(this.filters),
+                list: this.apiEncode(this.lists),
+                index: this.apiEncode(this.indexes),
+                stress: this.apiEncode(this.stresses),
+                circle: this.apiEncode(this.circles),
+                para: this.apiEncode(this.paras),
+            };
+            const apiQueryString = Object.keys(apiSearchParams)
+                .filter(x => apiSearchParams[x].length > 0)
+                .map(x => `${x}=${apiSearchParams[x]}`)
+                .join("&");
+
+            const pageState = {
+                symbol: this.pageEncode(this.filters),
+                list: this.pageEncode(this.lists),
+                index: this.pageEncode(this.indexes),
+                stress: this.pageEncode(this.stresses),
+                circle: this.pageEncode(this.circles),
+                para: this.pageEncode(this.paras),
+            }
+            const pageQueryString = Object.keys(pageState)
+                .filter(x => pageState[x].length > 0)
+                .map(x => `${x}=${pageState[x]}`)
+                .join("&");
 
             try {
-                let uri =
-                    `http://api.gramdict.ru/v1/search/${term}?pagesize=${this.pageSize}&pagenum=${this.pageNumber}`;
-                if (filters.length > 0) {
-                    uri = uri + `&symbol=${filters}`;
-                }
-
-                if (lists.length > 0) {
-                    uri = uri + `&list=${lists}`;
-                }
+                const uri = `http://api.gramdict.ru/v1/search/${term}?${apiQueryString}`;
 
                 console.log("making request", uri);
                 const data: ApiResponse = yield axios.get(uri,
@@ -289,7 +355,7 @@ export class ApplicationState {
                 
 
                 if (callback !== undefined) {
-                    callback(term, filters, lists);
+                    callback(term, pageQueryString, pageState);
                 }
 
                 this.hasSearched = true;

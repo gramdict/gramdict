@@ -714,7 +714,7 @@ h6:target .permalink {
     background: #333333;
     padding: 10px 10px;
     display: block;
-    max-width: 860px;
+    max-width: max-content;
 }
 
 .filter-control.fa-chevron-circle-down{background-color: #333333; background-image: url('../filter-icon.svg');}
@@ -752,12 +752,17 @@ h6:target .permalink {
     padding: 1px 10px;
 }
 
-.filter-table td:first-child {
+.filter-table td:first-child, .filter-table.extra-table td {
     text-align: center;
 }
 
 .filter-table td:nth-child(2) {
     text-align: center;
+}
+
+.filter-indexes {
+    display: flex;
+    justify-content: space-between;
 }
 
 .filter {
@@ -791,11 +796,15 @@ h6:target .permalink {
     text-decoration: underline;
 }
 
+.circle-row {
+    line-height: 2.1em;
+    font-size: 1.2em;
+}
+
 .reset-filter-button-wrapper {
     display: flex;    
     align-items: center;
     justify-content: center;   
-    
 }
 
 .reset-filter-button {
@@ -823,6 +832,10 @@ h6:target .permalink {
     display: flex;
 }
 
+.scrollable-filters > * + * {
+    border-left: 1px solid #4F4F4F;
+}
+
 .list-filters > tbody {
     margin: unset;
 }
@@ -837,8 +850,6 @@ h6:target .permalink {
     display: flex;
     flex-direction: column;
     align-self: stretch;
-    border-left: 1px solid #4F4F4F;
-    border-right: 1px solid #4F4F4F;
 }
 
 .filter-controls-area {
