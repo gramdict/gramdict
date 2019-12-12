@@ -2,7 +2,8 @@
 
 ## Regression Testing
 
-Issues to include in regression tests:
+Please execute these regression tests before submitting a PR:
+
 * Superscripts must not affect line spacing [#59](https://github.com/morpher-ru/gramdict/issues/59) http://dev.gramdict.ru/search/носки
 * "да" layout weirdness [#47](https://github.com/morpher-ru/gramdict/issues/47) http://gramdict.ru/search/да
 * Typing into the search box or selecting filters must update the URL
@@ -11,3 +12,4 @@ Issues to include in regression tests:
 * Hovering the mouse cursor over a filter must reveal a tooltip.
 * The page http://gramdict.ru/search should display the same data as http://gramdict.ru/search/* [#51](https://github.com/morpher-ru/gramdict/issues/51)
 * Links displayed in superscript mode [#118](https://github.com/morpher-ru/gramdict/issues/118)
+* Extra line break [#109](https://github.com/morpher-ru/gramdict/issues/109)
