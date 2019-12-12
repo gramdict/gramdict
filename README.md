@@ -10,3 +10,4 @@ Issues to include in regression tests:
 * When opening a link with an anchor, the linked to paragraph must be at the top and its first line fully visible (provided there is enough text below): http://gramdict.ru/preface#computer-applications
 * Hovering the mouse cursor over a filter must reveal a tooltip.
 * The page http://gramdict.ru/search should display the same data as http://gramdict.ru/search/* (#51).
+* Links displayed in superscript mode (#118)
