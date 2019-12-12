@@ -675,7 +675,7 @@ a.contents-link {
 
 :target::before {
     content: "";
-    display: block;
+    display: inline-block;
     position: relative;
     z-index: -1;
     padding-top: var(--search-bar-total-height);
@@ -688,7 +688,7 @@ a.contents-link {
 :target .permalink {
     margin-left: 0;
     padding-left: 0;
-    margin-right: 2em;
+    margin-right: 0;
 }
 
 h1:target .permalink,
