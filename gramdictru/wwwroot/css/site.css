@@ -92,6 +92,13 @@ body {
     max-height: 100vh;
 }
 
+.note-slepov
+{
+    border: solid 1px grey;
+    border-radius: 1em;
+    padding: 1em;
+}
+
 .page {
     text-align: center;
     display: inline-block;
