@@ -100,6 +100,7 @@ body {
 }
 
 .page {
+    font-size: 14px;
     text-align: center;
     display: inline-block;
     background-color: #f5f5f5;
@@ -267,7 +268,6 @@ p {
     padding-bottom: 0;
     text-indent: 2em;
     line-height: 18px;
-    font-size: 14px;
 }
 
 code, word-end {
@@ -376,7 +376,6 @@ ul#contents {
     font-size: 12px;
     color: #898989;
     margin-top: 30px;
-
 }
 
 .entry {
@@ -505,17 +504,17 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Cormorant Garamond, sans-serif;
 }
 
-h6 {
-    font-weight: 700;
-    font-size: 16px;
+h4 {
+    font-size: 22px;
 }
 
 h5 {
     font-size: 18px;
 }
 
-h4 {
-    font-size: 22px;
+h6 {
+    font-weight: 700;
+    font-size: 16px;
 }
 
 a.contents-link {
@@ -780,7 +779,6 @@ h6:target .permalink {
     text-align: center;
     font-size: 12px;
     white-space: normal;
-
 }
 
 .filter-tooltip-a {
@@ -881,7 +879,6 @@ h6:target .permalink {
 
 .body-content> ol > li {
     margin-top: 1em;
-    font-size: 14px;
     line-height: 18px;
 }
 
