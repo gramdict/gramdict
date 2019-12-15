@@ -92,11 +92,18 @@ body {
   max-height: 100vh;
 }
 
+.note-slepov
+{
+    border: solid 1px grey;
+    border-radius: 1em;
+    padding: 1em;
+}
+
 .page {
-  text-align: center;
-  display: inline-block;
-  background-color: #f5f5f5;
-  background-image: url('../page.jpg');
+    text-align: center;
+    display: inline-block;
+    background-color: #f5f5f5;
+    background-image: url('../page.jpg');
 }
 
 .body-content {
@@ -676,8 +683,8 @@ a.contents-link {
   content: "";
   display: block;
   -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
   padding-top: var(--search-bar-total-height);
   margin-top: calc(0px - var(--search-bar-total-height));
 }
