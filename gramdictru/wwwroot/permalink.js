@@ -40,10 +40,13 @@
       var $ = document.querySelectorAll.bind(document);
 
       [].forEach.call($('h1,h2,h3,h4,h5,h6'), function (el) {
-          if (!el.id)
-              return;
+          if (!el.id) return;
           el.style = 'position: relative;';
-          el.innerHTML = '<a class="permalink" href="#' + el.id + '">' + el.innerHTML + '</a>';
+          el.innerHTML = `
+            <span id='${el.id}' class='target'></span>
+            <a class="permalink" href="#${el.id}">${el.innerHTML}</a>
+          `
+          el.removeAttribute('id');
       });
   }
 
@@ -53,14 +56,22 @@
       var a = document.createElement('a');      
       a.className = 'permalink';
 
+      var span = document.createElement('span');
+      span.className = 'target';
+
     [].forEach.call($('p,li'), function (el) {
-        if (!el.id)
-            return;
+        if (!el.id) return;
 
         var clone = a.cloneNode(true);
         clone.href = '#' + el.id;
         el.style = 'position: relative;';
+
+        var spanClone = span.cloneNode(true);
+        spanClone.id = el.id;
+        el.removeAttribute('id');
+
         el.insertBefore(clone, el.firstChild);
+        el.insertBefore(spanClone, el.firstChild);
     });
   }
 
