@@ -870,6 +870,10 @@ h6:target .permalink {
     line-height: 18px;
 }
 
+.read-next {
+    text-align: center;
+    padding-top: 3ex;
+}
 .__react_component_tooltip {
     padding: 0;
 }
