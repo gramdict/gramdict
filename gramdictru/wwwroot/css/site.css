@@ -407,6 +407,38 @@ ul#contents {
     }
 }
 
+.dotted_list li {
+    display: flex;
+    padding: 4px;
+    text-indent: 0;
+}
+
+.casual_list li {
+    display: flex;
+    padding: 4px;
+    text-indent: 0;
+}
+
+.dotted_list li .dots_title {
+    order: 1;
+}
+
+.dotted_list li .dots_title_margin {
+    order: 1;
+    margin-left: 10%;
+}
+
+.dotted_list li .dots_list_index {
+    order: 3;
+}
+
+.dotted_list li::after {
+    content: "";
+    border-bottom: 1px dotted;
+    flex-grow: 1;
+    order: 2;
+}
+
 .column1 {
     float: left;
     width: 100%;
