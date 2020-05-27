@@ -435,6 +435,8 @@ ul#contents {
 .dotted_list li::after {
     content: "";
     border-bottom: 1px dotted;
+    margin-bottom: 0.2em;
+    margin-right: 1%;
     flex-grow: 1;
     order: 2;
 }
