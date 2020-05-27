@@ -14,4 +14,4 @@ Please execute these regression tests before submitting a PR:
 * Links displayed in superscript mode [#118](https://github.com/morpher-ru/gramdict/issues/118) http://dev.gramdict.ru/howtouse#additional-symbols
 * Extra line break [#109](https://github.com/morpher-ru/gramdict/issues/109) http://dev.gramdict.ru/howtouse#latin
 * Extra scroll bar [#115](https://github.com/morpher-ru/gramdict/issues/115) http://gramdict.ru/howtouse#double-slash
-* Lists of [abbreviations](http://gramdict.ru/howtouse#abbreviations) and [symbols](http://gramdict.ru/howtouse#conventional-symbols) (same in the [appendix](http://gramdict.ru/names#abbreviations)) should respond to view width (1/2 columns).
+* Lists of [abbreviations](http://gramdict.ru/howtouse#abbreviations) and [symbols](http://gramdict.ru/howtouse#conventional-symbols) (same in the [appendix](http://gramdict.ru/names#abbreviations)) should respond to view width (1/2 columns) [#4](https://github.com/morpher-ru/gramdict/issues/4).
