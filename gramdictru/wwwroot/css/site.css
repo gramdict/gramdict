@@ -430,6 +430,8 @@ ul#contents {
 
 .dotted_list li .dots_list_index {
     order: 3;
+    min-width: 3ex;
+    text-align: center;
 }
 
 .dotted_list li::after {
