@@ -894,20 +894,29 @@ h6:target .permalink {
 .__react_component_tooltip.type-light.border.place-top:before {
     border-top: 15px solid #bdbdbd;
 }
-.__react_component_tooltip.type-light.place-top:after {
-    border-top-color: #bdbdbd;   
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    margin-left: -5px;
 
+.__react_component_tooltip.type-light.place-top:after {
+    border-top-color: #bdbdbd;
+    border-top-style: solid;
+    border-top-width: 6px;
 }
 
-.__react_component_tooltip.place-top:before{
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    bottom: -15px;
-    left: 50%;
-    margin-left: -5px;
+.__react_component_tooltip.type-light.place-bottom:after {
+    border-bottom-color: #bdbdbd;
+    border-bottom-style: solid;
+    border-bottom-width: 6px;
+}
+
+.__react_component_tooltip.type-light.place-left:after {
+    border-left-color: #bdbdbd;
+    border-left-style: solid;
+    border-left-width: 6px;
+}
+
+.__react_component_tooltip.type-light.place-right:after {
+    border-right-color: #bdbdbd;
+    border-right-style: solid;
+    border-right-width: 6px;
 }
 
 .__react_component_tooltip.show {
