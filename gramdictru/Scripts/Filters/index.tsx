@@ -33,7 +33,7 @@ type Entry = {
 }
 
 type Nested = Entry[];
-type Row = Array<Entry & { width?: number } | Nested | undefined>
+export type Row = Array<Entry & { width?: number } | Nested | undefined>
 
 const possibleFilters: Row[] = [
     [
@@ -223,30 +223,6 @@ const circles: Row = [
     }
 ];
 
-const additionals: Row[] = [
-    [
-        { name: "✕", tooltip: "Беглая гласная у имен и глаголов." },
-        { name: "△", tooltip: "△" },
-        { name: "◑", tooltip: "Сведения о глаголе противоположного вида." },//todo href
-        { name: "ё", tooltip: "Чередование ё/е у имен и глаголов." },//todo href
-        { name: "—", tooltip: "Форма множественного числа или (у прилагательных) краткая форма мужского рода предположительна." },
-        { name: "Р2", tooltip: "Второй родительный падеж" },//lower index
-    ],
-    [
-        { name: "☒", tooltip: "(У прилагательных) краткой формы мужского рода нет, образование прочих кратких форм затруднительно или (у глаголов) страдательного причастия прош. времени нет." },
-        { name: "✧", tooltip: "✧ placeholder" },
-        { name: "♠", tooltip: "♠ placeholder" },
-        { name: "o", tooltip: "o placeholder" },
-        { name: "~", tooltip: "~ placeholder" },
-        { name: "П2", tooltip: "Второй предложный падеж" },//lower index
-    ],
-    [
-        { name: "÷", tooltip: "÷ placeholder" },
-        { name: "*", tooltip: "Беглая гласная у имен и глаголов." },//todo href
-        { name: "°", tooltip: "Чередования у имен и глаголов." },//todo href
-    ],
-];
-
 const para: Row[] = [
     [
         undefined,
@@ -413,7 +389,9 @@ const formatLabel = (filter) => {
     ];
 };
 
-const FilterTableRows = ({ rows, getter, toggle, className }: {
+
+
+export const FilterTableRows = ({ rows, getter, toggle, className }: {
     rows: Row[],
     getter: Map<string, boolean>,
     toggle: (something: string) => void,
@@ -445,7 +423,7 @@ const FilterTableRows = ({ rows, getter, toggle, className }: {
         })}
            </tr>)}</React.Fragment>);
     
-const FilterTable = ({ children }: { children?: React.ReactNode }) =>
+export const FilterTable = ({ children }: { children?: React.ReactNode }) =>
 (<table className="filter-table">
         <tbody>
             {children}
@@ -466,9 +444,6 @@ export class Filters extends React.Component<IFilterControlProps> {
                    <div className="scrollable-filters">
                        <FilterTable>
                            <FilterTableRows rows={possibleFilters} getter={this.props.applicationState.filters} toggle={f => this.props.applicationState.toggleFilter(f)}/>
-                       </FilterTable>
-                       <FilterTable>
-                           <FilterTableRows rows={additionals} getter={this.props.applicationState.additionals} toggle={a => this.props.applicationState.toggleAdditional((a))} />
                        </FilterTable>
                        <FilterTable>
                            <FilterTableRows rows={stresses} getter={this.props.applicationState.stresses} toggle={s => this.props.applicationState.toggleStress((s))} />

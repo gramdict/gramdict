@@ -962,6 +962,12 @@ h6:target .permalink {
 }
 
 .list-filters{border-right: none;}
+
+.additional-small-padding tr td {
+    padding: 1px 3px !important;
+    font-weight: bold !important;
+}
+
 .filter-table.list-filters tr td{padding: 1px 15px;}
 .scrollable-filters{width: 100%; padding-bottom: 0px;}
 .filter-controls-area{margin-top: 10px; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
