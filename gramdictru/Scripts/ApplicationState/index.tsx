@@ -254,7 +254,7 @@ export class ApplicationState {
         const hasFilters = fixupFilter(filters, this.filters);
         fixupFilter(lists, this.lists);
         fixupFilter(indexes, this.indexes);
-        fixupFilter(additionals, this.indexes);
+        fixupFilter(additionals, this.additionals);
         fixupFilter(stresses, this.stresses);
         fixupFilter(circles, this.circles);
         fixupFilter(paras, this.paras);
