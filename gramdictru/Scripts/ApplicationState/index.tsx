@@ -357,7 +357,7 @@ export class ApplicationState {
                 .join("&");
 
             try {
-                const uri = `https://localhost:44328/v1/search/${term}?${apiQueryString}`;
+                const uri = `http://api.gramdict.ru/v1/search/${term}?${apiQueryString}`;
 
                 console.log("making request", uri);
                 const data: ApiResponse = yield axios.get(uri,

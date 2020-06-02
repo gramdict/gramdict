@@ -56,7 +56,7 @@ namespace gramdictru
 
         static readonly HttpClient ApiClient = new HttpClient()
         {
-            BaseAddress = new Uri("https://localhost:44328")
+            BaseAddress = new Uri("http://api.gramdict.ru")
         };
     }
 }
