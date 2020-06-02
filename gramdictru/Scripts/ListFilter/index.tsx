@@ -71,7 +71,6 @@ export class ListFilters extends React.PureComponent<ListFiltersProps> {
                         </Filter>
                     </td>
                 </tr>)}
-                <tr>&nbsp;</tr>
                 <FilterTable><div className="additional-small-padding">
                 <FilterTableRows rows={additionals} getter={this.props.applicationState.additionals} toggle={a => this.props.applicationState.toggleAdditional((a))} />
                 </div></FilterTable>
