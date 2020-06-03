@@ -33,7 +33,7 @@ type Entry = {
 }
 
 type Nested = Entry[];
-type Row = Array<Entry & { width?: number } | Nested | undefined>
+export type Row = Array<Entry & { width?: number } | Nested | undefined>
 
 const possibleFilters: Row[] = [
     [
@@ -389,7 +389,9 @@ const formatLabel = (filter) => {
     ];
 };
 
-const FilterTableRows = ({ rows, getter, toggle, className }: {
+
+
+export const FilterTableRows = ({ rows, getter, toggle, className }: {
     rows: Row[],
     getter: Map<string, boolean>,
     toggle: (something: string) => void,
@@ -421,7 +423,7 @@ const FilterTableRows = ({ rows, getter, toggle, className }: {
         })}
            </tr>)}</React.Fragment>);
     
-const FilterTable = ({ children }: { children?: React.ReactNode }) =>
+export const FilterTable = ({ children }: { children?: React.ReactNode }) =>
 (<table className="filter-table">
         <tbody>
             {children}
@@ -441,12 +443,10 @@ export class Filters extends React.Component<IFilterControlProps> {
         return <div className="filter-wrapper">
                    <div className="scrollable-filters">
                        <FilterTable>
-                           <FilterTableRows rows={possibleFilters} getter={this.props.applicationState.filters
-} toggle={f => this.props.applicationState.toggleFilter(f)}/>
+                           <FilterTableRows rows={possibleFilters} getter={this.props.applicationState.filters} toggle={f => this.props.applicationState.toggleFilter(f)}/>
                        </FilterTable>
                        <FilterTable>
-                           <FilterTableRows rows={stresses} getter={this.props.applicationState.stresses} toggle={s =>
-                               this.props.applicationState.toggleStress((s))}/>
+                           <FilterTableRows rows={stresses} getter={this.props.applicationState.stresses} toggle={s => this.props.applicationState.toggleStress((s))} />
                        </FilterTable>
                        <ExtraTable>
                            <tr>

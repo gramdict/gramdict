@@ -118,6 +118,9 @@ export class ApplicationState {
     lists = new Map<string, boolean>();
 
     @observable
+    additionals = new Map<string, boolean>();
+
+    @observable
     stresses = new Map<string, boolean>();
 
     @observable
@@ -177,6 +180,13 @@ export class ApplicationState {
     }
 
     @action
+    toggleAdditional(additional: string) {
+        this.additionals.set(additional, !this.additionals.get(additional));
+        this.search();
+    }
+
+
+    @action
     toggleIndex(index: string) {
         this.indexes.set(index, !this.indexes.get(index));
         this.search();
@@ -204,6 +214,7 @@ export class ApplicationState {
     resetFilters() {
         this.filters.clear();
         this.lists.clear();
+        this.additionals.clear();
         this.indexes.clear();
         this.stresses.clear();
         this.circles.clear();
@@ -226,7 +237,7 @@ export class ApplicationState {
     }
 
     @action
-    applyState(term: string, filters: string, lists: string, indexes: string, stresses: string, circles: string, paras: string) {
+    applyState(term: string, filters: string, lists: string, additionals: string, indexes: string, stresses: string, circles: string, paras: string) {
         const fixupFilter = (encoded: string, filters: Map<string, boolean>) => {
             const decoded = encoded.split(",").filter(x => x.length > 0).map(l => decodeURIComponent(l));
             filters.clear();
@@ -243,6 +254,7 @@ export class ApplicationState {
         const hasFilters = fixupFilter(filters, this.filters);
         fixupFilter(lists, this.lists);
         fixupFilter(indexes, this.indexes);
+        fixupFilter(additionals, this.additionals);
         fixupFilter(stresses, this.stresses);
         fixupFilter(circles, this.circles);
         fixupFilter(paras, this.paras);
@@ -319,6 +331,7 @@ export class ApplicationState {
                 pagenum: this.pageNumber.toString(),
                 symbol: this.apiEncode(this.filters),
                 list: this.apiEncode(this.lists),
+                additional: this.apiEncode(this.additionals),
                 index: this.apiEncode(this.indexes),
                 stress: this.apiEncode(this.stresses),
                 circle: this.apiEncode(this.circles),
@@ -332,6 +345,7 @@ export class ApplicationState {
             const pageState = {
                 symbol: this.pageEncode(this.filters),
                 list: this.pageEncode(this.lists),
+                additional: this.pageEncode(this.additionals),
                 index: this.pageEncode(this.indexes),
                 stress: this.pageEncode(this.stresses),
                 circle: this.pageEncode(this.circles),
