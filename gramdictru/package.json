@@ -11,7 +11,7 @@
     "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "ismobilejs": "^0.5.1",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
