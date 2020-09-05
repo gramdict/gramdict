@@ -20,9 +20,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".well-known\acme-challenge\Web.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include=".well-known\acme-challenge\Web.config" />
     <None Include="wwwroot\permalink.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
