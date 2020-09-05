@@ -25,9 +25,6 @@
     </None>
     <TypeScriptCompile Include="Scripts\ListFilter\index.tsx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include=".well-known\acme-challenge" />
-  </ItemGroup>
   <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
   </Target>
