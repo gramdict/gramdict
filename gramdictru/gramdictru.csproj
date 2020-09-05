@@ -20,11 +20,13 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".well-known\acme-challenge\Web.config" />
     <None Include="wwwroot\permalink.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <TypeScriptCompile Include="Scripts\ListFilter\index.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".well-known\acme-challenge" />
   </ItemGroup>
   <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
