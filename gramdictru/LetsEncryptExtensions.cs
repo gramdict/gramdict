@@ -9,13 +9,13 @@ namespace gramdictru
     {
         public static void UseWellKnownDir(this IApplicationBuilder app)
         {
-            string wellKnownDir = Path.Combine(Directory.GetCurrentDirectory(), @".well-known");
+            string wellKnownDir = Path.Combine(Directory.GetCurrentDirectory(), ".well-known");
             Directory.CreateDirectory(wellKnownDir); // noop if dir exists
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(wellKnownDir),
                 RequestPath = new PathString("/.well-known"),
-                ServeUnknownFileTypes = true // serve extensionless file
+                ServeUnknownFileTypes = true // serve extensionless files
             });
         }
     }
