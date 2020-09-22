@@ -8,6 +8,7 @@
     <None Remove="Scripts\ListFilter\index.tsx" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AspNetCore.LetsEncrypt.Extensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.1" PrivateAssets="All" />

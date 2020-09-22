@@ -45,6 +45,8 @@ namespace gramdictru
 
             app.UseStaticFiles();
 
+            app.UseWellKnownDir(); // required for Let's Encrypt certificate renewal
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
