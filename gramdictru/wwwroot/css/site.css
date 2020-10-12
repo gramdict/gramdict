@@ -542,19 +542,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Cormorant Garamond, sans-serif;
 }
 
-h4 {
-    font-size: 22px;
-}
-
-h5 {
-    font-size: 18px;
-}
-
-h6 {
-    font-weight: 700;
-    font-size: 16px;
-}
-
 a.contents-link {
     color: white;
     text-decoration: none;
@@ -1009,4 +996,9 @@ h6:target .permalink {
 
 #search-results.filters-invisible {
     overflow-anchor: auto;
+}
+
+/* Подзаголовки. См., например, http://gramdict.ru/declension/symbols#minus-nouns */
+h3,h4 small {
+    display: block;
 }
