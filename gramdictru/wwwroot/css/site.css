@@ -134,8 +134,8 @@ body {
     .page {
         max-width: 100%;
         width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -707,7 +707,6 @@ a.contents-link {
     max-width: calc(100% - var(--body-padding) * 2);
 }
 
-
 span.target {
     position:relative;
     top:calc(0px - var(--search-bar-total-height));
@@ -753,7 +752,6 @@ h6:target .permalink {
 
 .filter-table {
     display: table;
-    margin: unset;
     font-size: large;
     margin: 0.2em;
     color: #F2F2F2;
@@ -837,7 +835,7 @@ h6:target .permalink {
     display: flex;
     flex-direction: column;
     font-size: 16px;    
-    padding: 0px 15px;
+    padding: 0 15px;
 }
 
 .scrollable-filters {
@@ -963,7 +961,7 @@ h6:target .permalink {
 }
 
 .filter-table.list-filters tr td{padding: 1px 15px;}
-.scrollable-filters{width: 100%; padding-bottom: 0px;}
+.scrollable-filters{width: 100%; padding-bottom: 0;}
 .filter-controls-area{margin-top: 10px; text-align: center; flex-direction: row; padding-right: 0; padding-left: 0; align-items: center;}
 .reset-filter-button-wrapper{justify-content: flex-start;}   
 
