@@ -699,6 +699,8 @@ a.contents-link {
 
 .load-more {
     text-align: center;
+    padding-right: 3%;
+    padding-top: 2em;
 }
 
 .page.is-searching .body-content {

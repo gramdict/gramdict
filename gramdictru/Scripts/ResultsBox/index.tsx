@@ -29,7 +29,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                     <InfinityScroll
                         dataLength={this.props.applicationState.total}
                         next={() => this.props.applicationState.continue()}
-                        hasMore={!this.props.applicationState.reachedLimit}
+                        hasMore={false}
                         loader={<h4>Loading...</h4>}
                         ref={c => this.loader = c}
                         scrollThreshold="50px"
@@ -45,17 +45,11 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         <div className="symbol" dangerouslySetInnerHTML={{ __html: r.symbol }} />
                         <div className="grammar" dangerouslySetInnerHTML={{ __html: r.grammar }} />
                     </div>)}
-                            </div>,
-                            <hr/>
+                            </div>
                         ])}
                     {this.props.applicationState.canLoadMore &&
                         <div className="load-more">
-                            <a href="javascript:void(0)" onClick={() => {
-                                this.props.applicationState.continue();
-                                this.loader.setState({
-                                    showLoader: true,
-                                });
-                        }}>Load more...</a>
+                            (Показаны не все статьи &mdash; используйте поиск)
                         </div>}
                     </InfinityScroll>
                 </div>
