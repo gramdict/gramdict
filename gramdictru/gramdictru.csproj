@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Scripts\ListFilter\index.tsx" />
