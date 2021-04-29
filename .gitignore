@@ -6,3 +6,4 @@
 node_modules
 wwwroot
 *.user
+gramdictru/.config/dotnet-tools.json
