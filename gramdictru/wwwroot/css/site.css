@@ -330,10 +330,10 @@ table.left-aligned {
     margin-bottom: 0.4em;
 }
 
-table.left-aligned tr td:nth-child(1) {
+table.left-aligned tr td:first-child {
     padding-left: 0;
     font-weight: bold;
-    min-width: 6em;
+    min-width: 9em;
 }
 
 table.left-aligned tr td:nth-last-child(1) {
