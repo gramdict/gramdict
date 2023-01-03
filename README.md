@@ -18,3 +18,11 @@ Please execute these regression tests before submitting a PR:
 * [This link](http://dev.gramdict.ru/search/*?symbol=%D1%81%D0%B2,%D0%BD%D1%81%D0%B2,%D1%81%D0%B2-%D0%BD%D1%81%D0%B2,%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5%20%D0%BC%D1%81,%3Ci%3E(%D0%BD%D0%B5%D1%82)%3C%2Fi%3E,%D0%BC%D0%B5%D0%B6%D0%B4.,%D0%B2%D0%B2%D0%BE%D0%B4%D0%BD.,%D1%81%D1%80%D0%B0%D0%B2%D0%BD.,%D0%BF%D1%80%D0%B5%D0%B4%D0%BB.,%D1%84.,%D1%81%D0%BE%D1%8E%D0%B7,%3Ci%3E%D1%81%D0%BC.%3C%2Fi%3E,%3Ci%3E%D0%A0.%20%D0%BC%D0%BD.%3C%2Fi%3E,%D1%87%D0%B0%D1%81%D1%82.,%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA.,%D0%BC%D0%BD.%20%D0%BD%D0%B5%D0%BE%D0%B4.,%D0%BC%D0%BD.%20%D0%BE%D0%B4%D1%83%D1%88.,%D0%BC%D0%BD.%20%3Ci%3E%D0%BE%D1%82%3C%2Fi%3E,%D0%BC%D0%BD.,%D0%BC%D0%BE-%D0%B6%D0%BE,%D0%B6%D0%BE%E2%81%BA,%D0%BC%D0%BE%E2%81%BA,%C2%A71,%C2%A72,%D1%87%D0%B8%D1%81%D0%BB.,%D1%87%D0%B8%D1%81%D0%BB.-%D0%BF,%D0%BC%D1%81-%D0%BF,%D0%BC%D1%81,%D1%81%D0%BE,%D0%B6%D0%BE,%D0%BC%D0%BE,%D0%BC,%D0%B6,%D1%81,%D0%BD,%D0%BF) displays all entries (Статей: 109866) [#99](https://github.com/morpher-ru/gramdict/issues/99)
 * [This link](http://gramdict.ru/search/%D0%BC%D1%91%D0%B4) displays П<sub>2</sub> and Р<sub>2</sub> (with twos as subscripts) [#138](https://github.com/morpher-ru/gramdict/issues/138)
 * The progress bar is visible when searching [#145](https://github.com/morpher-ru/gramdict/issues/145)
+
+
+## Runtime Dependencies
+
+* .NET 4.6.1
+* [Node.js](https://nodejs.org/en/download/)
+
+
