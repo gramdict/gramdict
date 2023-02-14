@@ -583,19 +583,26 @@ a.contents-link {
 
 .result-entry {
     padding-left: 2rem;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: minmax(40%, max-content) minmax(1.5rem, max-content) 1fr;
+    display: block;
     margin: 0 auto;
+    width: 100%;
 }
 
 .lemma {
     white-space: nowrap;
     font-weight: bold;
     padding-right: 0.5rem;
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     color: #555555;
+    max-width: max-content;
+    min-width: 40%;
+    position: relative
+}
+
+.result-entry .entry-hidden {
+    position: absolute;
+    z-index: -999;
 }
 
 .grammar b {
@@ -607,13 +614,16 @@ a.contents-link {
     display: inline-block;
     flex-direction: column;
     white-space: nowrap;
+    min-width: 1.5rem;
+    max-width: max-content;
 }
 
 .grammar {
     padding-left: 0.5rem;
     text-align: left;
-    display: inline;
+    display: inline-block;
     flex-direction: column;
+    max-width: 40%;
 }
 
 .infinite-scroll-component {
