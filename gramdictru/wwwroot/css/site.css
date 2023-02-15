@@ -601,10 +601,21 @@ a.contents-link {
 }
 
 .result-entry .entry-hidden {
-    position: absolute;
-    z-index: -999;
+    width: 0;
+    color: transparent;
+    height: 0;
+    max-width: 0;
+    max-height: 0;
+    background: transparent;
+    user-select: all;
+    width: 0;
+    display: inline-block;
+    height: 0;
 }
-
+.result-entry .entry-hidden::selection {
+    color: transparent;
+    background: transparent;
+}
 .grammar b {
     color: #555555;
 }
