@@ -426,3 +426,15 @@ export type Result = {
     grammar: string;
     list: string;
 }
+
+export const text2Markdown = (text: string) => {
+    if (!text) {
+        return ""
+    }
+    return text
+        .replace('_', '\_')
+        .replace('<i>', '_')
+        .replace('</i>', '_')
+        .replace('<b>', '__')
+        .replace('</b>', '__')
+}
