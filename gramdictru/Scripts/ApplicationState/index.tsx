@@ -431,10 +431,10 @@ export const text2Markdown = (text: string) => {
     if (!text) {
         return ""
     }
-    return text
-        .replace('_', '\_')
-        .replace('<i>', '_')
-        .replace('</i>', '_')
-        .replace('<b>', '__')
-        .replace('</b>', '__')
+    return (text as any)
+        .replaceAll('_', '\_')
+        .replaceAll('<i>', '_')
+        .replaceAll('</i>', '_')
+        .replaceAll('<b>', '__')
+        .replaceAll('</b>', '__')
 }
