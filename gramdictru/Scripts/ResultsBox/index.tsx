@@ -1,4 +1,4 @@
-import { ApplicationState, text2Markdown } from "../ApplicationState/index";
+import { ApplicationState, copyUtils } from "../ApplicationState/index";
 import * as InfinityScroll from "react-infinite-scroll-component";
 import { observer } from "mobx-react";
 import * as React from "react";
@@ -18,23 +18,27 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
         e.preventDefault();
         const selection = document.getSelection();
         if (selection) {
-            let text2Copy="";
-            this.props.applicationState.results.forEach((resultSet, index1) => {
-                resultSet.forEach((r, index2) => {
-                    var elm = document.getElementById(`result-entry-${index1}-${index2}`)
-                    if (elm) {
-                        var hasSelected = selection.containsNode(elm, true);
-                        if (hasSelected) {
-                            text2Copy += `__${text2Markdown(r.lemma)}__ ${r.symbol} ${text2Markdown(r.grammar)}` + "\n"
-                        }
-                    }
-                })
-            })
-            if (text2Copy) {
-                copy(text2Copy)
+            var allNodes = document.getElementById("search-results").getElementsByClassName("copy-field");
+            var childNodes = [...allNodes]
+            let isReverseCopy = false
+            let anchorCopyField = copyUtils.getParentCopyField(selection.anchorNode)
+            let focusCopyField = copyUtils.getParentCopyField(selection.focusNode)
+            if (anchorCopyField === focusCopyField) {
+                let childNodes = [...anchorCopyField.childNodes]
+                let anchorIndex = childNodes.findIndex(_node => _node === selection.anchorNode || _node === selection.anchorNode.parentNode)
+                let focusIndex = childNodes.findIndex(_node => _node === selection.focusNode || _node === selection.focusNode.parentNode)
+                isReverseCopy = anchorIndex > focusIndex
+
+            } else {
+                isReverseCopy = childNodes.indexOf(anchorCopyField) > childNodes.indexOf(focusCopyField)
+            }
+
+            var text = copyUtils.getCopyText(isReverseCopy)
+            if (text) {
+                copy(text)
             }
         }
-        
+
     }
 
     render() {
@@ -64,10 +68,10 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                         key={this.props.applicationState.searchedTerm}>
                         {this.props.applicationState.results.map((resultSet, index1) => [
                             <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>
-                                {resultSet.map((r, index2) => <div className="result-entry" id={`result-entry-${index1}-${index2}`}>
-                                    <div className="lemma" style={{ textAlign: this.props.applicationState.searchTerm === "" || this.props.applicationState.searchTerm.startsWith('*') ? 'right' : 'left' }}>{r.lemma}</div>
-                                    <div className="symbol" dangerouslySetInnerHTML={{ __html: r.symbol }} />
-                                    <div className="grammar" dangerouslySetInnerHTML={{ __html: r.grammar }} />
+                                {resultSet.map((r, index2) => <div className="result-entry">
+                                    <div className="lemma copy-field" style={{ textAlign: this.props.applicationState.searchTerm === "" || this.props.applicationState.searchTerm.startsWith('*') ? 'right' : 'left' }}>{r.lemma}</div>
+                                    <div className="symbol copy-field" dangerouslySetInnerHTML={{ __html: r.symbol }} />
+                                    <div className="grammar copy-field" dangerouslySetInnerHTML={{ __html: r.grammar }} />
                                 </div>)}
                             </div>,
                             <hr />
