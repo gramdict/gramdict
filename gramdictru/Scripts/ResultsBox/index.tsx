@@ -1,10 +1,11 @@
-import { ApplicationState, copyUtils } from "../ApplicationState/index";
+import { ApplicationState } from "../ApplicationState/index";
 import * as InfinityScroll from "react-infinite-scroll-component";
 import { observer } from "mobx-react";
 import * as React from "react";
 import AnimateHeight from "react-animate-height";
 import * as copy from 'copy-to-clipboard';
 import { Filters } from "../Filters/index";
+import { copyUtils } from '../Utils/copyUtils'
 
 export interface IResultBoxProps {
     applicationState: ApplicationState
@@ -43,7 +44,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
 
     render() {
         return this.props.applicationState.hasSearched &&
-            <div className="page is-searching" id="search-results" >
+            <div className="page is-searching" id="search-results">
                 <AnimateHeight className="static-filters"
                     duration={this.props.applicationState.nextAnimationTime}
                     height={this.props.applicationState.nextAnimationHeight}
@@ -66,9 +67,9 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
                             overflow: "hidden"
                         }}
                         key={this.props.applicationState.searchedTerm}>
-                        {this.props.applicationState.results.map((resultSet, index1) => [
+                        {this.props.applicationState.results.map(resultSet => [
                             <div className={"results-table" + (this.props.applicationState.isShortResult ? " short-results" : "")}>
-                                {resultSet.map((r, index2) => <div className="result-entry">
+                                {resultSet.map(r => <div className="result-entry">
                                     <div className="lemma copy-field" style={{ textAlign: this.props.applicationState.searchTerm === "" || this.props.applicationState.searchTerm.startsWith('*') ? 'right' : 'left' }}>{r.lemma}</div>
                                     <div className="symbol copy-field" dangerouslySetInnerHTML={{ __html: r.symbol }} />
                                     <div className="grammar copy-field" dangerouslySetInnerHTML={{ __html: r.grammar }} />
