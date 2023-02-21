@@ -45,7 +45,7 @@ export class ApplicationState {
 
     @observable
     nextAnimationHeight: string | number = 0;
-    
+
     @observable
     nextAnimationTime: number = defaultAnimationTime;
 
@@ -258,7 +258,7 @@ export class ApplicationState {
         fixupFilter(stresses, this.stresses);
         fixupFilter(circles, this.circles);
         fixupFilter(paras, this.paras);
-        
+
         this.search(true);
         if (hasFilters) {
             setTimeout(() => this.openFilterControl());
@@ -299,9 +299,9 @@ export class ApplicationState {
             if (!suppressHistory) {
                 const uri = `/search/${term}` + ((queryString.length > 0) ? `?${queryString}` : "");
                 history.pushState({
-                        term,
-                        ...state
-                    },
+                    term,
+                    ...state
+                },
                     document.title,
                     uri);
             }
@@ -325,7 +325,7 @@ export class ApplicationState {
 
             let term = encodeURIComponent(this.searchTerm.trim());
             term = term == "" ? "*" : term;
-            
+
             const apiSearchParams = {
                 pagesize: this.pageSize.toString(),
                 pagenum: this.pageNumber.toString(),
@@ -366,7 +366,7 @@ export class ApplicationState {
                         responseType: "text",
                     })
                     .then((response) => response.data);
-                
+
 
                 if (callback !== undefined) {
                     callback(term, pageQueryString, pageState);
@@ -381,16 +381,16 @@ export class ApplicationState {
                     console.log(`Got ${data.entries.length} lines`);
                     this.reachedLimit = false;
                 }
-                
+
                 //response adjustments
-                if (data.entries && data.entries.constructor === Array){
+                if (data.entries && data.entries.constructor === Array) {
                     for (let index = 0; index < data.entries.length; ++index) {
-                        if (data.entries[index].grammar && data.entries[index].grammar.constructor === String)  {
-                            if (data.entries[index].grammar.includes("П2")){
+                        if (data.entries[index].grammar && data.entries[index].grammar.constructor === String) {
+                            if (data.entries[index].grammar.includes("П2")) {
                                 data.entries[index].grammar = data.entries[index].grammar.replace(new RegExp("П2"), "П<sub>2</sub>");
                                 // console.log("П2");
                             }
-                            if (data.entries[index].grammar.includes("Р2")){
+                            if (data.entries[index].grammar.includes("Р2")) {
                                 data.entries[index].grammar = data.entries[index].grammar.replace(new RegExp("Р2"), "Р<sub>2</sub>");
                                 // console.log("Р2");
                             }
@@ -415,7 +415,7 @@ export class ApplicationState {
                 setTimeout(resize, 0);
             }
         }).bind(this)(this.callback);
-        
+
         return this.currentSearch;
     });
 }
