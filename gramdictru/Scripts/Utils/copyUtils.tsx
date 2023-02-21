@@ -13,15 +13,7 @@ export const text2Markdown = (text: string) => {
 }
 
 class CopyUtils {
-
-    getOriginNode(node) {
-        if (node.nodeName === '#text') {
-            return node.parentNode
-        }
-
-        return node
-    }
-
+      
     isBold(node) {
         if (!node) {
             return false
@@ -73,29 +65,29 @@ class CopyUtils {
                 text = preText ? preText + " " : ""
             } else if (focusNode.classList.contains("grammar")) {
                 let grammarText = ""
-                var focusIndex = [...focusNode.childNodes].findIndex(_node => _node === selection.focusNode || _node === selection.focusNode.parentNode)
-                for (var [i, _node] of focusNode.childNodes.entries()) {
+                var focusIndex = [...focusNode.childNodes].findIndex(node => node === selection.focusNode || node === selection.focusNode.parentNode)
+                for (var [i, node] of focusNode.childNodes.entries()) {
                     if (i < focusIndex) {
                         continue
                     }
-                    if (_node === selection.focusNode || _node === selection.focusNode.parentNode) {
+                    if (node === selection.focusNode || node === selection.focusNode.parentNode) {
                         let t = selection.focusNode.textContent.substring(  selection.focusOffset)
-                        t = this.isItalic(_node) ? `_${t}_` : t
-                        t = this.isBold(_node) ? `__${t}__` : t
+                        t = this.isItalic(node) ? `_${t}_` : t
+                        t = this.isBold(node) ? `__${t}__` : t
                         grammarText += t;
-                    } else if (_node === selection.anchorNode || _node === selection.anchorNode.parentNode) {
+                    } else if (node === selection.anchorNode || node === selection.anchorNode.parentNode) {
                         let t = selection.anchorNode.textContent.substring(0,
                             selection.anchorOffset);
-                        t = this.isItalic(_node) ? `_${t}_` : t;
-                        t = this.isBold(_node) ? `__${t}__` : t;
+                        t = this.isItalic(node) ? `_${t}_` : t;
+                        t = this.isBold(node) ? `__${t}__` : t;
                         grammarText += t;
                         break
                     }
 
                     else {
-                        let t = _node.textContent;
-                        t = this.isItalic(_node) ? `_${t}_` : t;
-                        t = this.isBold(_node) ? `__${t}__` : t;
+                        let t = node.textContent;
+                        t = this.isItalic(node) ? `_${t}_` : t;
+                        t = this.isBold(node) ? `__${t}__` : t;
                         grammarText += t;
                     }
 
@@ -115,28 +107,28 @@ class CopyUtils {
             text = preText ? preText + " " : ""
         } else if (anchorNode.classList.contains("grammar")) {
             let grammarText = ""
-            var anchorIndex = [...anchorNode.childNodes].findIndex(_node => _node === selection.anchorNode || _node === selection.anchorNode.parentNode)
-            for (var [i, _node] of anchorNode.childNodes.entries()) {
+            var anchorIndex = [...anchorNode.childNodes].findIndex(node => node === selection.anchorNode || node === selection.anchorNode.parentNode)
+            for (var [i, node] of anchorNode.childNodes.entries()) {
                 if (i < anchorIndex) {
                     continue
                 }
-                if (_node === selection.anchorNode || _node === selection.anchorNode.parentNode) {
+                if (node === selection.anchorNode || node === selection.anchorNode.parentNode) {
                     let t = selection.anchorNode.textContent.substring(
                         selection.anchorOffset)
-                    t = this.isItalic(_node) ? `_${t}_` : t
-                    t = this.isBold(_node) ? `__${t}__` : t
+                    t = this.isItalic(node) ? `_${t}_` : t
+                    t = this.isBold(node) ? `__${t}__` : t
                     grammarText += t;
-                } else if (_node === selection.focusNode || _node === selection.focusNode.parentNode) {
+                } else if (node === selection.focusNode || node === selection.focusNode.parentNode) {
                     let t = selection.focusNode.textContent.substring(0, selection.focusOffset)
-                    t = this.isItalic(_node) ? `_${t}_` : t
-                    t = this.isBold(_node) ? `__${t}__` : t
+                    t = this.isItalic(node) ? `_${t}_` : t
+                    t = this.isBold(node) ? `__${t}__` : t
                     grammarText += t;
                     break
                 }
                 else {
-                    let t = _node.textContent;
-                    t = this.isItalic(_node) ? `_${t}_` : t;
-                    t = this.isBold(_node) ? `__${t}__` : t;
+                    let t = node.textContent;
+                    t = this.isItalic(node) ? `_${t}_` : t;
+                    t = this.isBold(node) ? `__${t}__` : t;
                     grammarText += t;
                 }
             }
@@ -161,27 +153,27 @@ class CopyUtils {
                 text += preText ? preText + " " : ""
             } else if (anchorNode.classList.contains("grammar")) {
                 let grammarText = ""
-                let isChildren = [...anchorNode.childNodes].some(_node => _node === selection.anchorNode || _node === selection.anchorNode.parentNode);
+                let isChildren = [...anchorNode.childNodes].some(node => node === selection.anchorNode || node === selection.anchorNode.parentNode);
                 if (isChildren) {
-                    for (var _node of anchorNode.childNodes) {
-                        if (_node === selection.anchorNode || _node === selection.anchorNode.parentNode) {
+                    for (var node of anchorNode.childNodes) {
+                        if (node === selection.anchorNode || node === selection.anchorNode.parentNode) {
                             let t = selection.anchorNode.textContent.substring(0, selection.anchorOffset)
-                            t = this.isItalic(_node) ? `_${t}_` : t;
-                            t = this.isBold(_node) ? `__${t}__` : t;
+                            t = this.isItalic(node) ? `_${t}_` : t;
+                            t = this.isBold(node) ? `__${t}__` : t;
                             grammarText += t;
                             break
                         } else {
-                            let t = _node.textContent
-                            t = this.isItalic(_node) ? `_${t}_` : t;
-                            t = this.isBold(_node) ? `__${t}__` : t;
+                            let t = node.textContent
+                            t = this.isItalic(node) ? `_${t}_` : t;
+                            t = this.isBold(node) ? `__${t}__` : t;
                             grammarText += t;
                         }
                     }
 
                 } else {
                     let t = selection.anchorNode.textContent.substring(0, selection.anchorOffset)
-                    t = this.isItalic(_node) ? `_${t}_` : t;
-                    t = this.isBold(_node) ? `__${t}__` : t;
+                    t = this.isItalic(node) ? `_${t}_` : t;
+                    t = this.isBold(node) ? `__${t}__` : t;
                     grammarText += t;
                 }
                 text += grammarText ? grammarText + "\n" : "\n"
@@ -197,27 +189,27 @@ class CopyUtils {
             text += preText ? preText + " " : ""
         } else if (focusNode.classList.contains("grammar")) {
             let grammarText = ""
-            let isChildren = [...focusNode.childNodes].some(_node => _node === selection.focusNode || _node === selection.focusNode.parentNode);
+            let isChildren = [...focusNode.childNodes].some(node => node === selection.focusNode || node === selection.focusNode.parentNode);
             if (isChildren) {
-                for (var _node of focusNode.childNodes) {
-                    if (_node === selection.focusNode || _node === selection.focusNode.parentNode) {
+                for (var node of focusNode.childNodes) {
+                    if (node === selection.focusNode || node === selection.focusNode.parentNode) {
                         let t = selection.focusNode.textContent.substring(0, selection.focusOffset)
-                        t = this.isItalic(_node) ? `_${t}_` : t;
-                        t = this.isBold(_node) ? `__${t}__` : t;
+                        t = this.isItalic(node) ? `_${t}_` : t;
+                        t = this.isBold(node) ? `__${t}__` : t;
                         grammarText += t;
                         break
                     } else {
-                        let t = _node.textContent
-                        t = this.isItalic(_node) ? `_${t}_` : t;
-                        t = this.isBold(_node) ? `__${t}__` : t;
+                        let t = node.textContent
+                        t = this.isItalic(node) ? `_${t}_` : t;
+                        t = this.isBold(node) ? `__${t}__` : t;
                         grammarText += t;
                     }
                 }
 
             } else {
                 let t = selection.focusNode.textContent.substring(0, selection.focusOffset)
-                t = this.isItalic(_node) ? `_${t}_` : t;
-                t = this.isBold(_node) ? `__${t}__` : t;
+                t = this.isItalic(node) ? `_${t}_` : t;
+                t = this.isBold(node) ? `__${t}__` : t;
                 grammarText += t;
             }
             text += grammarText ? grammarText + "\n" : "\n"
@@ -267,6 +259,24 @@ class CopyUtils {
             }
             return text
         }
+    }
+
+    isReverseCopy(selection) {
+        var allNodes = document.getElementById("search-results").getElementsByClassName("copy-field");
+        var childNodes = [...allNodes]
+        let isReverseCopy = false
+        let anchorCopyField = copyUtils.getParentCopyField(selection.anchorNode)
+        let focusCopyField = copyUtils.getParentCopyField(selection.focusNode)
+        if (anchorCopyField === focusCopyField) {
+            let childNodes = [...anchorCopyField.childNodes]
+            let anchorIndex = childNodes.findIndex(node => node === selection.anchorNode || node === selection.anchorNode.parentNode)
+            let focusIndex = childNodes.findIndex(node => node === selection.focusNode || node === selection.focusNode.parentNode)
+            isReverseCopy = anchorIndex > focusIndex
+
+        } else {
+            isReverseCopy = childNodes.indexOf(anchorCopyField) > childNodes.indexOf(focusCopyField)
+        }
+        return isReverseCopy;
     }
 }
 

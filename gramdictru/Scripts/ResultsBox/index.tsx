@@ -19,21 +19,7 @@ export class ResultsBox extends React.Component<IResultBoxProps> {
         e.preventDefault();
         const selection = document.getSelection();
         if (selection) {
-            var allNodes = document.getElementById("search-results").getElementsByClassName("copy-field");
-            var childNodes = [...allNodes]
-            let isReverseCopy = false
-            let anchorCopyField = copyUtils.getParentCopyField(selection.anchorNode)
-            let focusCopyField = copyUtils.getParentCopyField(selection.focusNode)
-            if (anchorCopyField === focusCopyField) {
-                let childNodes = [...anchorCopyField.childNodes]
-                let anchorIndex = childNodes.findIndex(_node => _node === selection.anchorNode || _node === selection.anchorNode.parentNode)
-                let focusIndex = childNodes.findIndex(_node => _node === selection.focusNode || _node === selection.focusNode.parentNode)
-                isReverseCopy = anchorIndex > focusIndex
-
-            } else {
-                isReverseCopy = childNodes.indexOf(anchorCopyField) > childNodes.indexOf(focusCopyField)
-            }
-
+            var isReverseCopy = copyUtils.isReverseCopy(selection);
             var text = copyUtils.getCopyText(isReverseCopy)
             if (text) {
                 copy(text)
