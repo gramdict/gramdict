@@ -200,10 +200,19 @@ body {
     white-space: nowrap;
 }
 
-h1 {
-    line-height: 130%;
-    font-size: 25px;
-}
+h1 { font-size: 25px; text-transform: uppercase; }
+h2 { font-size: 27px; }
+h3 { font-size: 24px; font-variant: small-caps; }
+h4 { font-size: 23px; }
+h5 { font-size: 21px; font-variant: small-caps; }
+h6 { font-size: 20px; }
+
+h1 { margin-block: 20px 10px; }
+h2 { margin-block: 18px 8px; }
+h3 { margin-block: 16px 6px; }
+h4 { margin-block: 14px 4px; }
+h5 { margin-block: 12px 2px; }
+h6 { margin-block: 10px 0; }
 
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
@@ -292,12 +301,26 @@ sub {
     top: 0.2em;
 }
 
+nobr  {  white-space: nowrap;  hyphens: none;  }
+
 #author {
     text-align: center;
     font-size: 20px;
     padding-top: 2em;
     font-family: 'Cormorant Garamond', sans-serif;
     font-weight: 500;
+    font-variant: all-small-caps;
+}
+
+#title {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 0.5em;
+    padding-bottom: 3em;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-weight: bold;
+    line-height: 40px;
+    font-variant: all-small-caps;
 }
 
 hr {
@@ -358,7 +381,7 @@ table.left-aligned tr td:nth-last-child(1) {
     font-style: italic;
 }
 
-ul#contents {
+ul.contents {
     text-align: left;
 }
 
@@ -876,10 +899,6 @@ h6:target .permalink {
 }
 
 .filter-controls-area .reset-filter-button{color: #F2F2F2;}
-
-.smallbr {
-    line-height: 50%;
-}
 
 .body-content > ol {
     list-style-position: inside;
