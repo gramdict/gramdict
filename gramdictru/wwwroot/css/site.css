@@ -323,6 +323,13 @@ nobr  {  white-space: nowrap;  hyphens: none;  }
     font-variant: all-small-caps;
 }
 
+/* Названия частей книги - Склонение, Спряжение, Имена собственные - вверху страницы под заглавием (.title) */
+.part-title {
+    font-size: 35px;
+    padding-bottom: 3em;
+    line-height: 40px;
+}
+
 hr {
     width: 10%;
     margin-top: 1em;
