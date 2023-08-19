@@ -330,6 +330,17 @@ nobr  {  white-space: nowrap;  hyphens: none;  }
     line-height: 40px;
 }
 
+.video-block {
+    text-align: center;
+    padding-top: 35px;
+}
+
+iframe {
+    margin: 0 auto;
+    display:block;
+    padding-bottom: 1em;
+}
+
 hr {
     width: 10%;
     margin-top: 1em;
