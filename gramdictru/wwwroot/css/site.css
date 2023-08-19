@@ -336,8 +336,8 @@ nobr  {  white-space: nowrap;  hyphens: none;  }
 }
 
 iframe {
-    margin: 0 auto;
-    display:block;
+    margin: 0 auto; /* центрировать по горизонтали */
+    display: block;
     padding-bottom: 1em;
 }
 
