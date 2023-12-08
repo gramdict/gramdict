@@ -26,6 +26,9 @@
     </None>
     <TypeScriptCompile Include="Scripts\ListFilter\index.tsx" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlProcessor\HtmlProcessor.csproj" />
+  </ItemGroup>
   <Target Name="BuildWebpackFiles" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
   </Target>

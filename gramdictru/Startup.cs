@@ -1,6 +1,9 @@
 using System;
+using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using HtmlProcessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +23,8 @@ namespace gramdictru
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.Use(NowrapMiddleware);
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -53,6 +58,35 @@ namespace gramdictru
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
+        }
+
+        private static async Task NowrapMiddleware(HttpContext context, Func<Task> next)
+        {
+            if (context.Request.Path.HasValue && context.Request.Path.Value.StartsWith("/js/"))
+            {
+                await next.Invoke();
+            }
+            else
+            {
+                await PostProcessHtml(context, next);
+            }
+        }
+
+        private static async Task PostProcessHtml(HttpContext context, Func<Task> next)
+        {
+            HttpResponse response = context.Response;
+            Stream oldStream = response.Body;
+            var memoryStream = new MemoryStream();
+            response.Body = memoryStream;
+                
+            await next.Invoke();
+
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            string body = await new StreamReader(memoryStream).ReadToEndAsync();
+            string newBody = PageHtmlPostProcessor.AddNoWrap(body);
+            byte[] bytes = Encoding.UTF8.GetBytes(newBody);
+            await oldStream.WriteAsync(bytes, 0, bytes.Length);
+            response.Body = oldStream;
         }
 
         static readonly HttpClient ApiClient = new HttpClient()

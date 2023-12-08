@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gramdictru", "gramdictru\gramdictru.csproj", "{9562E24E-0028-4066-AB28-11BF605F6015}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlProcessor", "HtmlProcessor\HtmlProcessor.csproj", "{0289BE0E-D585-4F25-AC94-B688F79BEFD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{FCC893AB-16BA-4502-97AB-841400476A52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9562E24E-0028-4066-AB28-11BF605F6015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9562E24E-0028-4066-AB28-11BF605F6015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9562E24E-0028-4066-AB28-11BF605F6015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0289BE0E-D585-4F25-AC94-B688F79BEFD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0289BE0E-D585-4F25-AC94-B688F79BEFD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0289BE0E-D585-4F25-AC94-B688F79BEFD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0289BE0E-D585-4F25-AC94-B688F79BEFD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC893AB-16BA-4502-97AB-841400476A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC893AB-16BA-4502-97AB-841400476A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC893AB-16BA-4502-97AB-841400476A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC893AB-16BA-4502-97AB-841400476A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
