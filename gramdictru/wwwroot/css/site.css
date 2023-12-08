@@ -155,14 +155,11 @@ body {
 
 .page a {
     color: #303e00;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .page a:visited {
     color: #858e4e;
-}
-
-.page a:hover {
     text-decoration: underline;
 }
 
