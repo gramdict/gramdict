@@ -8,3 +8,6 @@ install:
 build:
   publish_aspnet_core: true
   verbosity: minimal
+environment:
+  NODE_OPTIONS: --openssl-legacy-provider
+  
