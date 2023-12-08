@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,13 +63,13 @@ namespace gramdictru
 
         private static async Task NowrapMiddleware(HttpContext context, Func<Task> next)
         {
-            if (context.Request.Path.HasValue && context.Request.Path.Value.StartsWith("/js/"))
+            if (context.Request.Headers["Accept"].Any(h => h.StartsWith("text/html")))
             {
-                await next.Invoke();
+                await PostProcessHtml(context, next);
             }
             else
             {
-                await PostProcessHtml(context, next);
+                await next.Invoke();
             }
         }
 
@@ -85,6 +86,7 @@ namespace gramdictru
             string body = await new StreamReader(memoryStream).ReadToEndAsync();
             string newBody = PageHtmlPostProcessor.AddNoWrap(body);
             byte[] bytes = Encoding.UTF8.GetBytes(newBody);
+            response.ContentLength = bytes.Length;
             await oldStream.WriteAsync(bytes, 0, bytes.Length);
             response.Body = oldStream;
         }
