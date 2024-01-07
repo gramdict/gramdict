@@ -10,6 +10,9 @@ public class Tests
     [TestCase("\t {в начале} работы")]
     [TestCase("Примеры словарных статей {со знаком} []:")]
     [TestCase("<p desc='в теге'>{не в теге}</p>")]
+    [TestCase("{А. С.} Пушкин")]
+    [TestCase("и {т. д.} и {т. п.}")]
+    [TestCase("и {т.д.} и {т.п.}")]
     public void Test1(string sample)
     {
         string input = sample.Replace("{", "").Replace("}", "");

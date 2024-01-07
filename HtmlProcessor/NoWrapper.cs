@@ -22,6 +22,6 @@ public record NoWrapper(string StartTag, string EndTag)
                 : $"{StartTag}{m.Captures[0].Value}{EndTag}");
     }
     
-    private static readonly Regex RegexPattern = new(@"(\b(в|ко|к|не|ни|со|с|о)\b\s+)+((\w|\d)+)\b", 
+    private static readonly Regex RegexPattern = new(@"((\b(в|ко|к|не|ни|со|с|о)\b\s+)+((\w|\d)+)\b)|(\w\.\s*\w\.)", 
         RegexOptions.IgnoreCase | RegexOptions.Compiled);
 }
