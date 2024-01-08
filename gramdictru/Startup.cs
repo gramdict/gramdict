@@ -84,11 +84,23 @@ namespace gramdictru
 
             memoryStream.Seek(0, SeekOrigin.Begin);
             string body = await new StreamReader(memoryStream).ReadToEndAsync();
-            string newBody = PageHtmlPostProcessor.AddNoWrap(body);
+            string hyphenated = Hyphenate(body);
+            string newBody = PageHtmlPostProcessor.AddNoWrap(hyphenated);
             byte[] bytes = Encoding.UTF8.GetBytes(newBody);
             response.ContentLength = bytes.Length;
             await oldStream.WriteAsync(bytes, 0, bytes.Length);
             response.Body = oldStream;
+        }
+
+        private static string Hyphenate(string body)
+        {
+            const char softHyphen = '\u00AD';
+            
+            var ts = Tokenizer.Tokenize(body)
+                    .Where(t => !string.IsNullOrEmpty(t))
+                    .Select(t => Morpher.Russian.BasicHyphenator.Hyphenate(t, softHyphen));
+            
+            return string.Join("", ts);
         }
 
         static readonly HttpClient ApiClient = new HttpClient()
