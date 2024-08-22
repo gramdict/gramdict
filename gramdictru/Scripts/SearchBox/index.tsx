@@ -18,7 +18,7 @@ export class SearchBox extends React.Component<ISearchBoxProps> {
             onChange={e => this.onChange(e)}
             value={this.props.applicationState.searchTerm}
             className="search-input"
-            placeholder="Поиск" />;
+            placeholder="Поиск: кошка, *ошка" />;
     }
 
     onChange(e: React.ChangeEvent<HTMLInputElement>) {
