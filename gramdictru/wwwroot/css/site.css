@@ -1043,3 +1043,7 @@ h3,h4 small {
 #conjugation-types-table tr td:nth-last-child(2) {
     text-align: left;
 }
+
+#conjugation-types-table tr th {
+    font-weight: normal;
+}
