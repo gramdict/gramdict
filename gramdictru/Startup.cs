@@ -103,7 +103,7 @@ namespace gramdictru
             return string.Join("", ts);
         }
 
-        static readonly HttpClient ApiClient = new HttpClient()
+        static readonly HttpClient ApiClient = new HttpClient
         {
             BaseAddress = new Uri("https://api.gramdict.ru")
         };

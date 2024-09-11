@@ -13,6 +13,8 @@ public class Tests
     [TestCase("{А. С.} Пушкин")]
     [TestCase("и {т. д.} и {т. п.}")]
     [TestCase("и {т.д.} и {т.п.}")]
+    [TestCase("{(-ст-)}")]
+    [TestCase("помета: {(-с-),} {(-д-),} {(-т-),} {(-ст-)} или {(-б-).}")]
     public void Test1(string sample)
     {
         string input = sample.Replace("{", "").Replace("}", "");
