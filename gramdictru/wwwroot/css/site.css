@@ -1034,3 +1034,12 @@ h6:target .permalink {
 h3,h4 small {
     display: block;
 }
+
+#conjugation-types-table tr td:nth-child(1) {
+    text-align: center;
+}
+
+#conjugation-types-table tr td:nth-last-child(1),
+#conjugation-types-table tr td:nth-last-child(2) {
+    text-align: left;
+}
