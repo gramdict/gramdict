@@ -101,6 +101,7 @@ body {
 
 .page {
     font-size: 14px;
+    line-height: 26px;
     text-align: center;
     display: inline-block;
     background-color: #f5f5f5;
@@ -205,11 +206,11 @@ h5 { font-size: 21px; font-variant: small-caps; }
 h6 { font-size: 20px; }
 
 h1 { margin-block: 20px 10px; }
-h2 { margin-block: 18px 8px; }
-h3 { margin-block: 16px 6px; }
-h4 { margin-block: 14px 4px; }
-h5 { margin-block: 12px 2px; }
-h6 { margin-block: 10px 0; }
+h2 { margin-block: 18px 18px; }
+h3 { margin-block: 16px 16px; }
+h4 { margin-block: 14px 14px; }
+h5 { margin-block: 12px 12px; }
+h6 { margin-block: 10px 10px; }
 
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
@@ -235,8 +236,8 @@ table tr td {
 
 table tr td {
     text-indent: 0;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 table tr th {
@@ -273,7 +274,6 @@ p {
     padding-top: 0;
     padding-bottom: 0;
     text-indent: 2em;
-    line-height: 18px;
 }
 
 code, word-end {
@@ -924,13 +924,13 @@ h6:target .permalink {
 
 .body-content> ol > li {
     margin-top: 1em;
-    line-height: 18px;
 }
 
 .read-next {
     text-align: center;
     padding-top: 3ex;
 }
+
 .__react_component_tooltip {
     padding: 0;
 }
