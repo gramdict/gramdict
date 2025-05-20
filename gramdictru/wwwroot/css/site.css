@@ -922,6 +922,10 @@ h6:target .permalink {
     padding-top: 3ex;
 }
 
+.read-next:before {
+    content: "Далее: ";
+}
+
 .__react_component_tooltip {
     padding: 0;
 }
